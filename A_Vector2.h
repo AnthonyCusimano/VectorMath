@@ -46,7 +46,7 @@ public:
 	/**
 	finding the dot product between this vector and the passed vector
 	*/
-	const float DotProduct(const A_Vector2 const *_AV) const;
+	const float DotProduct(A_Vector2 const *_AV) const;
 
 	/**
 	finds this vector's normal
@@ -280,7 +280,7 @@ public:
 	/**
 	assigns this vector's value to another
 	*/
-	void operator = (const A_Vector2 const &_A) {
+	void operator = (A_Vector2 const &_A) {
 
 		this->demensions[0] = _A.demensions[0];
 		this->demensions[1] = _A.demensions[1];
