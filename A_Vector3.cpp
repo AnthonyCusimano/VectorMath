@@ -24,6 +24,14 @@ A_Vector3::A_Vector3(const A_Vector3 const &_AV) {
 
 }
 
+A_Vector3::A_Vector3(A_Vector2 const *_AV, float const _z) {
+
+	this->demensions[0] = _AV->getX();
+	this->demensions[1] = _AV->getY();
+	this->demensions[2] = _z;
+
+}
+
 float A_Vector3::GetMagnatude() {
 
 	float T_Mag = this->demensions[0] * this->demensions[0];
@@ -57,6 +65,8 @@ const A_Vector3 A_Vector3::CrossProduct(A_Vector3 const *_AV) {
 }
 
 const A_Vector3 A_Vector3::Normal() {
+
+	//test
 
 	float T_Mag = this->GetMagnatude();
 	A_Vector3 T_Vec = *this;
