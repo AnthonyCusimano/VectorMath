@@ -1,6 +1,8 @@
 #ifndef A_VECTOR_3
 #define A_VECTOR_3
 
+#include "A_Vector2.h"
+
 //used for square root functionality
 #include <math.h>
 
@@ -8,7 +10,7 @@ class A_Vector3 {
 
 public:
 
-	/**
+	/*
 	//*********************************************************
 	//*********************************************************
 	//*********************************************************
@@ -17,7 +19,6 @@ public:
 	//*********************************************************
 	//*********************************************************
 	*/
-
 
 	/**
 	constructor which initializes all demensions of the vector to zero
@@ -28,13 +29,19 @@ public:
 	constructor which initializes all demensions of the vector
 	to the demensions of the vector who's refrence was passed
 	*/
-	A_Vector3(const A_Vector3 const &_AV);
+	A_Vector3(A_Vector3 const &_AV);
 
 	/**
 	constructor which initializes all demensions of the vector to
 	the values passed
 	*/
-	A_Vector3(const float const _x, const float const _y, const float const _z);
+	A_Vector3(float const _x, float const _y, float const _z);
+
+	/**
+	Constructor which initializes the X and Y of the vector to the X and Y of the 2D vector
+	and the Z value to _z
+	*/
+	A_Vector3(A_Vector2 const *_AV, float const _z);
 
 	/**
 	destructor
@@ -58,11 +65,10 @@ public:
 	*/
 	float GetMagnatude();
 
-
 	/**
 	finding the dot product between this vector and the passed vector
 	*/
-	float DotProduct(const A_Vector3 const *_AV) const;
+	float DotProduct(A_Vector3 const *_AV) const;
 
 	/**
 	finding the cross product between this vector and the passed vector
@@ -73,7 +79,6 @@ public:
 	finds this vector's normal
 	*/
 	const A_Vector3 Normal();
-
 
 	/**
 	finds this vector's normal and assigns it to itself
@@ -121,16 +126,16 @@ public:
 	/**
 	access for setting X
 	*/
-	void SetX(const float const _X) {
+	void SetX(float const _X) {
 
 		this->demensions[0] = _X;
 
 	}
 
 	/**
-	access for setting X
+	access for setting Y
 	*/
-	void SetY(const float const _Y) {
+	void SetY(float const _Y) {
 
 		this->demensions[1] = _Y;
 
@@ -139,7 +144,7 @@ public:
 	/**
 	access for setting Z
 	*/
-	void SetZ(const float const _Z) {
+	void SetZ(float const _Z) {
 
 		this->demensions[2] = _Z;
 
@@ -148,7 +153,7 @@ public:
 	/**
 	access for quickly setting each value
 	*/
-	void SetAll(const float const _X, const float const _Y, const float const _Z) {
+	void SetAll(float const _X, float const _Y, float const _Z) {
 
 		this->demensions[0] = _X;
 		this->demensions[1] = _Y;
@@ -168,22 +173,23 @@ public:
 
 	/**
 	operator for multiplying to vector together
+	this is the cross product
 	*/
-	A_Vector3 operator *(const A_Vector3 const *_a) {
+	A_Vector3 operator *(A_Vector3 const *_a) {
 
-		A_Vector3 t_v;
+		A_Vector3 T_Cross;
 
-		t_v.demensions[0] = this->demensions[0] * _a->demensions[0];
-		t_v.demensions[1] = this->demensions[1] * _a->demensions[1];
-		t_v.demensions[2] = this->demensions[2] * _a->demensions[2];
+		T_Cross.demensions[0] = (this->demensions[1] * _a->demensions[2]) - (this->demensions[2] * _a->demensions[1]);
+		T_Cross.demensions[1] = (this->demensions[2] * _a->demensions[0]) - (this->demensions[0] * _a->demensions[2]);
+		T_Cross.demensions[2] = (this->demensions[0] * _a->demensions[1]) - (this->demensions[1] * _a->demensions[0]);
 
-		return t_v;
+		return T_Cross;
 	}
 
 	/**
 	operator for scaling a vector by a float
 	*/
-	A_Vector3 operator *(const float const _f) {
+	A_Vector3 operator *(float const _f) {
 
 		A_Vector3 t_v;
 
@@ -208,7 +214,7 @@ public:
 	/**
 	operator for adding two vectors together
 	*/
-	A_Vector3 operator +(const A_Vector3 const &_A) {
+	A_Vector3 operator +(A_Vector3 const &_A) {
 
 		A_Vector3 T_A;
 		T_A.demensions[0] = _A.demensions[0] + this->demensions[0];
@@ -221,7 +227,7 @@ public:
 	/**
 	operator for adding to a vector with a float
 	*/
-	A_Vector3 operator +(const float const _f) {
+	A_Vector3 operator +(float const _f) {
 
 		A_Vector3 t_v;
 		t_v.demensions[0] = this->demensions[0] + _f;
@@ -241,7 +247,10 @@ public:
 	//*********************************************************
 	*/
 
-	void operator += (const A_Vector3 const &_A) {
+	/**
+	
+	*/
+	void operator += (A_Vector3 const &_A) {
 
 		this->demensions[0] += _A.demensions[0];
 		this->demensions[1] += _A.demensions[1];
@@ -249,7 +258,10 @@ public:
 
 	}
 
-	void operator -= (const A_Vector3 const &_A) {
+	/**
+	
+	*/
+	void operator -= (A_Vector3 const &_A) {
 
 		this->demensions[0] -= _A.demensions[0];
 		this->demensions[1] -= _A.demensions[1];
@@ -272,7 +284,7 @@ public:
 	tests to see if the X Y Z values of this vector, and the
 	vector passed into the method are all equal
 	*/
-	bool operator == (const A_Vector3 const &_A) {
+	bool operator == (A_Vector3 const &_A) {
 
 		return (_A.demensions[0] == this->demensions[0] && _A.demensions[1] == this->demensions[1] &&
 			_A.demensions[2] == this->demensions[2]);
@@ -283,7 +295,7 @@ public:
 	returns true if any of the 3 values in this vector
 	and the passed vector are not equal
 	*/
-	bool operator != (const A_Vector3 const &_A) {
+	bool operator != (A_Vector3 const &_A) {
 
 		return (_A.demensions[0] != this->demensions[0] || _A.demensions[1] != this->demensions[1] ||
 			_A.demensions[2] != this->demensions[2]);
@@ -331,13 +343,24 @@ public:
 	}
 
 	/**
-	assigns one vevectorktor's value to another
+	assigns one vector's value to another
 	*/
-	void operator = (const A_Vector3 const &_A) {
+	void operator = (A_Vector3 const &_A) {
 
 		this->demensions[0] = _A.demensions[0];
 		this->demensions[1] = _A.demensions[1];
 		this->demensions[2] = _A.demensions[2];
+
+	}
+
+	/**
+	sets all of this vector's demensions to _f
+	*/
+	void operator = (float const _f) {
+
+		this->demensions[0] = _f;
+		this->demensions[1] = _f;
+		this->demensions[2] = _f;
 
 	}
 
