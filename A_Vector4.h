@@ -5,6 +5,8 @@
 
 class A_Vector4 {
 
+public:
+
 	/*
 	//*********************************************************
 	//*********************************************************
@@ -26,6 +28,13 @@ class A_Vector4 {
 	initializes demensions to the values of _AV
 	*/
 	A_Vector4(A_Vector4* const _AV);
+
+	/**
+	pseudo-copy constructor
+	initializes dmeensions to the values of AQ
+	*/
+	//TODO: solve circular dependency
+	//A_Vector4(A_Quaternion* const _AQ);
 
 	/**
 	constructor initializes demensions to the corresponding arguments

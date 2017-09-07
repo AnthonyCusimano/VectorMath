@@ -18,6 +18,12 @@ A_Vector4::A_Vector4(A_Vector4* const _AV) {
 
 }
 
+/*A_Vector4::A_Vector4(A_Quaternion* const _AV) {
+
+
+
+}*/
+
 A_Vector4::A_Vector4(float const _x, float const _y, float const _z, float const _w) {
 
 	this->demensions[0] = _x;

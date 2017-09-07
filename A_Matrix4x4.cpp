@@ -50,7 +50,7 @@ A_Matrix4x4::A_Matrix4x4(A_Matrix4x4 const *_AM) {
 
 }
 
-A_Matrix4x4::A_Matrix4x4(A_Quaternion *_AQ1, A_Quaternion *_AQ2, A_Quaternion *_AQ3, A_Quaternion *_AQ4) {
+A_Matrix4x4::A_Matrix4x4(A_Vector4 *_AQ1, A_Vector4 *_AQ2, A_Vector4 *_AQ3, A_Vector4 *_AQ4) {
 	
 	this->demensions[0] = _AQ1->getX();
 	this->demensions[1] = _AQ1->getY();
@@ -84,11 +84,11 @@ A_Matrix4x4::A_Matrix4x4(float const _f[]) {
 
 }
 
-const A_Quaternion A_Matrix4x4::GetColumnAtAddress(int const _ad) {
+const A_Vector4 A_Matrix4x4::GetColumnAtAddress(int const _ad) {
 
 	//could error check _ad
 	char i = (_ad * 4);
-	A_Quaternion T_Result;
+	A_Vector4 T_Result;
 
 	T_Result.setX(this->demensions[i]);
 	T_Result.setY(this->demensions[i + 1]);
@@ -99,7 +99,7 @@ const A_Quaternion A_Matrix4x4::GetColumnAtAddress(int const _ad) {
 
 }
 
-void A_Matrix4x4::SetColumnAtAddress(int const _ad, A_Quaternion *_AQ) {
+void A_Matrix4x4::SetColumnAtAddress(int const _ad, A_Vector4 *_AQ) {
 
 	char i = (_ad * 4);
 
@@ -110,9 +110,9 @@ void A_Matrix4x4::SetColumnAtAddress(int const _ad, A_Quaternion *_AQ) {
 
 }
 
-const A_Quaternion A_Matrix4x4::GetRowAtAddress(int const _ad) {
+const A_Vector4 A_Matrix4x4::GetRowAtAddress(int const _ad) {
 
-	A_Quaternion T_Result;
+	A_Vector4 T_Result;
 
 	T_Result.setX(this->demensions[_ad]);
 	T_Result.setY(this->demensions[_ad + 4]);
@@ -123,7 +123,7 @@ const A_Quaternion A_Matrix4x4::GetRowAtAddress(int const _ad) {
 
 }
 
-void A_Matrix4x4::SetRowAtAddress(int const _ad, A_Quaternion *_AQ) {
+void A_Matrix4x4::SetRowAtAddress(int const _ad, A_Vector4 *_AQ) {
 
 	this->demensions[_ad] = _AQ->getX();
 	this->demensions[_ad + 4] = _AQ->getY();

@@ -37,10 +37,11 @@ public:
 	uses the four quaternions as the ROWS for this matrix
 	TODO: add A_Vector4 and fix arguments
 	*/
-	A_Matrix4x4(A_Quaternion *_AQ1, A_Quaternion *_AQ2, A_Quaternion *_AQ3, A_Quaternion *_AQ4);
+	A_Matrix4x4(A_Vector4 *_AQ1, A_Vector4 *_AQ2, A_Vector4 *_AQ3, A_Vector4 *_AQ4);
 
 	/**
 	assigns the demensions of this matrix to the elements of _f, in order
+	_f should be [16]
 	*/
 	A_Matrix4x4(float const _f[]);
 
@@ -48,12 +49,6 @@ public:
 	destructor
 	*/
 	~A_Matrix4x4();
-
-	const float getDemensionAtAddress(int const _f) const {
-
-		return this->demensions[_f];
-
-	}
 
 	/*
 	//*********************************************************
@@ -70,28 +65,36 @@ public:
 	the columns are 0, 1, 2, and 3
 	*/
 	//TODO: CREATE A_VECTOR4 AND FIX RETURN TYPE
-	const A_Quaternion GetColumnAtAddress(int const _ad);
+	const A_Vector4 GetColumnAtAddress(int const _ad);
 
 	/**
 	sets the selected column to the values in _AQ
 	the columns are 0, 1, 2, and 3
 	*/
 	//TODO: CREATE A_VECTOR4 AND FIX RETURN TYPE
-	void SetColumnAtAddress(int const _ad, A_Quaternion * _AQ);
+	void SetColumnAtAddress(int const _ad, A_Vector4 * _AQ);
 
 	/**
 	returns the selected row
 	the row are 0, 1, 2, and 3
 	*/
-	//TODO: CREATE A_VECTOR4 AND FIX RETURN TYPE
-	const A_Quaternion GetRowAtAddress(int const _ad);
+	const A_Vector4 GetRowAtAddress(int const _ad);
 
 	/**
 	sets the selected row to the values in _AQ
 	the row are 0, 1, 2, and 3
 	*/
 	//TODO: CREATE A_VECTOR4 AND FIX RETURN TYPE
-	void SetRowAtAddress(int const _ad, A_Quaternion * _AQ);
+	void SetRowAtAddress(int const _ad, A_Vector4* _AQ);
+
+	/**
+	returns the demension found at address _f
+	*/
+	const float getDemensionAtAddress(int const _f) const {
+
+		return this->demensions[_f];
+
+	}
 
 	/**
 	sets the object this matrix POINTER is assigned to, to the identity matrix
@@ -321,18 +324,18 @@ public:
 	/**
 	multiplies this matrix by a 4 demensional vector
 	*/
-	/*A_Vector4 operator *(A_Vector4 const *_AV){\
+	A_Vector4 operator *(A_Vector4* const _AV){\
 	
 	A_Vector4 T_Result;
 
-	T_Result.setX();
-	T_Result.setY();
-	T_Result.setZ();
-	T_Result.setW();
+	T_Result.setX((_AV->getX() * this->demensions[0]) + (_AV->getY() * this->demensions[1]) + (_AV->getZ() * this->demensions[2]) + this->demensions[3]);
+	T_Result.setY((_AV->getX() * this->demensions[4]) + (_AV->getY() * this->demensions[5]) + (_AV->getZ() * this->demensions[6]) + this->demensions[7]);
+	T_Result.setZ((_AV->getX() * this->demensions[8]) + (_AV->getY() * this->demensions[9]) + (_AV->getZ() * this->demensions[10]) + this->demensions[11]);
+	T_Result.setW((_AV->getX() * this->demensions[12]) + (_AV->getY() * this->demensions[13]) + (_AV->getZ() * this->demensions[14]) + this->demensions[15]);
 
 	return T_Result;
 
-	}*/
+	}
 
 	/**
 	multiplying this matrix by a scalar
