@@ -35,7 +35,6 @@ public:
 
 	/**
 	uses the four quaternions as the ROWS for this matrix
-	TODO: add A_Vector4 and fix arguments
 	*/
 	A_Matrix4x4(A_Vector4 *_AQ1, A_Vector4 *_AQ2, A_Vector4 *_AQ3, A_Vector4 *_AQ4);
 
@@ -64,14 +63,12 @@ public:
 	returns the selected column
 	the columns are 0, 1, 2, and 3
 	*/
-	//TODO: CREATE A_VECTOR4 AND FIX RETURN TYPE
 	const A_Vector4 GetColumnAtAddress(int const _ad);
 
 	/**
 	sets the selected column to the values in _AQ
 	the columns are 0, 1, 2, and 3
 	*/
-	//TODO: CREATE A_VECTOR4 AND FIX RETURN TYPE
 	void SetColumnAtAddress(int const _ad, A_Vector4 * _AQ);
 
 	/**
@@ -84,7 +81,6 @@ public:
 	sets the selected row to the values in _AQ
 	the row are 0, 1, 2, and 3
 	*/
-	//TODO: CREATE A_VECTOR4 AND FIX RETURN TYPE
 	void SetRowAtAddress(int const _ad, A_Vector4* _AQ);
 
 	/**
@@ -324,7 +320,7 @@ public:
 	/**
 	multiplies this matrix by a 4 demensional vector
 	*/
-	A_Vector4 operator *(A_Vector4* const _AV){\
+	A_Vector4 operator *(A_Vector4* const _AV){
 	
 	A_Vector4 T_Result;
 

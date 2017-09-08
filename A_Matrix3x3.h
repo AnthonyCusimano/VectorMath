@@ -255,46 +255,6 @@ public:
 	}
 
 	/**
-	multiplies THIS matrix by ANOTHER 4x4 matrix, resulting in a new 4x4 matrix
-	*/
-	A_Matrix3x3 operator *(A_Matrix3x3 const *_AM) {
-
-		A_Matrix3x3 T_Result;
-
-		//https://wikimedia.org/api/rest_v1/media/math/render/svg/89622b95453d4895904dbd0c72e6beccbe63772c
-		//TODO
-
-		return T_Result;
-
-	}
-
-	/**
-	multiplies this matrix by a 3 demensional vector
-	*/
-	A_Vector3 operator *(A_Vector3 const *_AV) {
-
-		A_Vector3 T_Result;
-
-		//TODO
-
-		return T_Result;
-
-	}
-
-	/**
-	multiplies this matrix by a 3 demensional vector
-	*/
-	A_Matrix3x3 operator *(A_Matrix3x3* const _AV) {
-
-		A_Matrix3x3 T_Result;
-
-		//TODO
-
-		return T_Result;
-
-	}
-
-	/**
 	multiplying this matrix by a scalar
 	*/
 	void operator *=(float const _f) {
@@ -308,15 +268,60 @@ public:
 	}
 
 	/**
-	multiplies this matrix by another 4x4 matrix, and applies the result to this matrix
+	multiplying this matrix by a 3D vector and returning the result
+	*/
+	A_Vector3 operator *(A_Vector3* const _AV) {
+
+		A_Vector3 T_Result;
+
+		T_Result.SetX((this->demensions[0] * _AV->getX()) + (this->demensions[1] * _AV->getY()) + (this->demensions[2] * _AV->getZ()));
+		T_Result.SetY((this->demensions[3] * _AV->getX()) + (this->demensions[4] * _AV->getY()) + (this->demensions[5] * _AV->getZ()));
+		T_Result.SetZ((this->demensions[6] * _AV->getX()) + (this->demensions[7] * _AV->getY()) + (this->demensions[8] * _AV->getZ()));
+
+		return T_Result;
+
+	}
+
+	/**
+	multiplies THIS matrix by ANOTHER 3x3 matrix, resulting in a new 3x3 matrix
+	*/
+	A_Matrix3x3 operator *(A_Matrix3x3* const _AM) {
+
+		A_Matrix3x3 T_Result;
+
+		//https://wikimedia.org/api/rest_v1/media/math/render/svg/89622b95453d4895904dbd0c72e6beccbe63772c
+		T_Result.demensions[0] = this->demensions[0] * _AM->demensions[0] + this->demensions[1] * _AM->demensions[3] + this->demensions[2] * _AM->demensions[6];
+		T_Result.demensions[1] = this->demensions[0] * _AM->demensions[1] + this->demensions[1] * _AM->demensions[4] + this->demensions[2] * _AM->demensions[7];
+		T_Result.demensions[2] = this->demensions[0] * _AM->demensions[2] + this->demensions[1] * _AM->demensions[5] + this->demensions[2] * _AM->demensions[8];
+
+		T_Result.demensions[3] = this->demensions[3] * _AM->demensions[0] + this->demensions[4] * _AM->demensions[3] + this->demensions[5] * _AM->demensions[6];
+		T_Result.demensions[4] = this->demensions[3] * _AM->demensions[1] + this->demensions[4] * _AM->demensions[4] + this->demensions[5] * _AM->demensions[7];
+		T_Result.demensions[5] = this->demensions[3] * _AM->demensions[2] + this->demensions[4] * _AM->demensions[5] + this->demensions[5] * _AM->demensions[8];
+
+		T_Result.demensions[6] = this->demensions[6] * _AM->demensions[0] + this->demensions[7] * _AM->demensions[3] + this->demensions[8] * _AM->demensions[6];
+		T_Result.demensions[7] = this->demensions[6] * _AM->demensions[1] + this->demensions[7] * _AM->demensions[4] + this->demensions[8] * _AM->demensions[7];
+		T_Result.demensions[8] = this->demensions[6] * _AM->demensions[2] + this->demensions[7] * _AM->demensions[5] + this->demensions[8] * _AM->demensions[8];
+
+		return T_Result;
+
+	}
+
+	/**
+	multiplies this matrix by another 3x3 matrix, and applies the result to this matrix
 	*/
 	void operator *=(A_Matrix3x3 const *_AM) {
 
-		for (char i = 0; i < 9; ++i) {
+		this->demensions[0] = this->demensions[0] * _AM->demensions[0] + this->demensions[1] * _AM->demensions[3] + this->demensions[2] * _AM->demensions[6];
+		this->demensions[1] = this->demensions[0] * _AM->demensions[1] + this->demensions[1] * _AM->demensions[4] + this->demensions[2] * _AM->demensions[7];
+		this->demensions[2] = this->demensions[0] * _AM->demensions[2] + this->demensions[1] * _AM->demensions[5] + this->demensions[2] * _AM->demensions[8];
 
-			this->demensions[i] *= _AM->demensions[i];
+		this->demensions[3] = this->demensions[3] * _AM->demensions[0] + this->demensions[4] * _AM->demensions[3] + this->demensions[5] * _AM->demensions[6];
+		this->demensions[4] = this->demensions[3] * _AM->demensions[1] + this->demensions[4] * _AM->demensions[4] + this->demensions[5] * _AM->demensions[7];
+		this->demensions[5] = this->demensions[3] * _AM->demensions[2] + this->demensions[4] * _AM->demensions[5] + this->demensions[5] * _AM->demensions[8];
 
-		}
+		this->demensions[6] = this->demensions[6] * _AM->demensions[0] + this->demensions[7] * _AM->demensions[3] + this->demensions[8] * _AM->demensions[6];
+		this->demensions[7] = this->demensions[6] * _AM->demensions[1] + this->demensions[7] * _AM->demensions[4] + this->demensions[8] * _AM->demensions[7];
+		this->demensions[8] = this->demensions[6] * _AM->demensions[2] + this->demensions[7] * _AM->demensions[5] + this->demensions[8] * _AM->demensions[8];
 
 	}
 
