@@ -86,7 +86,6 @@ A_Matrix4x4::A_Matrix4x4(float const _f[]) {
 
 const A_Vector4 A_Matrix4x4::GetColumnAtAddress(int const _ad) {
 
-	//could error check _ad
 	char i = (_ad * 4);
 	A_Vector4 T_Result;
 
