@@ -136,6 +136,66 @@ public:
 	//*********************************************************
 	*/
 
+	/**
+	adds to this matrix another 4x4 matrix and returns the result
+	*/
+	A_Matrix2x2 operator +(A_Matrix2x2 const *_AM) {
+
+		A_Matrix2x2 T_Result;
+
+		for (char i = 0; i < 4; ++i) {
+
+			T_Result.demensions[i] = this->demensions[i] + _AM->demensions[i];
+
+		}
+
+		return T_Result;
+
+	}
+
+	/**
+	adds to this matrix another 4x4 matrix
+	*/
+	void operator +=(A_Matrix2x2 const *_AM) {
+
+		for (char i = 0; i < 4; ++i) {
+
+			this->demensions[i] += _AM->demensions[i];
+
+		}
+
+	}
+
+	/**
+	subtracts from this matrix another 4x4 matrix and returns the result
+	*/
+	A_Matrix2x2 operator -(A_Matrix2x2 const *_AM) {
+
+		A_Matrix2x2 T_Result;
+
+		for (char i = 0; i < 4; ++i) {
+
+			T_Result.demensions[i] = this->demensions[i] - _AM->demensions[i];
+
+		}
+
+		return T_Result;
+
+	}
+
+	/**
+	subtracts from this matrix another 4x4 matrix
+	*/
+	void operator -=(A_Matrix2x2 const *_AM) {
+
+		for (char i = 0; i < 4; ++i) {
+
+			this->demensions[i] -= _AM->demensions[i];
+
+		}
+
+	}
+
 	/*
 	//*********************************************************
 	//*********************************************************
@@ -147,6 +207,74 @@ public:
 	*/
 
 	/*
+
+	TODO: ADD SUPPORT FOR OTHER x2 SIZE MATRICIES
+
+	*/
+
+	/**
+	multiplying this matrix by a scalar and returning the result
+	*/
+	A_Matrix2x2 operator *(float const _f) {
+
+		A_Matrix2x2 T_Result;
+
+		for (char i = 0; i < 4; ++i) {
+
+			T_Result.demensions[i] = this->demensions[i] * _f;
+
+		}
+
+		return T_Result;
+
+	}
+
+	/**
+	multiplying this matrix by a scalar
+	*/
+	void operator *=(float const _f) {
+
+		for (char i = 0; i < 4; ++i) {
+
+			this->demensions[i] *= _f;
+
+		}
+
+	}
+
+	/**
+	multiplying this matrix by a 2D vector and returning the result
+	*/
+	A_Vector2 operator *(A_Vector2* const _AV) {
+
+		A_Vector2 T_Result;
+
+		T_Result.SetX((this->demensions[0] * _AV->getX()) + (this->demensions[1] * _AV->getY()));
+		T_Result.SetY((this->demensions[3] * _AV->getX()) + (this->demensions[4] * _AV->getY()));
+
+		return T_Result;
+
+	}
+
+	/**
+	multiplies THIS matrix by ANOTHER 2x2 matrix, resulting in a new 2x2 matrix
+	*/
+	A_Vector2 operator *(A_Vector2* const _AM) {
+
+		A_Vector2 T_Result;
+
+		//https://wikimedia.org/api/rest_v1/media/math/render/svg/89622b95453d4895904dbd0c72e6beccbe63772c
+		T_Result.demensions[0] = this->demensions[0] * _AM->demensions[0] + this->demensions[1] * _AM->demensions[2];
+		T_Result.demensions[1] = this->demensions[0] * _AM->demensions[1] + this->demensions[1] * _AM->demensions[3];
+
+		T_Result.demensions[2] = this->demensions[2] * _AM->demensions[0] + this->demensions[3] * _AM->demensions[2];
+		T_Result.demensions[3] = this->demensions[2] * _AM->demensions[1] + this->demensions[3] * _AM->demensions[3];
+
+		return T_Result;
+
+	}
+
+	/*
 	//*********************************************************
 	//*********************************************************
 	//*********************************************************
@@ -156,6 +284,32 @@ public:
 	//*********************************************************
 	*/
 
+	/**
+	assigns to each value of this matrix _f
+	*/
+	void operator =(float const _f) {
+
+		for (char i = 0; i < 4; ++i) {
+
+			this->demensions[i] = _f;
+
+		}
+
+	}
+
+	/**
+	assigns to this matrix the values of another matrix
+	*/
+	void operator =(A_Matrix2x2 const *_AM) {
+
+		for (char i = 0; i < 4; ++i) {
+
+			this->demensions[i] = _AM->demensions[i];
+
+		}
+
+	}
+
 private:
 
 	//0 1
@@ -163,6 +317,5 @@ private:
 	float demensions[4];
 
 };
-
 
 #endif
