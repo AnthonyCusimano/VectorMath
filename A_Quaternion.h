@@ -1,10 +1,7 @@
 #ifndef A_QUATERNION_H
 #define A_QUATERNION_H
 
-#include "A_Vector3.h"
-
-//used for trig on getting euler vector, and square root functionality
-//#include <math.h>
+#include "A_Vector4.h"
 
 class A_Quaternion {
 
