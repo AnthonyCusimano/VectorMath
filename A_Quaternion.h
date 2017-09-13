@@ -57,13 +57,6 @@ public:
 	//*********************************************************
 	*/
 
-	//DO ME
-
-	/**
-	remove this method or fix it
-	*/
-	A_Vector3 GetEuler();
-
 	/**
 	returns the angle and the axis as a quaternion
 	*/
