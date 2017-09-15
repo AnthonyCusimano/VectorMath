@@ -40,6 +40,39 @@ A_Matrix2x3::A_Matrix2x3(float const _f[]) {
 
 }
 
+const A_Vector2 A_Matrix2x3::GetColumnAtAddress(int const _ad) {
+
+	A_Vector2 T_Result;
+
+	T_Result.SetX(this->demensions[_ad]);
+	T_Result.SetY(this->demensions[3 + _ad]);
+
+	return T_Result;
+
+}
+
+void A_Matrix2x3::SetColumnAtAddress(int const _ad, A_Vector2* const _AQ) {
+
+	this->demensions[_ad] = _AQ->getX();
+	this->demensions[_ad + 3] = _AQ->getY();
+
+}
+
+const A_Vector3 A_Matrix2x3::GetRowAtAddress(int _ad) {
+
+	A_Vector3 T_Result;
+
+	//0*3 || 1*3
+	_ad *= 3;
+
+	T_Result.SetX(this->demensions[_ad]);
+	T_Result.SetY(this->demensions[_ad + 1]);
+	T_Result.SetY(this->demensions[_ad + 2]);
+
+	return T_Result;
+
+}
+
 A_Matrix2x3::~A_Matrix2x3() {
 
 	//=D
