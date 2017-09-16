@@ -33,6 +33,30 @@ public:
 	*/
 	~A_Matrix2x3();
 
+	/**
+	returns the selected column
+	the columns are 0, 1, and 2
+	*/
+	const A_Vector2 GetColumnAtAddress(int const _ad);
+
+	/**
+	sets the selected column to the values in _AQ
+	the columns are 0, 1, and 2
+	*/
+	void SetColumnAtAddress(int const _ad, A_Vector2* const _AQ);
+
+	/**
+	returns the selected row
+	the row are 0, 1
+	*/
+	const A_Vector3 GetRowAtAddress(int _ad);
+
+	/**
+	sets the selected row to the values in _AQ
+	the row are 0, 1
+	*/
+	void SetRowAtAddress(int _ad, A_Vector3* const _AV);
+
 	const float GetDemensionAtAddress(char const _f) {
 
 		return this->demensions[_f];

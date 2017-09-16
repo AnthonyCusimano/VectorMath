@@ -44,6 +44,18 @@ A_Matrix2x4::A_Matrix2x4(float const _f[]) {
 
 }
 
+void A_Matrix2x4::SetRowAtAddress(int _ad, A_Vector4* const _AV) {
+
+	//0*4 || 1*4
+	_ad *= 4;
+
+	this->demensions[_ad] = _AV->getX();
+	this->demensions[_ad + 1] = _AV->getY();
+	this->demensions[_ad + 2] = _AV->getZ();
+	this->demensions[_ad + 3] = _AV->getW();
+
+}
+
 A_Matrix2x4::~A_Matrix2x4() {
 
 	//=D

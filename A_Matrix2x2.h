@@ -256,24 +256,6 @@ public:
 
 	}
 
-	/**
-	multiplies THIS matrix by ANOTHER 2x2 matrix, resulting in a new 2x2 matrix
-	*/
-	A_Vector2 operator *(A_Vector2* const _AM) {
-
-		A_Vector2 T_Result;
-
-		//https://wikimedia.org/api/rest_v1/media/math/render/svg/89622b95453d4895904dbd0c72e6beccbe63772c
-		T_Result.demensions[0] = this->demensions[0] * _AM->demensions[0] + this->demensions[1] * _AM->demensions[2];
-		T_Result.demensions[1] = this->demensions[0] * _AM->demensions[1] + this->demensions[1] * _AM->demensions[3];
-
-		T_Result.demensions[2] = this->demensions[2] * _AM->demensions[0] + this->demensions[3] * _AM->demensions[2];
-		T_Result.demensions[3] = this->demensions[2] * _AM->demensions[1] + this->demensions[3] * _AM->demensions[3];
-
-		return T_Result;
-
-	}
-
 	/*
 	//*********************************************************
 	//*********************************************************

@@ -73,6 +73,17 @@ const A_Vector3 A_Matrix2x3::GetRowAtAddress(int _ad) {
 
 }
 
+void A_Matrix2x3::SetRowAtAddress(int _ad, A_Vector3* const _AV) {
+
+	//0*3 || 1*3
+	_ad *= 3;
+
+	this->demensions[_ad] = _AV->getX();
+	this->demensions[_ad + 1] = _AV->getY();
+	this->demensions[_ad + 2] = _AV->getZ();
+
+}
+
 A_Matrix2x3::~A_Matrix2x3() {
 
 	//=D
