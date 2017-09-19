@@ -67,7 +67,7 @@ const A_Vector3 A_Matrix2x3::GetRowAtAddress(int _ad) {
 
 	T_Result.SetX(this->demensions[_ad]);
 	T_Result.SetY(this->demensions[_ad + 1]);
-	T_Result.SetY(this->demensions[_ad + 2]);
+	T_Result.SetZ(this->demensions[_ad + 2]);
 
 	return T_Result;
 

@@ -34,6 +34,18 @@ public:
 	~A_Matrix3x2();
 
 	/**
+	returns the selected row
+	the row are 0, 1, and 2
+	*/
+	const A_Vector2 GetRowAtAddress(int _ad);
+
+	/**
+	sets the selected row to the values in _AQ
+	the row are 0, 1, and 2
+	*/
+	void SetRowAtAddress(int _ad, A_Vector2* const _AV);
+
+	/**
 	returns the demension found at address _f
 	*/
 	const float GetDemensionAtAddress(char const _f) {
