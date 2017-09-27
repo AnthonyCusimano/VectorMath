@@ -828,6 +828,176 @@ A_Matrix3x2 operator* (A_Matrix3x3& _AM33, A_Matrix3x2& _AM32) {
 
 }
 
+A_Matrix3x4 operator* (A_Matrix3x3& _AM33, A_Matrix3x4& _AM34) {
+
+	A_Matrix3x4 T_Result;
+	A_Vector4 T_Placehold;
+	float T_CurrentOperation;
+
+	//working out T_Result[0]
+	T_CurrentOperation = _AM33.getDemensionAtAddress(0) * _AM34.GetDemensionAtAddress(0);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(1) * _AM34.GetDemensionAtAddress(4);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(2) * _AM34.GetDemensionAtAddress(8);
+
+	T_Placehold.setX(T_CurrentOperation);
+
+	//working out T_Result[1]
+	T_CurrentOperation = _AM33.getDemensionAtAddress(0) * _AM34.GetDemensionAtAddress(1);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(1) * _AM34.GetDemensionAtAddress(5);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(2) * _AM34.GetDemensionAtAddress(9);
+
+	T_Placehold.setY(T_CurrentOperation);
+
+	//working out T_Result[2]
+	T_CurrentOperation = _AM33.getDemensionAtAddress(0) * _AM34.GetDemensionAtAddress(2);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(1) * _AM34.GetDemensionAtAddress(6);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(2) * _AM34.GetDemensionAtAddress(10);
+
+	T_Placehold.setZ(T_CurrentOperation);
+
+	//working out T_Result[3]
+	T_CurrentOperation = _AM33.getDemensionAtAddress(0) * _AM34.GetDemensionAtAddress(3);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(1) * _AM34.GetDemensionAtAddress(7);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(2) * _AM34.GetDemensionAtAddress(11);
+
+	T_Placehold.setW(T_CurrentOperation);
+
+	//T_Result row 0 is done
+	T_Result.SetRowAtAddress(0, &T_Placehold);
+
+	//working out T_Result[4]
+	T_CurrentOperation = _AM33.getDemensionAtAddress(3) * _AM34.GetDemensionAtAddress(0);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(4) * _AM34.GetDemensionAtAddress(4);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(5) * _AM34.GetDemensionAtAddress(8);
+
+	T_Placehold.setX(T_CurrentOperation);
+
+	//working out T_Result[5]
+	T_CurrentOperation = _AM33.getDemensionAtAddress(3) * _AM34.GetDemensionAtAddress(1);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(4) * _AM34.GetDemensionAtAddress(5);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(5) * _AM34.GetDemensionAtAddress(9);
+
+	T_Placehold.setY(T_CurrentOperation);
+
+	//working out T_Result[6]
+	T_CurrentOperation = _AM33.getDemensionAtAddress(3) * _AM34.GetDemensionAtAddress(2);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(4) * _AM34.GetDemensionAtAddress(6);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(5) * _AM34.GetDemensionAtAddress(10);
+
+	T_Placehold.setZ(T_CurrentOperation);
+
+	//working out T_Result[7]
+	T_CurrentOperation = _AM33.getDemensionAtAddress(3) * _AM34.GetDemensionAtAddress(3);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(4) * _AM34.GetDemensionAtAddress(7);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(5) * _AM34.GetDemensionAtAddress(11);
+
+	T_Placehold.setW(T_CurrentOperation);
+
+	//T_Result row 1 is done
+	T_Result.SetRowAtAddress(1, &T_Placehold);
+
+	//working out T_Result[8]
+	T_CurrentOperation = _AM33.getDemensionAtAddress(6) * _AM34.GetDemensionAtAddress(0);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(7) * _AM34.GetDemensionAtAddress(4);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(8) * _AM34.GetDemensionAtAddress(8);
+
+	T_Placehold.setX(T_CurrentOperation);
+
+	//working out T_Result[9]
+	T_CurrentOperation = _AM33.getDemensionAtAddress(6) * _AM34.GetDemensionAtAddress(1);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(7) * _AM34.GetDemensionAtAddress(5);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(8) * _AM34.GetDemensionAtAddress(9);
+
+	T_Placehold.setY(T_CurrentOperation);
+
+	//working out T_Result[10]
+	T_CurrentOperation = _AM33.getDemensionAtAddress(6) * _AM34.GetDemensionAtAddress(2);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(7) * _AM34.GetDemensionAtAddress(6);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(8) * _AM34.GetDemensionAtAddress(10);
+
+	T_Placehold.setZ(T_CurrentOperation);
+
+	//working out T_Result[11]
+	T_CurrentOperation = _AM33.getDemensionAtAddress(6) * _AM34.GetDemensionAtAddress(3);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(7) * _AM34.GetDemensionAtAddress(7);
+	T_CurrentOperation += _AM33.getDemensionAtAddress(8) * _AM34.GetDemensionAtAddress(11);
+
+	T_Placehold.setW(T_CurrentOperation);
+
+	//T_Result row 2 is done
+	T_Result.SetRowAtAddress(2, &T_Placehold);
+
+	return T_Result;
+
+}
+
+A_Matrix3x2 operator* (A_Matrix3x4& _AM34, A_Matrix4x2& _AM42) {
+
+	A_Matrix3x2 T_Result;
+	A_Vector2 T_Placehold;
+	float T_CurrentOperation;
+
+	//working out T_Result[0]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(0) * _AM42.GetDemensionAtAddress(0);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(1) * _AM42.GetDemensionAtAddress(2);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(2) * _AM42.GetDemensionAtAddress(4);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(3) * _AM42.GetDemensionAtAddress(6);
+
+	T_Placehold.SetX(T_CurrentOperation);
+
+	//working out T_Result[1]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(0) * _AM42.GetDemensionAtAddress(1);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(1) * _AM42.GetDemensionAtAddress(3);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(2) * _AM42.GetDemensionAtAddress(5);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(3) * _AM42.GetDemensionAtAddress(7);
+
+	T_Placehold.SetY(T_CurrentOperation);
+
+	//T_Result row 0 is done
+	T_Result.SetRowAtAddress(0, &T_Placehold);
+
+	//working out T_Result[2]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(4) * _AM42.GetDemensionAtAddress(0);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(5) * _AM42.GetDemensionAtAddress(2);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(6) * _AM42.GetDemensionAtAddress(4);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(7) * _AM42.GetDemensionAtAddress(6);
+
+	T_Placehold.SetX(T_CurrentOperation);
+
+	//working out T_Result[3]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(4) * _AM42.GetDemensionAtAddress(1);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(5) * _AM42.GetDemensionAtAddress(3);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(6) * _AM42.GetDemensionAtAddress(5);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(7) * _AM42.GetDemensionAtAddress(7);
+
+	T_Placehold.SetY(T_CurrentOperation);
+
+	//T_Result row 1 is done
+	T_Result.SetRowAtAddress(1, &T_Placehold);
+
+	//working out T_Result[4]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(8) * _AM42.GetDemensionAtAddress(0);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(9) * _AM42.GetDemensionAtAddress(2);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(10) * _AM42.GetDemensionAtAddress(4);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(11) * _AM42.GetDemensionAtAddress(6);
+
+	T_Placehold.SetX(T_CurrentOperation);
+
+	//working out T_Result[5]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(8) * _AM42.GetDemensionAtAddress(1);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(9) * _AM42.GetDemensionAtAddress(3);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(10) * _AM42.GetDemensionAtAddress(5);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(11) * _AM42.GetDemensionAtAddress(7);
+
+	T_Placehold.SetY(T_CurrentOperation);
+
+	//T_Result row 2 is done
+	T_Result.SetRowAtAddress(2, &T_Placehold);
+
+	return T_Result;
+
+}
+
 A_Matrix3x3 operator* (A_Matrix3x4& _AM34, A_Matrix4x3& _AM43) {
 
 	A_Matrix3x3 T_Result;
@@ -917,6 +1087,121 @@ A_Matrix3x3 operator* (A_Matrix3x4& _AM34, A_Matrix4x3& _AM43) {
 
 	return T_Result;
 
+}
+
+A_Matrix3x4 operator *(A_Matrix3x4& const _AM34, A_Matrix4x4& const _AM44) {
+
+	A_Matrix3x4 T_Result;
+	A_Vector4 T_Placehold;
+	float T_CurrentOperation;
+
+	//working out T_Result[0]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(0) * _AM44.getDemensionAtAddress(0);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(1) * _AM44.getDemensionAtAddress(4);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(2) * _AM44.getDemensionAtAddress(8);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(3) * _AM44.getDemensionAtAddress(12);
+
+	T_Placehold.setX(T_CurrentOperation);
+
+	//working out T_Result[1]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(0) * _AM44.getDemensionAtAddress(1);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(1) * _AM44.getDemensionAtAddress(5);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(2) * _AM44.getDemensionAtAddress(9);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(3) * _AM44.getDemensionAtAddress(13);
+
+	T_Placehold.setY(T_CurrentOperation);
+
+	//working out T_Result[2]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(0) * _AM44.getDemensionAtAddress(2);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(1) * _AM44.getDemensionAtAddress(6);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(2) * _AM44.getDemensionAtAddress(10);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(3) * _AM44.getDemensionAtAddress(14);
+
+	T_Placehold.setZ(T_CurrentOperation);
+
+	//working out T_Result[3]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(0) * _AM44.getDemensionAtAddress(3);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(1) * _AM44.getDemensionAtAddress(7);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(2) * _AM44.getDemensionAtAddress(11);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(3) * _AM44.getDemensionAtAddress(15);
+
+	T_Placehold.setW(T_CurrentOperation);
+
+	//T_Result row 0 is done
+	T_Result.SetRowAtAddress(0, &T_Placehold);
+
+	//working out T_Result[4]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(4) * _AM44.getDemensionAtAddress(0);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(5) * _AM44.getDemensionAtAddress(4);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(6) * _AM44.getDemensionAtAddress(8);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(7) * _AM44.getDemensionAtAddress(12);
+
+	T_Placehold.setX(T_CurrentOperation);
+
+	//working out T_Result[5]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(4) * _AM44.getDemensionAtAddress(1);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(5) * _AM44.getDemensionAtAddress(5);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(6) * _AM44.getDemensionAtAddress(9);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(7) * _AM44.getDemensionAtAddress(13);
+
+	T_Placehold.setY(T_CurrentOperation);
+
+	//working out T_Result[6]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(4) * _AM44.getDemensionAtAddress(2);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(5) * _AM44.getDemensionAtAddress(6);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(6) * _AM44.getDemensionAtAddress(10);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(7) * _AM44.getDemensionAtAddress(14);
+
+	T_Placehold.setZ(T_CurrentOperation);
+
+	//working out T_Result[7]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(4) * _AM44.getDemensionAtAddress(3);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(5) * _AM44.getDemensionAtAddress(7);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(6) * _AM44.getDemensionAtAddress(11);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(7) * _AM44.getDemensionAtAddress(15);
+
+	T_Placehold.setW(T_CurrentOperation);
+
+	//T_Result row 1 is done
+	T_Result.SetRowAtAddress(1, &T_Placehold);
+
+	//working out T_Result[8]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(8) * _AM44.getDemensionAtAddress(0);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(9) * _AM44.getDemensionAtAddress(4);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(10) * _AM44.getDemensionAtAddress(8);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(11) * _AM44.getDemensionAtAddress(12);
+
+	T_Placehold.setX(T_CurrentOperation);
+
+	//working out T_Result[9]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(8) * _AM44.getDemensionAtAddress(1);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(9) * _AM44.getDemensionAtAddress(5);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(10) * _AM44.getDemensionAtAddress(9);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(11) * _AM44.getDemensionAtAddress(13);
+
+	T_Placehold.setY(T_CurrentOperation);
+
+	//working out T_Result[10]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(8) * _AM44.getDemensionAtAddress(2);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(9) * _AM44.getDemensionAtAddress(6);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(10) * _AM44.getDemensionAtAddress(10);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(11) * _AM44.getDemensionAtAddress(14);
+
+	T_Placehold.setZ(T_CurrentOperation);
+
+	//working out T_Result[11]
+	T_CurrentOperation = _AM34.GetDemensionAtAddress(8) * _AM44.getDemensionAtAddress(3);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(9) * _AM44.getDemensionAtAddress(7);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(10) * _AM44.getDemensionAtAddress(11);
+	T_CurrentOperation += _AM34.GetDemensionAtAddress(11) * _AM44.getDemensionAtAddress(15);
+
+	T_Placehold.setW(T_CurrentOperation);
+
+	//T_Result row 2 is done
+	T_Result.SetRowAtAddress(2, &T_Placehold);
+
+	return T_Result;
+	
 }
 
 A_Matrix4x4 operator *(A_Matrix4x2& const _AM42, A_Matrix2x4& const _AM24) {
