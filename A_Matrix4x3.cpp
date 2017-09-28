@@ -55,6 +55,17 @@ A_Matrix4x3::A_Matrix4x3(float const _f[]) {
 
 }
 
+void A_Matrix4x3::SetRowAtAddress(int _ad, A_Vector3* const _AV) {
+
+	//0*3 || 1*3 || 2*3 || 3*3
+	_ad *= 3;
+
+	this->demensions[_ad] = _AV->getX();
+	this->demensions[_ad + 1] = _AV->getY();
+	this->demensions[_ad + 2] = _AV->getZ();
+
+}
+
 A_Matrix4x3::~A_Matrix4x3() {
 
 	//=D
