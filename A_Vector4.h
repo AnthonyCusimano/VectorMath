@@ -209,6 +209,9 @@ public:
 
 	}
 
+	/**
+	operator for scaling this vector by a float
+	*/
 	void operator *=(float _f) {
 
 
@@ -256,6 +259,9 @@ public:
 		return t_v;
 	}
 	
+	/**
+	operator for subtracting from a vector with another vector
+	*/
 	A_Vector4 operator -(A_Vector4 const &_A) {
 
 		A_Vector4 T_A;
@@ -293,7 +299,7 @@ public:
 	*/
 
 	/**
-	
+	operator for adding another vector to this vector
 	*/
 	void operator += (A_Vector4 const &_A) {
 
@@ -305,7 +311,7 @@ public:
 	}
 
 	/**
-	
+	operator for adding a float to this vector
 	*/
 	void operator += (float const _f) {
 
@@ -317,9 +323,9 @@ public:
 	}
 
 	/**
-	
+	operator for subtracting another vector from this vector
 	*/
-	void operator -= (A_Vector4 const &_A) {
+	void operator -= (A_Vector4 _A) {
 
 		this->demensions[0] -= _A.demensions[0];
 		this->demensions[1] -= _A.demensions[1];
@@ -329,7 +335,7 @@ public:
 	}
 
 	/**
-	
+	operator for subtracting a float from this vector
 	*/
 	void operator -= (float const _f) {
 
