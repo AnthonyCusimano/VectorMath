@@ -76,14 +76,15 @@ A_Matrix3x3::A_Matrix3x3(float const _f[]) {
 
 }
 
+//test
 const A_Vector3 A_Matrix3x3::GetColumnAtAddress(char const _ad) {
 
 	char i = (_ad * 3);
 	A_Vector3 T_Result;
 
-	T_Result.SetX(this->demensions[i]);
-	T_Result.SetY(this->demensions[i + 1]);
-	T_Result.SetZ(this->demensions[i + 2]);
+	T_Result.setX(this->demensions[i]);
+	T_Result.setY(this->demensions[i + 1]);
+	T_Result.setZ(this->demensions[i + 2]);
 
 	return T_Result;
 
@@ -103,9 +104,9 @@ const A_Vector3 A_Matrix3x3::GetRowAtAddress(int const _ad) {
 
 	A_Vector3 T_Result;
 
-	T_Result.SetX(this->demensions[_ad]);
-	T_Result.SetY(this->demensions[_ad + 3]);
-	T_Result.SetZ(this->demensions[_ad + 6]);
+	T_Result.setX(this->demensions[_ad]);
+	T_Result.setY(this->demensions[_ad + 3]);
+	T_Result.setZ(this->demensions[_ad + 6]);
 
 	return T_Result;
 
@@ -129,10 +130,52 @@ void A_Matrix3x3::setIdentity() {
 
 }
 
-//TODO
+//need to return using this method?
 const bool A_Matrix3x3::Invert() {
 
 	//https://www.mathsisfun.com/algebra/matrix-inverse-minors-cofactors-adjugate.html
+	//determinant of this
+	float T_Determinant;
+	//temp floats needed to assist in finding the determinant, and later assist in finding the final inverse of the matrix
+	//names reflect demensions used to assign a value to these variables
+	float T_4857_, T_3856_, T_3746_, T_1827_, T_0826_, T_0716_, T_1524_, T_0523_, T_0413_;
+	//nothing complex needed, but a matrix placeholder is needed
+	float T_Matrix[9];
+
+	//minors, cofactors
+	T_4857_ = this->demensions[4] * this->demensions[8] - this->demensions[5] * this->demensions[7];//0
+	T_3856_ = -(this->demensions[3] * this->demensions[8] - this->demensions[5] * this->demensions[6]);//1
+	T_3746_ = this->demensions[3] * this->demensions[7] - this->demensions[4] * this->demensions[6];//2
+	T_1827_ = -(this->demensions[1] * this->demensions[8] - this->demensions[2] * this->demensions[7]);//3
+	T_0826_ = this->demensions[0] * this->demensions[8] - this->demensions[2] * this->demensions[6];//4
+	T_0716_ = -(this->demensions[0] * this->demensions[7] - this->demensions[1] * this->demensions[6]);//5
+	T_1524_ = this->demensions[1] * this->demensions[5] - this->demensions[2] * this->demensions[4];//6
+	T_0523_ = -(this->demensions[0] * this->demensions[5] - this->demensions[2] * this->demensions[3]);//7
+	T_0413_ = this->demensions[0] * this->demensions[4] - this->demensions[1] * this->demensions[3];//8
+
+	//transpose
+	T_Matrix[0] = T_4857_;
+	T_Matrix[1] = T_1827_;
+	T_Matrix[2] = T_1524_;
+	T_Matrix[3] = T_4857_;
+	T_Matrix[4] = T_0826_;
+	T_Matrix[5] = T_0523_;
+	T_Matrix[6] = T_3746_;
+	T_Matrix[7] = T_0716_;
+	T_Matrix[8] = T_0413_;
+
+	T_Determinant = (this->demensions[0] * T_4857_) - (this->demensions[1] * T_3856_) + (this->demensions[2] * T_3746_);
+
+	this->demensions[0] = T_Matrix[0] / T_Determinant;
+	this->demensions[1] = T_Matrix[1] / T_Determinant;
+	this->demensions[2] = T_Matrix[2] / T_Determinant;
+	this->demensions[3] = T_Matrix[3] / T_Determinant;
+	this->demensions[4] = T_Matrix[4] / T_Determinant;
+	this->demensions[5] = T_Matrix[5] / T_Determinant;
+	this->demensions[6] = T_Matrix[6] / T_Determinant;
+	this->demensions[7] = T_Matrix[7] / T_Determinant;
+	this->demensions[8] = T_Matrix[8] / T_Determinant;
+
 	return true;
 
 }

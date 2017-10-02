@@ -10,12 +10,22 @@ A_Quaternion::A_Quaternion() {
 
 }
 
-A_Quaternion::A_Quaternion(A_Quaternion const *_AQ) {
+A_Quaternion::A_Quaternion(A_Quaternion* const _AQ) {
 
 	this->demensions[0] = _AQ->demensions[0];
 	this->demensions[1] = _AQ->demensions[1];
 	this->demensions[2] = _AQ->demensions[2];
 	this->demensions[3] = _AQ->demensions[3];
+
+}
+
+A_Quaternion::A_Quaternion(A_Vector4* const _AV) {
+
+	this->demensions[0] = _AV->getX();
+	this->demensions[1] = _AV->getY();
+	this->demensions[2] = _AV->getZ();
+	this->demensions[3] = _AV->getW();
+
 
 }
 
@@ -196,6 +206,6 @@ void A_Quaternion::SetFromEuler(float const _rollX, float const _pitchY, float c
 
 A_Quaternion::~A_Quaternion() {
 
-
+	
 
 }

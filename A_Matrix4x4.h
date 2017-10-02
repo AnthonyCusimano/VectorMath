@@ -309,9 +309,9 @@ public:
 
 		A_Vector3 T_Result;
 
-		T_Result.SetX((_AV->getX() * this->demensions[0]) + (_AV->getY() * this->demensions[1]) + (_AV->getZ() * this->demensions[2]) + this->demensions[3]);
-		T_Result.SetY((_AV->getX() * this->demensions[4]) + (_AV->getY() * this->demensions[5]) + (_AV->getZ() * this->demensions[6]) + this->demensions[7]);
-		T_Result.SetZ((_AV->getX() * this->demensions[8]) + (_AV->getY() * this->demensions[9]) + (_AV->getZ() * this->demensions[10]) + this->demensions[11]);
+		T_Result.setX((_AV->getX() * this->demensions[0]) + (_AV->getY() * this->demensions[1]) + (_AV->getZ() * this->demensions[2]) + this->demensions[3]);
+		T_Result.setY((_AV->getX() * this->demensions[4]) + (_AV->getY() * this->demensions[5]) + (_AV->getZ() * this->demensions[6]) + this->demensions[7]);
+		T_Result.setZ((_AV->getX() * this->demensions[8]) + (_AV->getY() * this->demensions[9]) + (_AV->getZ() * this->demensions[10]) + this->demensions[11]);
 
 		return T_Result;
 

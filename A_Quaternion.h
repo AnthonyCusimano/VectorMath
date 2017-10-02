@@ -25,10 +25,15 @@ public:
 
 	/**
 	constructor which initializes all demensions of the quaternion
+	to the demensions of the quaternion who's pointer was passed
+	*/
+	A_Quaternion(A_Quaternion* const _AQ);
+
+	/**
+	constructor which initializes all demensions of the quaternion
 	to the demensions of the vector who's pointer was passed
 	*/
-	A_Quaternion(A_Quaternion const *_AQ);
-
+	A_Quaternion(A_Vector4* const _AV);
 
 	/**
 	constructor which initializes all demensions of the quaternion to
@@ -168,6 +173,18 @@ public:
 		this->demensions[1] = _AQ.demensions[1];
 		this->demensions[2] = _AQ.demensions[2];
 		this->demensions[3] = _AQ.demensions[3];
+
+	}
+
+	/**
+	makes this quaternion into a copy of _AV
+	*/
+	void operator = (A_Vector4 _AV) {
+
+		this->demensions[0] = _AV.getX();
+		this->demensions[1] = _AV.getY();
+		this->demensions[2] = _AV.getZ();
+		this->demensions[3] = _AV.getW();
 
 	}
 
