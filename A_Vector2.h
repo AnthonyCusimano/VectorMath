@@ -151,7 +151,7 @@ public:
 	/**
 	operator for adding two vectors together
 	*/
-	A_Vector2 operator + (A_Vector2 const &_A) {
+	A_Vector2 operator + (A_Vector2& const _A) {
 
 		A_Vector2 T_A;
 		T_A.demensions[0] = _A.demensions[0] + this->demensions[0];
@@ -176,7 +176,7 @@ public:
 	/**
 	operator for adding to this vector with a float
 	*/
-	void operator += (A_Vector2 const &_A) {
+	void operator += (A_Vector2& const _A) {
 
 		this->demensions[0] += _A.demensions[0];
 		this->demensions[1] += _A.demensions[1];
@@ -221,7 +221,7 @@ public:
 	tests to see if the X Y Z values of this vector, and the
 	vector passed into the method are all equal
 	*/
-	bool operator == (A_Vector2 const &_A) {
+	bool operator == (A_Vector2& const _A) {
 
 		return (_A.demensions[0] == this->demensions[0] && _A.demensions[1] == this->demensions[1]);
 
@@ -231,7 +231,7 @@ public:
 	returns true if any of the 3 values in this vector
 	and the passed vector are not equal
 	*/
-	bool operator != (A_Vector2 const &_A) {
+	bool operator != (A_Vector2& const _A) {
 
 		return (_A.demensions[0] != this->demensions[0] || _A.demensions[1] != this->demensions[1]);
 
@@ -241,7 +241,7 @@ public:
 	returns true if this vector's magnatude is greater
 	than the magnitude of the vector passed into the operator
 	*/
-	bool operator > (A_Vector2 const &_A) {
+	bool operator > (A_Vector2& const _A) {
 
 		return (this->GetMagnatude() > _A.GetMagnatude());
 
@@ -251,9 +251,9 @@ public:
 	returns true if this vector's magnatude is greater
 	than or equal to the magnitude of the vector passed into the operator
 	*/
-	bool operator >= (A_Vector2 *_A) {
+	bool operator >= (A_Vector2& const _A) {
 
-		return (this->GetMagnatude() >= _A->GetMagnatude());
+		return (this->GetMagnatude() >= _A.GetMagnatude());
 
 	}
 
@@ -261,9 +261,9 @@ public:
 	returns true if this vector's magnatude is less
 	than the magnitude of the vector passed into the operator
 	*/
-	bool operator < (A_Vector2 *_A) {
+	bool operator < (A_Vector2& const _A) {
 
-		return (this->GetMagnatude() < _A->GetMagnatude());
+		return (this->GetMagnatude() < _A.GetMagnatude());
 
 	}
 
@@ -271,16 +271,16 @@ public:
 	returns true if this vector's magnatude is less
 	than or equal to the magnitude of the vector passed into the operator
 	*/
-	bool operator <= (A_Vector2 *_A) {
+	bool operator <= (A_Vector2& const _A) {
 
-		return (this->GetMagnatude() <= _A->GetMagnatude());
+		return (this->GetMagnatude() <= _A.GetMagnatude());
 
 	}
 
 	/**
 	assigns this vector's value to another
 	*/
-	void operator = (A_Vector2 const &_A) {
+	void operator = (A_Vector2& const _A) {
 
 		this->demensions[0] = _A.demensions[0];
 		this->demensions[1] = _A.demensions[1];
@@ -298,6 +298,7 @@ public:
 
 private:
 
+	//x, y
 	float demensions[2];
 
 };
