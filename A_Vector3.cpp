@@ -16,15 +16,15 @@ A_Vector3::A_Vector3() {
 
 }
 
-A_Vector3::A_Vector3(const A_Vector3 const &_AV) {
+A_Vector3::A_Vector3( A_Vector3* const _AV) {
 
-	this->demensions[0] = _AV.demensions[0];
-	this->demensions[1] = _AV.demensions[1];
-	this->demensions[2] = _AV.demensions[2];
+	this->demensions[0] = _AV->demensions[0];
+	this->demensions[1] = _AV->demensions[1];
+	this->demensions[2] = _AV->demensions[2];
 
 }
 
-A_Vector3::A_Vector3(A_Vector2 const *_AV, float const _z) {
+A_Vector3::A_Vector3(A_Vector2* const _AV, float const _z) {
 
 	this->demensions[0] = _AV->getX();
 	this->demensions[1] = _AV->getY();

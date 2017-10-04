@@ -29,7 +29,7 @@ public:
 	constructor which initializes all demensions of the vector
 	to the demensions of the vector who's refrence was passed
 	*/
-	A_Vector3(A_Vector3 const &_AV);
+	A_Vector3(A_Vector3* const _AV);
 
 	/**
 	constructor which initializes all demensions of the vector to
@@ -41,7 +41,7 @@ public:
 	Constructor which initializes the X and Y of the vector to the X and Y of the 2D vector
 	and the Z value to _z
 	*/
-	A_Vector3(A_Vector2 const *_AV, float const _z);
+	A_Vector3(A_Vector2* const _AV, float const _z);
 
 	/**
 	destructor
@@ -175,7 +175,7 @@ public:
 	operator for multiplying to vector together
 	this is the cross product
 	*/
-	A_Vector3 operator *(A_Vector3 const *_a) {
+	A_Vector3 operator *(A_Vector3* const _a) {
 
 		A_Vector3 T_Cross;
 
@@ -366,6 +366,7 @@ public:
 
 private:
 
+	//x, y, z
 	float demensions[3];
 
 };
