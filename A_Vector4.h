@@ -235,7 +235,7 @@ public:
 	/**
 	operator for adding two vectors together
 	*/
-	A_Vector4 operator +(A_Vector4 const &_A) {
+	A_Vector4 operator +(A_Vector4& const _A) {
 
 		A_Vector4 T_A;
 		T_A.demensions[0] = _A.demensions[0] + this->demensions[0];
@@ -262,7 +262,7 @@ public:
 	/**
 	operator for subtracting from a vector with another vector
 	*/
-	A_Vector4 operator -(A_Vector4 const &_A) {
+	A_Vector4 operator -(A_Vector4& const _A) {
 
 		A_Vector4 T_A;
 		T_A.demensions[0] = _A.demensions[0] - this->demensions[0];
@@ -301,7 +301,7 @@ public:
 	/**
 	operator for adding another vector to this vector
 	*/
-	void operator += (A_Vector4 const &_A) {
+	void operator += (A_Vector4& const _A) {
 
 		this->demensions[0] += _A.demensions[0];
 		this->demensions[1] += _A.demensions[1];
@@ -325,7 +325,7 @@ public:
 	/**
 	operator for subtracting another vector from this vector
 	*/
-	void operator -= (A_Vector4 _A) {
+	void operator -= (A_Vector4& const _A) {
 
 		this->demensions[0] -= _A.demensions[0];
 		this->demensions[1] -= _A.demensions[1];
@@ -355,68 +355,6 @@ public:
 	//*********************************************************
 	//*********************************************************
 	*/
-
-	/**
-	tests to see if the X Y Z values of this vector, and the
-	vector passed into the method are all equal
-	*/
-	bool operator == (A_Vector4 const &_A) {
-
-		return (_A.demensions[0] == this->demensions[0] && _A.demensions[1] == this->demensions[1] &&
-			_A.demensions[2] == this->demensions[2] && _A.demensions[3] == this->demensions[3]);
-
-	}
-
-	/**
-	returns true if any of the 3 values in this vector
-	and the passed vector are not equal
-	*/
-	bool operator != (A_Vector4 const &_A) {
-
-		return (_A.demensions[0] != this->demensions[0] || _A.demensions[1] != this->demensions[1] ||
-			_A.demensions[2] != this->demensions[2] || _A.demensions[3] != this->demensions[3]);
-
-	}
-
-	/**
-	returns true if this vector's magnatude is greater
-	than the magnitude of the vector passed into the operator
-	*/
-	bool operator > (A_Vector4 *_A) {
-
-		return (this->GetMagnatude() > _A->GetMagnatude());
-
-	}
-
-	/**
-	returns true if this vector's magnatude is greater
-	than or equal to the magnitude of the vector passed into the operator
-	*/
-	bool operator >= (A_Vector4 *_A) {
-
-		return (this->GetMagnatude() >= _A->GetMagnatude());
-
-	}
-
-	/**
-	returns true if this vector's magnatude is less
-	than the magnitude of the vector passed into the operator
-	*/
-	bool operator < (A_Vector4 *_A) {
-
-		return (this->GetMagnatude() < _A->GetMagnatude());
-
-	}
-
-	/**
-	returns true if this vector's magnatude is less
-	than or equal to the magnitude of the vector passed into the operator
-	*/
-	bool operator <= (A_Vector4 *_A) {
-
-		return (this->GetMagnatude() <= _A->GetMagnatude());
-
-	}
 
 	/**
 	assigns one vector's value to another
