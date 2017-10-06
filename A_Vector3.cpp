@@ -1,18 +1,26 @@
 #include "A_Vector3.h"
 
-A_Vector3::A_Vector3(const float const _x, const float const _y, const float const _z) {
-
-	this->demensions[0] = _x;
-	this->demensions[1] = _y;
-	this->demensions[2] = _z;
-
-}
-
 A_Vector3::A_Vector3() {
 
 	this->demensions[0] = 0;
 	this->demensions[1] = 0;
 	this->demensions[2] = 0;
+
+}
+
+A_Vector3::A_Vector3(float const _n) {
+
+	this->demensions[0] = _n;
+	this->demensions[1] = _n;
+	this->demensions[2] = _n;
+
+}
+
+A_Vector3::A_Vector3(const float const _x, const float const _y, const float const _z) {
+
+	this->demensions[0] = _x;
+	this->demensions[1] = _y;
+	this->demensions[2] = _z;
 
 }
 

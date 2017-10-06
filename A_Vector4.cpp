@@ -9,6 +9,15 @@ A_Vector4::A_Vector4() {
 
 }
 
+A_Vector4::A_Vector4(float const _n) {
+
+	this->demensions[0] = _n;
+	this->demensions[1] = _n;
+	this->demensions[2] = _n;
+	this->demensions[3] = _n;
+
+}
+
 A_Vector4::A_Vector4(A_Vector4* const _AV) {
 
 	this->demensions[0] = _AV->demensions[0];
@@ -17,12 +26,6 @@ A_Vector4::A_Vector4(A_Vector4* const _AV) {
 	this->demensions[3] = _AV->demensions[3];
 
 }
-
-/*A_Vector4::A_Vector4(A_Quaternion* const _AV) {
-
-
-
-}*/
 
 A_Vector4::A_Vector4(float const _x, float const _y, float const _z, float const _w) {
 

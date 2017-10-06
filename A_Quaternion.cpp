@@ -47,17 +47,28 @@ A_Quaternion::A_Quaternion(A_Vector3 const *_AV, float const _w) {
 
 }
 
-const A_Quaternion A_Quaternion::GetQuaternion(float _angle, A_Vector3 _axis) {
+const A_Quaternion A_Quaternion::GetQuaternion(float _angle, A_Vector3 _axis) const{
 
 	return A_Quaternion(_axis.getX(), _axis.getY(), _axis.getZ(), _angle);
 
 }
 
-const A_Quaternion A_Quaternion::GetQuaternion(float _x, float _y, float _z, float _w) {
+const A_Quaternion A_Quaternion::GetQuaternion(float _x, float _y, float _z, float _w) const{
 
 	return A_Quaternion(_x, _y, _z, _w);
 
 }
+
+A_Vector4 A_Quaternion::GetVector4()const {
+
+	A_Vector4 T_Result;
+
+	T_Result.setAll(this->demensions[0], this->demensions[1], this->demensions[2], this->demensions[3]);
+
+	return T_Result;
+
+}
+
 
 const float A_Quaternion::GetMagnatude() {
 

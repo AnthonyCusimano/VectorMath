@@ -32,6 +32,11 @@ public:
 	A_Vector3(A_Vector3* const _AV);
 
 	/**
+	constructor which initializes all demensions of the vector to _n
+	*/
+	A_Vector3(float const _n);
+
+	/**
 	constructor which initializes all demensions of the vector to
 	the values passed
 	*/

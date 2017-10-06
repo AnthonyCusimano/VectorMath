@@ -65,12 +65,17 @@ public:
 	/**
 	returns the angle and the axis as a quaternion
 	*/
-	const A_Quaternion GetQuaternion(float _angle, A_Vector3 _axis);
+	const A_Quaternion GetQuaternion(float _angle, A_Vector3 _axis)const;
 
 	/**
 	returns the four floats in quaternion form
 	*/
-	const A_Quaternion GetQuaternion(float _x, float _y, float _z, float _w);
+	const A_Quaternion GetQuaternion(float _x, float _y, float _z, float _w)const;
+
+	/**
+	returns this quaternion as a A_Vector4
+	*/
+	A_Vector4 GetVector4()const;
 
 	/**
 	used to assist in normalizing this quaternion
