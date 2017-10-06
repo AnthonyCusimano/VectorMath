@@ -1,16 +1,22 @@
 #include "A_Vector2.h"
 
-A_Vector2::A_Vector2(float const _x, float const _y) {
-
-	this->demensions[0] = _x;
-	this->demensions[1] = _y;
-
-}
-
 A_Vector2::A_Vector2() {
 
 	this->demensions[0] = 0;
 	this->demensions[1] = 0;
+
+}
+
+A_Vector2::A_Vector2(float const _n) {
+
+	this->demensions[0] = this->demensions[1] = _n;
+
+}
+
+A_Vector2::A_Vector2(float const _x, float const _y) {
+
+	this->demensions[0] = _x;
+	this->demensions[1] = _y;
 
 }
 

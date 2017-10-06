@@ -13,6 +13,11 @@ public:
 	A_Vector2();
 
 	/**
+	constructor initializes both elements of this vector to _n
+	*/
+	A_Vector2(float const _n);
+
+	/**
 	constructor initializes this vector's values to _X and _Y respectively
 	*/
 	A_Vector2(float const _X, float const _Y);
