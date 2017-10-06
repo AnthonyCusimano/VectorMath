@@ -29,6 +29,15 @@ A_Quaternion::A_Quaternion(A_Vector4* const _AV) {
 
 }
 
+A_Quaternion::A_Quaternion(float const _n) {
+
+	this->demensions[0] = _n;
+	this->demensions[1] = _n;
+	this->demensions[2] = _n;
+	this->demensions[3] = _n;
+
+}
+
 A_Quaternion::A_Quaternion(float const _x, float const _y, float const _z, float const _w) {
 
 	this->demensions[0] = _x;

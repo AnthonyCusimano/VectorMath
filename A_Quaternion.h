@@ -36,6 +36,11 @@ public:
 	A_Quaternion(A_Vector4* const _AV);
 
 	/**
+	constructor which initializes all demensions of the quaternion to _n
+	*/
+	A_Quaternion(float const _n);
+
+	/**
 	constructor which initializes all demensions of the quaternion to
 	the values passed
 	*/
