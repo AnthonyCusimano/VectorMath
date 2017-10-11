@@ -76,8 +76,7 @@ A_Matrix3x3::A_Matrix3x3(float const _f[]) {
 
 }
 
-//test
-const A_Vector3 A_Matrix3x3::GetColumnAtAddress(char const _ad) {
+A_Vector3 A_Matrix3x3::GetColumnAtAddress(char const _ad) {
 
 	char i = (_ad * 3);
 	A_Vector3 T_Result;
@@ -100,7 +99,7 @@ void A_Matrix3x3::SetColumnAtAddress(char const _ad, A_Vector3* const _AQ) {
 
 }
 
-const A_Vector3 A_Matrix3x3::GetRowAtAddress(int const _ad) {
+A_Vector3 A_Matrix3x3::GetRowAtAddress(int const _ad) {
 
 	A_Vector3 T_Result;
 
@@ -135,7 +134,7 @@ const bool A_Matrix3x3::Invert() {
 
 	//https://www.mathsisfun.com/algebra/matrix-inverse-minors-cofactors-adjugate.html
 	//determinant of this
-	float T_Determinant;
+	float T_Determinant = 0.0f;
 	//temp floats needed to assist in finding the determinant, and later assist in finding the final inverse of the matrix
 	//names reflect demensions used to assign a value to these variables
 	float T_4857_, T_3856_, T_3746_, T_1827_, T_0826_, T_0716_, T_1524_, T_0523_, T_0413_;
@@ -154,15 +153,16 @@ const bool A_Matrix3x3::Invert() {
 	T_0413_ = this->demensions[0] * this->demensions[4] - this->demensions[1] * this->demensions[3];//8
 
 	//transpose
-	T_Matrix[0] = T_4857_;
-	T_Matrix[1] = T_1827_;
-	T_Matrix[2] = T_1524_;
-	T_Matrix[3] = T_4857_;
-	T_Matrix[4] = T_0826_;
-	T_Matrix[5] = T_0523_;
-	T_Matrix[6] = T_3746_;
-	T_Matrix[7] = T_0716_;
-	T_Matrix[8] = T_0413_;
+	//this is where you're wrong
+	T_Matrix[0] = T_4857_;//0
+	T_Matrix[1] = T_1827_;//3
+	T_Matrix[2] = T_1524_;//6
+	T_Matrix[3] = T_3856_;//1
+	T_Matrix[4] = T_0826_;//4
+	T_Matrix[5] = T_0523_;//7
+	T_Matrix[6] = T_3746_;//2
+	T_Matrix[7] = T_0716_;//5
+	T_Matrix[8] = T_0413_;//8
 
 	T_Determinant = (this->demensions[0] * T_4857_) - (this->demensions[1] * T_3856_) + (this->demensions[2] * T_3746_);
 
