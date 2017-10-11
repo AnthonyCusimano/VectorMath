@@ -172,12 +172,25 @@ public:
 	/**
 	access for quickly setting each value
 	*/
-	void setAll(float const _x, float const _y, float const _z, float const _w) {
+	void SetAll(float const _x, float const _y, float const _z, float const _w) {
 
 		this->demensions[0] = _x;
 		this->demensions[1] = _y;
 		this->demensions[2] = _z;
 		this->demensions[3] = _w;
+
+	}
+
+	/**
+	access for quickly setting each value
+	equal to the corresponding value in _AV
+	*/
+	void SetAll(A_Vector4* const _AV) {
+
+		this->demensions[0] = _AV->demensions[0];
+		this->demensions[1] = _AV->demensions[1];
+		this->demensions[2] = _AV->demensions[2];
+		this->demensions[3] = _AV->demensions[3];
 
 	}
 

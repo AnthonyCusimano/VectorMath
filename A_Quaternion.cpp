@@ -68,11 +68,11 @@ const A_Quaternion A_Quaternion::GetQuaternion(float _x, float _y, float _z, flo
 
 }
 
-A_Vector4 A_Quaternion::GetVector4()const {
+const A_Vector4 A_Quaternion::GetVector4()const {
 
 	A_Vector4 T_Result;
 
-	T_Result.setAll(this->demensions[0], this->demensions[1], this->demensions[2], this->demensions[3]);
+	T_Result.SetAll(this->demensions[0], this->demensions[1], this->demensions[2], this->demensions[3]);
 
 	return T_Result;
 

@@ -121,6 +121,17 @@ public:
 	}
 
 	/**
+	access for quickly setting each value
+	equal to the corresponding value in _AV
+	*/
+	void SetAll(A_Vector2* const _AV) {
+
+		this->demensions[0] = _AV->demensions[0];
+		this->demensions[1] = _AV->demensions[1];
+
+	}
+
+	/**
 	//*********************************************************
 	//*********************************************************
 	//*********************************************************

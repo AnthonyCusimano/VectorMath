@@ -80,7 +80,7 @@ public:
 	/**
 	returns this quaternion as a A_Vector4
 	*/
-	A_Vector4 GetVector4()const;
+	const A_Vector4 GetVector4()const;
 
 	/**
 	used to assist in normalizing this quaternion
@@ -348,6 +348,19 @@ public:
 		this->demensions[1] = _y;
 		this->demensions[2] = _z;
 		this->demensions[3] = _w;
+
+	}
+
+	/**
+	access for quickly setting each value
+	equal to the corresponding value in _AQ
+	*/
+	void SetAll(A_Quaternion* const _AQ) {
+
+		this->demensions[0] = _AQ->demensions[0];
+		this->demensions[1] = _AQ->demensions[1];
+		this->demensions[2] = _AQ->demensions[2];
+		this->demensions[3] = _AQ->demensions[3];
 
 	}
 
