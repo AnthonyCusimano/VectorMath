@@ -53,7 +53,7 @@ public:
 	/**
 	returns the selected column
 	the columns are 0, 1, and 2*/
-	const A_Vector3 GetColumnAtAddress(char const _ad);
+	A_Vector3 GetColumnAtAddress(char const _ad);
 
 	/**
 	sets the selected column to the values in _AQ
@@ -65,7 +65,7 @@ public:
 	returns the selected row
 	the row are 0, 1, and 2
 	*/
-	const A_Vector3 GetRowAtAddress(int const _ad);
+	A_Vector3 GetRowAtAddress(int const _ad);
 
 	/**
 	sets the selected row to the values in _AQ
@@ -126,13 +126,13 @@ public:
 	/**
 	adds to this matrix another 4x4 matrix and returns the result
 	*/
-	A_Matrix3x3 operator +(A_Matrix3x3 const *_AM) {
+	A_Matrix3x3 operator +(A_Matrix3x3& const _AM) {
 
 		A_Matrix3x3 T_Result;
 
 		for (char i = 0; i < 9; ++i) {
 
-			T_Result.demensions[i] = this->demensions[i] + _AM->demensions[i];
+			T_Result.demensions[i] = this->demensions[i] + _AM.demensions[i];
 
 		}
 
@@ -143,11 +143,11 @@ public:
 	/**
 	adds to this matrix another 4x4 matrix
 	*/
-	void operator +=(A_Matrix3x3 const *_AM) {
+	void operator +=(A_Matrix3x3& const _AM) {
 
 		for (char i = 0; i < 9; ++i) {
 
-			this->demensions[i] += _AM->demensions[i];
+			this->demensions[i] += _AM.demensions[i];
 
 		}
 
@@ -156,13 +156,13 @@ public:
 	/**
 	subtracts from this matrix another 4x4 matrix and returns the result
 	*/
-	A_Matrix3x3 operator -(A_Matrix3x3 const *_AM) {
+	A_Matrix3x3 operator -(A_Matrix3x3& const _AM) {
 
 		A_Matrix3x3 T_Result;
 
 		for (char i = 0; i < 9; ++i) {
 
-			T_Result.demensions[i] = this->demensions[i] - _AM->demensions[i];
+			T_Result.demensions[i] = this->demensions[i] - _AM.demensions[i];
 
 		}
 
@@ -173,11 +173,11 @@ public:
 	/**
 	subtracts from this matrix another 4x4 matrix
 	*/
-	void operator -=(A_Matrix3x3 const *_AM) {
+	void operator -=(A_Matrix3x3& const _AM) {
 
 		for (char i = 0; i < 9; ++i) {
 
-			this->demensions[i] -= _AM->demensions[i];
+			this->demensions[i] -= _AM.demensions[i];
 
 		}
 
@@ -191,12 +191,6 @@ public:
 	//*********************************************************
 	//*********************************************************
 	//*********************************************************
-	*/
-
-	/*
-
-	TODO: ADD SUPPORT FOR OTHER x3 SIZE MATRICIES
-
 	*/
 
 	/**
@@ -232,13 +226,13 @@ public:
 	/**
 	multiplying this matrix by a 3D vector and returning the result
 	*/
-	A_Vector3 operator *(A_Vector3* const _AV) {
+	A_Vector3 operator *(A_Vector3& const _AV) {
 
 		A_Vector3 T_Result;
 
-		T_Result.setX((this->demensions[0] * _AV->getX()) + (this->demensions[1] * _AV->getY()) + (this->demensions[2] * _AV->getZ()));
-		T_Result.setY((this->demensions[3] * _AV->getX()) + (this->demensions[4] * _AV->getY()) + (this->demensions[5] * _AV->getZ()));
-		T_Result.setZ((this->demensions[6] * _AV->getX()) + (this->demensions[7] * _AV->getY()) + (this->demensions[8] * _AV->getZ()));
+		T_Result.setX((this->demensions[0] * _AV.getX()) + (this->demensions[1] * _AV.getY()) + (this->demensions[2] * _AV.getZ()));
+		T_Result.setY((this->demensions[3] * _AV.getX()) + (this->demensions[4] * _AV.getY()) + (this->demensions[5] * _AV.getZ()));
+		T_Result.setZ((this->demensions[6] * _AV.getX()) + (this->demensions[7] * _AV.getY()) + (this->demensions[8] * _AV.getZ()));
 
 		return T_Result;
 
@@ -247,22 +241,22 @@ public:
 	/**
 	multiplies THIS matrix by ANOTHER 3x3 matrix, resulting in a new 3x3 matrix
 	*/
-	A_Matrix3x3 operator *(A_Matrix3x3* const _AM) {
+	A_Matrix3x3 operator *(A_Matrix3x3& const _AM) {
 
 		A_Matrix3x3 T_Result;
 
 		//https://wikimedia.org/api/rest_v1/media/math/render/svg/89622b95453d4895904dbd0c72e6beccbe63772c
-		T_Result.demensions[0] = this->demensions[0] * _AM->demensions[0] + this->demensions[1] * _AM->demensions[3] + this->demensions[2] * _AM->demensions[6];
-		T_Result.demensions[1] = this->demensions[0] * _AM->demensions[1] + this->demensions[1] * _AM->demensions[4] + this->demensions[2] * _AM->demensions[7];
-		T_Result.demensions[2] = this->demensions[0] * _AM->demensions[2] + this->demensions[1] * _AM->demensions[5] + this->demensions[2] * _AM->demensions[8];
+		T_Result.demensions[0] = this->demensions[0] * _AM.demensions[0] + this->demensions[1] * _AM.demensions[3] + this->demensions[2] * _AM.demensions[6];
+		T_Result.demensions[1] = this->demensions[0] * _AM.demensions[1] + this->demensions[1] * _AM.demensions[4] + this->demensions[2] * _AM.demensions[7];
+		T_Result.demensions[2] = this->demensions[0] * _AM.demensions[2] + this->demensions[1] * _AM.demensions[5] + this->demensions[2] * _AM.demensions[8];
 
-		T_Result.demensions[3] = this->demensions[3] * _AM->demensions[0] + this->demensions[4] * _AM->demensions[3] + this->demensions[5] * _AM->demensions[6];
-		T_Result.demensions[4] = this->demensions[3] * _AM->demensions[1] + this->demensions[4] * _AM->demensions[4] + this->demensions[5] * _AM->demensions[7];
-		T_Result.demensions[5] = this->demensions[3] * _AM->demensions[2] + this->demensions[4] * _AM->demensions[5] + this->demensions[5] * _AM->demensions[8];
+		T_Result.demensions[3] = this->demensions[3] * _AM.demensions[0] + this->demensions[4] * _AM.demensions[3] + this->demensions[5] * _AM.demensions[6];
+		T_Result.demensions[4] = this->demensions[3] * _AM.demensions[1] + this->demensions[4] * _AM.demensions[4] + this->demensions[5] * _AM.demensions[7];
+		T_Result.demensions[5] = this->demensions[3] * _AM.demensions[2] + this->demensions[4] * _AM.demensions[5] + this->demensions[5] * _AM.demensions[8];
 
-		T_Result.demensions[6] = this->demensions[6] * _AM->demensions[0] + this->demensions[7] * _AM->demensions[3] + this->demensions[8] * _AM->demensions[6];
-		T_Result.demensions[7] = this->demensions[6] * _AM->demensions[1] + this->demensions[7] * _AM->demensions[4] + this->demensions[8] * _AM->demensions[7];
-		T_Result.demensions[8] = this->demensions[6] * _AM->demensions[2] + this->demensions[7] * _AM->demensions[5] + this->demensions[8] * _AM->demensions[8];
+		T_Result.demensions[6] = this->demensions[6] * _AM.demensions[0] + this->demensions[7] * _AM.demensions[3] + this->demensions[8] * _AM.demensions[6];
+		T_Result.demensions[7] = this->demensions[6] * _AM.demensions[1] + this->demensions[7] * _AM.demensions[4] + this->demensions[8] * _AM.demensions[7];
+		T_Result.demensions[8] = this->demensions[6] * _AM.demensions[2] + this->demensions[7] * _AM.demensions[5] + this->demensions[8] * _AM.demensions[8];
 
 		return T_Result;
 
@@ -271,19 +265,24 @@ public:
 	/**
 	multiplies this matrix by another 3x3 matrix, and applies the result to this matrix
 	*/
-	void operator *=(A_Matrix3x3 const *_AM) {
+	void operator *=(A_Matrix3x3& const _AM) {
 
-		this->demensions[0] = this->demensions[0] * _AM->demensions[0] + this->demensions[1] * _AM->demensions[3] + this->demensions[2] * _AM->demensions[6];
-		this->demensions[1] = this->demensions[0] * _AM->demensions[1] + this->demensions[1] * _AM->demensions[4] + this->demensions[2] * _AM->demensions[7];
-		this->demensions[2] = this->demensions[0] * _AM->demensions[2] + this->demensions[1] * _AM->demensions[5] + this->demensions[2] * _AM->demensions[8];
+		A_Matrix3x3 T_Result;
 
-		this->demensions[3] = this->demensions[3] * _AM->demensions[0] + this->demensions[4] * _AM->demensions[3] + this->demensions[5] * _AM->demensions[6];
-		this->demensions[4] = this->demensions[3] * _AM->demensions[1] + this->demensions[4] * _AM->demensions[4] + this->demensions[5] * _AM->demensions[7];
-		this->demensions[5] = this->demensions[3] * _AM->demensions[2] + this->demensions[4] * _AM->demensions[5] + this->demensions[5] * _AM->demensions[8];
+		//https://wikimedia.org/api/rest_v1/media/math/render/svg/89622b95453d4895904dbd0c72e6beccbe63772c
+		T_Result.demensions[0] = this->demensions[0] * _AM.demensions[0] + this->demensions[1] * _AM.demensions[3] + this->demensions[2] * _AM.demensions[6];
+		T_Result.demensions[1] = this->demensions[0] * _AM.demensions[1] + this->demensions[1] * _AM.demensions[4] + this->demensions[2] * _AM.demensions[7];
+		T_Result.demensions[2] = this->demensions[0] * _AM.demensions[2] + this->demensions[1] * _AM.demensions[5] + this->demensions[2] * _AM.demensions[8];
 
-		this->demensions[6] = this->demensions[6] * _AM->demensions[0] + this->demensions[7] * _AM->demensions[3] + this->demensions[8] * _AM->demensions[6];
-		this->demensions[7] = this->demensions[6] * _AM->demensions[1] + this->demensions[7] * _AM->demensions[4] + this->demensions[8] * _AM->demensions[7];
-		this->demensions[8] = this->demensions[6] * _AM->demensions[2] + this->demensions[7] * _AM->demensions[5] + this->demensions[8] * _AM->demensions[8];
+		T_Result.demensions[3] = this->demensions[3] * _AM.demensions[0] + this->demensions[4] * _AM.demensions[3] + this->demensions[5] * _AM.demensions[6];
+		T_Result.demensions[4] = this->demensions[3] * _AM.demensions[1] + this->demensions[4] * _AM.demensions[4] + this->demensions[5] * _AM.demensions[7];
+		T_Result.demensions[5] = this->demensions[3] * _AM.demensions[2] + this->demensions[4] * _AM.demensions[5] + this->demensions[5] * _AM.demensions[8];
+
+		T_Result.demensions[6] = this->demensions[6] * _AM.demensions[0] + this->demensions[7] * _AM.demensions[3] + this->demensions[8] * _AM.demensions[6];
+		T_Result.demensions[7] = this->demensions[6] * _AM.demensions[1] + this->demensions[7] * _AM.demensions[4] + this->demensions[8] * _AM.demensions[7];
+		T_Result.demensions[8] = this->demensions[6] * _AM.demensions[2] + this->demensions[7] * _AM.demensions[5] + this->demensions[8] * _AM.demensions[8];
+
+		*this = T_Result;
 
 	}
 
