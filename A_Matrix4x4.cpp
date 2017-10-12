@@ -40,7 +40,7 @@ A_Matrix4x4::A_Matrix4x4(float const _f) {
 
 }
 
-A_Matrix4x4::A_Matrix4x4(A_Matrix4x4 const *_AM) {
+A_Matrix4x4::A_Matrix4x4(A_Matrix4x4* const _AM) {
 
 	for (char i = 0; i < 16; ++i) {
 
@@ -50,7 +50,7 @@ A_Matrix4x4::A_Matrix4x4(A_Matrix4x4 const *_AM) {
 
 }
 
-A_Matrix4x4::A_Matrix4x4(A_Vector4 *_AQ1, A_Vector4 *_AQ2, A_Vector4 *_AQ3, A_Vector4 *_AQ4) {
+A_Matrix4x4::A_Matrix4x4(A_Vector4* const _AQ1, A_Vector4* const _AQ2, A_Vector4* const _AQ3, A_Vector4* const _AQ4) {
 	
 	this->demensions[0] = _AQ1->getX();
 	this->demensions[1] = _AQ1->getY();
