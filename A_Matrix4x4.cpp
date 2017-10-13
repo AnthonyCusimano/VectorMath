@@ -40,7 +40,7 @@ A_Matrix4x4::A_Matrix4x4(float const _f) {
 
 }
 
-A_Matrix4x4::A_Matrix4x4(A_Matrix4x4 const *_AM) {
+A_Matrix4x4::A_Matrix4x4(A_Matrix4x4* const _AM) {
 
 	for (char i = 0; i < 16; ++i) {
 
@@ -50,7 +50,7 @@ A_Matrix4x4::A_Matrix4x4(A_Matrix4x4 const *_AM) {
 
 }
 
-A_Matrix4x4::A_Matrix4x4(A_Vector4 *_AQ1, A_Vector4 *_AQ2, A_Vector4 *_AQ3, A_Vector4 *_AQ4) {
+A_Matrix4x4::A_Matrix4x4(A_Vector4* const _AQ1, A_Vector4* const _AQ2, A_Vector4* const _AQ3, A_Vector4* const _AQ4) {
 	
 	this->demensions[0] = _AQ1->getX();
 	this->demensions[1] = _AQ1->getY();
@@ -84,15 +84,19 @@ A_Matrix4x4::A_Matrix4x4(float const _f[]) {
 
 }
 
-const A_Vector4 A_Matrix4x4::GetColumnAtAddress(int const _ad) {
+A_Vector4 A_Matrix4x4::GetColumnAtAddress(int const _ad) {
 
-	char i = (_ad * 4);
 	A_Vector4 T_Result;
 
-	T_Result.setX(this->demensions[i]);
-	T_Result.setY(this->demensions[i + 1]);
-	T_Result.setZ(this->demensions[i + 2]);
-	T_Result.setW(this->demensions[i + 3]);
+	/*T_Result.setX(this->demensions[_ad]);
+	T_Result.setY(this->demensions[_ad + 4]);
+	T_Result.setZ(this->demensions[_ad + 8]);
+	T_Result.setW(this->demensions[_ad + 12]);*/
+
+	T_Result.setX(this->demensions[0]);
+	T_Result.setY(this->demensions[1]);
+	T_Result.setZ(this->demensions[2]);
+	T_Result.setW(this->demensions[3]);
 
 	return T_Result;
 
@@ -109,14 +113,15 @@ void A_Matrix4x4::SetColumnAtAddress(int const _ad, A_Vector4 *_AQ) {
 
 }
 
-const A_Vector4 A_Matrix4x4::GetRowAtAddress(int const _ad) {
+A_Vector4 A_Matrix4x4::GetRowAtAddress(int _ad) {
 
+	_ad *= 4;
 	A_Vector4 T_Result;
 
 	T_Result.setX(this->demensions[_ad]);
-	T_Result.setY(this->demensions[_ad + 4]);
-	T_Result.setZ(this->demensions[_ad + 8]);
-	T_Result.setW(this->demensions[_ad + 12]);
+	T_Result.setY(this->demensions[_ad + 1]);
+	T_Result.setZ(this->demensions[_ad + 2]);
+	T_Result.setW(this->demensions[_ad + 3]);
 
 	return T_Result;
 

@@ -129,7 +129,7 @@ public:
 	*/
 	void setY(float const _y) {
 
-		this->demensions[1];
+		this->demensions[1] = _y;
 
 	}
 
@@ -147,7 +147,7 @@ public:
 	*/
 	void setZ(float _z) {
 
-		this->demensions[2];
+		this->demensions[2] = _z;
 
 	}
 

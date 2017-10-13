@@ -31,12 +31,12 @@ public:
 	/**
 	copy constructor
 	*/
-	A_Matrix4x4(A_Matrix4x4 const *_AM);
+	A_Matrix4x4(A_Matrix4x4* const _AM);
 
 	/**
 	uses the four quaternions as the ROWS for this matrix
 	*/
-	A_Matrix4x4(A_Vector4 *_AQ1, A_Vector4 *_AQ2, A_Vector4 *_AQ3, A_Vector4 *_AQ4);
+	A_Matrix4x4(A_Vector4* const _AQ1, A_Vector4* const _AQ2, A_Vector4* const _AQ3, A_Vector4* const _AQ4);
 
 	/**
 	assigns the demensions of this matrix to the elements of _f, in order
@@ -63,19 +63,19 @@ public:
 	returns the selected column
 	the columns are 0, 1, 2, and 3
 	*/
-	const A_Vector4 GetColumnAtAddress(int const _ad);
+	A_Vector4 GetColumnAtAddress(int const _ad);
 
 	/**
 	sets the selected column to the values in _AQ
 	the columns are 0, 1, 2, and 3
 	*/
-	void SetColumnAtAddress(int const _ad, A_Vector4 * _AQ);
+	void SetColumnAtAddress(int const _ad, A_Vector4* _AQ);
 
 	/**
 	returns the selected row
 	the row are 0, 1, 2, and 3
 	*/
-	const A_Vector4 GetRowAtAddress(int const _ad);
+	A_Vector4 GetRowAtAddress(int _ad);
 
 	/**
 	sets the selected row to the values in _AQ
