@@ -88,15 +88,10 @@ A_Vector4 A_Matrix4x4::GetColumnAtAddress(int const _ad) {
 
 	A_Vector4 T_Result;
 
-	/*T_Result.setX(this->demensions[_ad]);
+	T_Result.setX(this->demensions[_ad]);
 	T_Result.setY(this->demensions[_ad + 4]);
 	T_Result.setZ(this->demensions[_ad + 8]);
-	T_Result.setW(this->demensions[_ad + 12]);*/
-
-	T_Result.setX(this->demensions[0]);
-	T_Result.setY(this->demensions[1]);
-	T_Result.setZ(this->demensions[2]);
-	T_Result.setW(this->demensions[3]);
+	T_Result.setW(this->demensions[_ad + 12]);
 
 	return T_Result;
 
@@ -104,12 +99,10 @@ A_Vector4 A_Matrix4x4::GetColumnAtAddress(int const _ad) {
 
 void A_Matrix4x4::SetColumnAtAddress(int const _ad, A_Vector4 *_AQ) {
 
-	char i = (_ad * 4);
-
-	this->demensions[i] = _AQ->getX();
-	this->demensions[i + 1] = _AQ->getY();
-	this->demensions[i + 2] = _AQ->getZ();
-	this->demensions[i + 3] = _AQ->getW();
+	this->demensions[_ad] = _AQ->getX();
+	this->demensions[_ad + 4] = _AQ->getY();
+	this->demensions[_ad + 8] = _AQ->getZ();
+	this->demensions[_ad + 12] = _AQ->getW();
 
 }
 
@@ -118,21 +111,25 @@ A_Vector4 A_Matrix4x4::GetRowAtAddress(int _ad) {
 	_ad *= 4;
 	A_Vector4 T_Result;
 
+	//incrumenting through the row
 	T_Result.setX(this->demensions[_ad]);
-	T_Result.setY(this->demensions[_ad + 1]);
-	T_Result.setZ(this->demensions[_ad + 2]);
-	T_Result.setW(this->demensions[_ad + 3]);
+	T_Result.setY(this->demensions[++_ad]);
+	T_Result.setZ(this->demensions[++_ad]);
+	T_Result.setW(this->demensions[++_ad]);
 
 	return T_Result;
 
 }
 
-void A_Matrix4x4::SetRowAtAddress(int const _ad, A_Vector4 *_AQ) {
+void A_Matrix4x4::SetRowAtAddress(int _ad, A_Vector4 *_AQ) {
 
+	_ad *= 4;
+
+	//incrumenting through the row
 	this->demensions[_ad] = _AQ->getX();
-	this->demensions[_ad + 4] = _AQ->getY();
-	this->demensions[_ad + 8] = _AQ->getZ();
-	this->demensions[_ad + 12] = _AQ->getW();
+	this->demensions[++_ad] = _AQ->getY();
+	this->demensions[++_ad] = _AQ->getZ();
+	this->demensions[++_ad] = _AQ->getW();
 
 }
 
