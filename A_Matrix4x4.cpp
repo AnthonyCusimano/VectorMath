@@ -133,7 +133,7 @@ void A_Matrix4x4::SetRowAtAddress(int _ad, A_Vector4 *_AQ) {
 
 }
 
-void A_Matrix4x4::setIdentity() {
+void A_Matrix4x4::SetIdentity() {
 
 	for (char i = 0; i < 16; ++i) {
 
@@ -149,10 +149,10 @@ void A_Matrix4x4::setIdentity() {
 
 }
 
-const A_Matrix4x4 A_Matrix4x4::GetRotationXAxis(float const _f) {
+A_Matrix4x4 A_Matrix4x4::GetRotationXAxis(float const _f) {
 
 	A_Matrix4x4 T_Result;
-	T_Result.setIdentity();
+	T_Result.SetIdentity();
 
 	T_Result.demensions[5] = ::cosf(_f);
 	T_Result.demensions[6] = -::cosf(_f);
@@ -163,10 +163,10 @@ const A_Matrix4x4 A_Matrix4x4::GetRotationXAxis(float const _f) {
 
 }
 
-const A_Matrix4x4 A_Matrix4x4::GetRotationYAxis(float const _f) {
+A_Matrix4x4 A_Matrix4x4::GetRotationYAxis(float const _f) {
 
 	A_Matrix4x4 T_Result;
-	T_Result.setIdentity();
+	T_Result.SetIdentity();
 
 	T_Result.demensions[0] = ::cosf(_f);
 	T_Result.demensions[2] = ::sinf(_f);
@@ -177,10 +177,10 @@ const A_Matrix4x4 A_Matrix4x4::GetRotationYAxis(float const _f) {
 
 }
 
-const A_Matrix4x4 A_Matrix4x4::GetRotationZAxis(float const _f) {
+A_Matrix4x4 A_Matrix4x4::GetRotationZAxis(float const _f) {
 
 	A_Matrix4x4 T_Result;
-	T_Result.setIdentity();
+	T_Result.SetIdentity();
 
 	T_Result.demensions[0] = ::cosf(_f);
 	T_Result.demensions[1] = -::sinf(_f);
@@ -191,10 +191,10 @@ const A_Matrix4x4 A_Matrix4x4::GetRotationZAxis(float const _f) {
 
 }
 
-const A_Matrix4x4 A_Matrix4x4::GetTranslate(float const _x, float const _y, float const _z) {
+A_Matrix4x4 A_Matrix4x4::GetTranslate(float const _x, float const _y, float const _z) {
 
 	A_Matrix4x4 T_Result;
-	T_Result.setIdentity();
+	T_Result.SetIdentity();
 
 	this->demensions[3] = _x;
 	this->demensions[7] = _y;
@@ -204,10 +204,10 @@ const A_Matrix4x4 A_Matrix4x4::GetTranslate(float const _x, float const _y, floa
 
 }
 
-const A_Matrix4x4 A_Matrix4x4::GetTranslate(A_Vector3 const *_AV) {
+A_Matrix4x4 A_Matrix4x4::GetTranslate(A_Vector3 const *_AV) {
 
 	A_Matrix4x4 T_Result;
-	T_Result.setIdentity();
+	T_Result.SetIdentity();
 
 	this->demensions[3] = _AV->getX();
 	this->demensions[7] = _AV->getY();
@@ -217,10 +217,10 @@ const A_Matrix4x4 A_Matrix4x4::GetTranslate(A_Vector3 const *_AV) {
 
 }
 
-const A_Matrix4x4 A_Matrix4x4::GetScale(float const _x, float const _y, float const _z) {
+A_Matrix4x4 A_Matrix4x4::GetScale(float const _x, float const _y, float const _z) {
 
 	A_Matrix4x4 T_Result;
-	T_Result.setIdentity();
+	T_Result.SetIdentity();
 
 	T_Result.demensions[0] = _x;
 	T_Result.demensions[5] = _y;
@@ -230,10 +230,10 @@ const A_Matrix4x4 A_Matrix4x4::GetScale(float const _x, float const _y, float co
 
 }
 
-const A_Matrix4x4 A_Matrix4x4::GetScale(A_Vector3* const _AV) {
+A_Matrix4x4 A_Matrix4x4::GetScale(A_Vector3* const _AV) {
 
 	A_Matrix4x4 T_Result;
-	T_Result.setIdentity();
+	T_Result.SetIdentity();
 
 	T_Result.demensions[0] = _AV->getX();
 	T_Result.demensions[5] = _AV->getY();
@@ -270,7 +270,7 @@ const bool A_Matrix4x4::Invert() {
 	if (T_determinant == 0.0f) {
 
 		//this matrix cannot be inverted
-		this->setIdentity();
+		this->SetIdentity();
 		return false;
 
 	}
@@ -327,26 +327,33 @@ const bool A_Matrix4x4::Invert() {
 
 }
 
-const A_Matrix4x4 A_Matrix4x4::GetTransposed() {
+A_Matrix4x4 A_Matrix4x4::GetTransposed() {
 
 	A_Matrix4x4 T_Result;
 
 	//this->demensions[0] stays the same
+	T_Result.demensions[0] = this->demensions[0];
+
 	T_Result.demensions[1] = this->demensions[4];
 	T_Result.demensions[2] = this->demensions[8];
 	T_Result.demensions[3] = this->demensions[12];
 	T_Result.demensions[4] = this->demensions[1];
 	//this->demensions[5] stays the same
+	T_Result.demensions[5] = this->demensions[5];
+
 	T_Result.demensions[6] = this->demensions[9];
 	T_Result.demensions[7] = this->demensions[13];
 	T_Result.demensions[8] = this->demensions[2];
 	T_Result.demensions[9] = this->demensions[6];
 	//this->demensions[10] stays the same
+	T_Result.demensions[10] = this->demensions[10];
+
 	T_Result.demensions[11] = this->demensions[14];
 	T_Result.demensions[12] = this->demensions[3];
 	T_Result.demensions[13] = this->demensions[7];
 	T_Result.demensions[14] = this->demensions[11];
 	//this->demensions[15] stays the same
+	T_Result.demensions[15] = this->demensions[15];
 
 	return T_Result;
 
@@ -408,7 +415,7 @@ void A_Matrix4x4::SetTranposed() {
 
 }
 
-void A_Matrix4x4::SetViewMatrix(A_Vector3 const *_pos, A_Vector3 const *_viewDir, A_Vector3 const *_up, A_Vector3 const *_right) {
+void A_Matrix4x4::SetViewMatrix(A_Vector3* const _pos, A_Vector3* const _viewDir, A_Vector3* const _up, A_Vector3* const _right) {
 
 	//up
 	this->demensions[1] = _up->getX();
