@@ -167,6 +167,17 @@ public:
 	}
 
 	/**
+	access for quickly setting each value uniformly
+	*/
+	void SetAll(float const _n) {
+
+		this->demensions[0] = _n;
+		this->demensions[1] = _n;
+		this->demensions[2] = _n;
+
+	}
+
+	/**
 	access for quickly setting each value
 	equal to the corresponding value in _AV
 	*/
