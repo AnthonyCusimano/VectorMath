@@ -57,6 +57,10 @@ public:
 	*/
 	void SetRowAtAddress(int _ad, A_Vector3* const _AV);
 
+
+	/**
+	returns the demension found at address _f
+	*/
 	const float GetDemensionAtAddress(char const _f) {
 
 		return this->demensions[_f];
