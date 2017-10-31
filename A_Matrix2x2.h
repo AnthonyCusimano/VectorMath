@@ -81,12 +81,12 @@ public:
 	sets the selected row to the values in _AQ
 	the row are 0, 1
 	*/
-	void SetRowAtAddress(int const _ad, A_Vector2* _AQ);
+	void SetRowAtAddress(int const _ad, A_Vector2* const _AQ);
 
 	/**
 	returns the demension found at address _f
 	*/
-	const float getDemensionAtAddress(int const _f) const {
+	const float GetDemensionAtAddress(int const _f) const {
 
 		return this->demensions[_f];
 
@@ -249,8 +249,8 @@ public:
 
 		A_Vector2 T_Result;
 
-		T_Result.SetX((this->demensions[0] * _AV.getX()) + (this->demensions[1] * _AV.getY()));
-		T_Result.SetY((this->demensions[3] * _AV.getX()) + (this->demensions[4] * _AV.getY()));
+		T_Result.setX((this->demensions[0] * _AV.getX()) + (this->demensions[1] * _AV.getY()));
+		T_Result.setY((this->demensions[3] * _AV.getX()) + (this->demensions[4] * _AV.getY()));
 
 		return T_Result;
 

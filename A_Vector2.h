@@ -95,7 +95,7 @@ public:
 	/**
 	access for setting X
 	*/
-	void SetX(float const _X) {
+	void setX(float const _X) {
 
 		this->demensions[0] = _X;
 
@@ -104,7 +104,7 @@ public:
 	/**
 	access for setting X
 	*/
-	void SetY(float const _Y) {
+	void setY(float const _Y) {
 
 		this->demensions[1] = _Y;
 
