@@ -44,8 +44,8 @@ const A_Vector2 A_Matrix2x3::GetColumnAtAddress(int const _ad) {
 
 	A_Vector2 T_Result;
 
-	T_Result.SetX(this->demensions[_ad]);
-	T_Result.SetY(this->demensions[3 + _ad]);
+	T_Result.setX(this->demensions[_ad]);
+	T_Result.setY(this->demensions[3 + _ad]);
 
 	return T_Result;
 
@@ -65,9 +65,9 @@ const A_Vector3 A_Matrix2x3::GetRowAtAddress(int _ad) {
 	//0*3 || 1*3
 	_ad *= 3;
 
-	T_Result.SetX(this->demensions[_ad]);
-	T_Result.SetY(this->demensions[_ad + 1]);
-	T_Result.SetZ(this->demensions[_ad + 2]);
+	T_Result.setX(this->demensions[_ad]);
+	T_Result.setY(this->demensions[_ad + 1]);
+	T_Result.setZ(this->demensions[_ad + 2]);
 
 	return T_Result;
 

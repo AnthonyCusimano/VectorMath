@@ -48,8 +48,8 @@ const A_Vector2 A_Matrix3x2::GetRowAtAddress(int _ad) {
 	//0*2 || 1*2
 	_ad *= 2;
 
-	T_Result.SetX(this->demensions[_ad]);
-	T_Result.SetY(this->demensions[_ad + 1]);
+	T_Result.setX(this->demensions[_ad]);
+	T_Result.setY(this->demensions[_ad + 1]);
 
 	return T_Result;
 
