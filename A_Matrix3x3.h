@@ -71,7 +71,7 @@ public:
 	sets the selected row to the values in _AQ
 	the row are 0, 1, and 2
 	*/
-	void SetRowAtAddress(int const _ad, A_Vector3* _AQ);
+	void SetRowAtAddress(int _ad, A_Vector3* _AQ);
 
 	/**
 	returns the demension found at address _f
