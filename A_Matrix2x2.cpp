@@ -81,7 +81,9 @@ const A_Vector2 A_Matrix2x2::GetRowAtAddress(int const _ad) {
 
 }
 
-void A_Matrix2x2::SetRowAtAddress(int const _ad, A_Vector2* _AQ) {
+void A_Matrix2x2::SetRowAtAddress(int _ad, A_Vector2* const _AQ) {
+
+	_ad *= 2;
 
 	this->demensions[_ad] = _AQ->getX();
 	this->demensions[_ad + 1] = _AQ->getY();
