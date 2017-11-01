@@ -60,9 +60,9 @@ void A_Matrix3x4::SetRowAtAddress(int _ad, A_Vector4* const _AV) {
 	_ad *= 4;
 
 	this->demensions[_ad] = _AV->getX();
-	this->demensions[_ad + 1] = _AV->getY();
-	this->demensions[_ad + 1] = _AV->getZ();
-	this->demensions[_ad + 1] = _AV->getW();
+	this->demensions[++_ad] = _AV->getY();
+	this->demensions[++_ad] = _AV->getZ();
+	this->demensions[++_ad] = _AV->getW();
 
 }
 
