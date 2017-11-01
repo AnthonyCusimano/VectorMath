@@ -91,11 +91,9 @@ A_Vector3 A_Matrix3x3::GetColumnAtAddress(char const _ad) {
 
 void A_Matrix3x3::SetColumnAtAddress(char const _ad, A_Vector3* const _AQ) {
 
-	char i = (_ad * 3);
-
-	this->demensions[i] = _AQ->getX();
-	this->demensions[i + 1] = _AQ->getY();
-	this->demensions[i + 2] = _AQ->getZ();
+	this->demensions[_ad] = _AQ->getX();
+	this->demensions[_ad + 3] = _AQ->getY();
+	this->demensions[_ad + 6] = _AQ->getZ();
 
 }
 
@@ -111,11 +109,13 @@ A_Vector3 A_Matrix3x3::GetRowAtAddress(int const _ad) {
 
 }
 
-void A_Matrix3x3::SetRowAtAddress(int const _ad, A_Vector3 *_AQ) {
+void A_Matrix3x3::SetRowAtAddress(int _ad, A_Vector3 *_AQ) {
+
+	_ad *= 3;
 
 	this->demensions[_ad] = _AQ->getX();
-	this->demensions[_ad + 3] = _AQ->getY();
-	this->demensions[_ad + 6] = _AQ->getZ();
+	this->demensions[_ad + 1] = _AQ->getY();
+	this->demensions[_ad + 2] = _AQ->getZ();
 
 }
 
