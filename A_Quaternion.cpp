@@ -1,58 +1,59 @@
 #include "A_Quaternion.h"
 
+const float A_Quaternion::S_QuaternionNormalThreshold = 0.0001f;
 
 A_Quaternion::A_Quaternion() {
 
-	this->demensions[0] = 0.0f;
-	this->demensions[1] = 0.0f;
-	this->demensions[2] = 0.0f;
-	this->demensions[3] = 0.0f;
+	this->dimensions[0] = 0.0f;
+	this->dimensions[1] = 0.0f;
+	this->dimensions[2] = 0.0f;
+	this->dimensions[3] = 0.0f;
 
 }
 
 A_Quaternion::A_Quaternion(A_Quaternion* const _AQ) {
 
-	this->demensions[0] = _AQ->demensions[0];
-	this->demensions[1] = _AQ->demensions[1];
-	this->demensions[2] = _AQ->demensions[2];
-	this->demensions[3] = _AQ->demensions[3];
+	this->dimensions[0] = _AQ->dimensions[0];
+	this->dimensions[1] = _AQ->dimensions[1];
+	this->dimensions[2] = _AQ->dimensions[2];
+	this->dimensions[3] = _AQ->dimensions[3];
 
 }
 
 A_Quaternion::A_Quaternion(A_Vector4* const _AV) {
 
-	this->demensions[0] = _AV->getX();
-	this->demensions[1] = _AV->getY();
-	this->demensions[2] = _AV->getZ();
-	this->demensions[3] = _AV->getW();
+	this->dimensions[0] = _AV->getX();
+	this->dimensions[1] = _AV->getY();
+	this->dimensions[2] = _AV->getZ();
+	this->dimensions[3] = _AV->getW();
 
 
 }
 
 A_Quaternion::A_Quaternion(float const _n) {
 
-	this->demensions[0] = _n;
-	this->demensions[1] = _n;
-	this->demensions[2] = _n;
-	this->demensions[3] = _n;
+	this->dimensions[0] = _n;
+	this->dimensions[1] = _n;
+	this->dimensions[2] = _n;
+	this->dimensions[3] = _n;
 
 }
 
 A_Quaternion::A_Quaternion(float const _x, float const _y, float const _z, float const _w) {
 
-	this->demensions[0] = _x;
-	this->demensions[1] = _y;
-	this->demensions[2] = _z;
-	this->demensions[3] = _w;
+	this->dimensions[0] = _x;
+	this->dimensions[1] = _y;
+	this->dimensions[2] = _z;
+	this->dimensions[3] = _w;
 	
 }
 
 A_Quaternion::A_Quaternion(A_Vector3 const *_AV, float const _w) {
 
-	this->demensions[0] = _AV->getX();
-	this->demensions[1] = _AV->getY();
-	this->demensions[2] = _AV->getZ();
-	this->demensions[3] = _w;
+	this->dimensions[0] = _AV->getX();
+	this->dimensions[1] = _AV->getY();
+	this->dimensions[2] = _AV->getZ();
+	this->dimensions[3] = _w;
 
 }
 
@@ -72,7 +73,7 @@ const A_Vector4 A_Quaternion::GetVector4()const {
 
 	A_Vector4 T_Result;
 
-	T_Result.SetAll(this->demensions[0], this->demensions[1], this->demensions[2], this->demensions[3]);
+	T_Result.SetAll(this->dimensions[0], this->dimensions[1], this->dimensions[2], this->dimensions[3]);
 
 	return T_Result;
 
@@ -81,10 +82,10 @@ const A_Vector4 A_Quaternion::GetVector4()const {
 
 const float A_Quaternion::GetMagnatude() {
 
-	float T_Mag = this->demensions[0] * this->demensions[0];
-	T_Mag += (this->demensions[1] * this->demensions[1]);
-	T_Mag += (this->demensions[2] * this->demensions[2]);
-	T_Mag += (this->demensions[3] * this->demensions[3]);
+	float T_Mag = this->dimensions[0] * this->dimensions[0];
+	T_Mag += (this->dimensions[1] * this->dimensions[1]);
+	T_Mag += (this->dimensions[2] * this->dimensions[2]);
+	T_Mag += (this->dimensions[3] * this->dimensions[3]);
 	T_Mag = ::sqrtf(T_Mag);
 
 	return T_Mag;
@@ -93,16 +94,32 @@ const float A_Quaternion::GetMagnatude() {
 
 void A_Quaternion::Normalize() {
 
-	/******************************************
-	TODO: ADD THRESHOLD
-	******************************************/
+	//before normalizing the quaternion checking
+	//to see it is outside of the "normal threshold"
 
-	float T_Mag = this->GetMagnatude();
+	//first, squaring the quaternion
+	float T_Squared = (this->dimensions[0] * this->dimensions[0]) +
+		(this->dimensions[1] * this->dimensions[1]) +
+		(this->dimensions[2] * this->dimensions[2]) +
+		(this->dimensions[3] * this->dimensions[3]);
 
-	this->demensions[0] /= T_Mag;
-	this->demensions[1] /= T_Mag;
-	this->demensions[2] /= T_Mag;
-	this->demensions[3] /= T_Mag;
+	//next find the absolute value of T_Squared
+	if (T_Squared - 1.0f < 0.0f) T_Squared *= -1.0f;
+
+	//now compare T_Squared with the threshold
+	if (T_Squared != 0.0f && T_Squared > A_Quaternion::S_QuaternionNormalThreshold) {
+		//if it is outside of the threshold, normalize
+
+		float T_Mag = this->GetMagnatude();
+
+		this->dimensions[0] /= T_Mag;
+		this->dimensions[1] /= T_Mag;
+		this->dimensions[2] /= T_Mag;
+		this->dimensions[3] /= T_Mag;
+
+	}
+
+	//else, don't normalize
 
 }
 
@@ -110,10 +127,10 @@ const float A_Quaternion::GetNormal() {
 
 	float T_Mag = this->GetMagnatude();
 
-	this->demensions[0] /= T_Mag;
-	this->demensions[1] /= T_Mag;
-	this->demensions[2] /= T_Mag;
-	this->demensions[3] /= T_Mag;
+	this->dimensions[0] /= T_Mag;
+	this->dimensions[1] /= T_Mag;
+	this->dimensions[2] /= T_Mag;
+	this->dimensions[3] /= T_Mag;
 
 	return T_Mag;
 
@@ -121,22 +138,22 @@ const float A_Quaternion::GetNormal() {
 
 void A_Quaternion::Conjugate() {
 
-	this->demensions[0] *= -1.0f;
-	this->demensions[1] *= -1.0f;
-	this->demensions[2] *= -1.0f;
+	this->dimensions[0] *= -1.0f;
+	this->dimensions[1] *= -1.0f;
+	this->dimensions[2] *= -1.0f;
 
 }
 
 const A_Quaternion A_Quaternion::GetConjugate() {
 
-	A_Quaternion T_Conj;
+	A_Quaternion T_Result;
 
-	T_Conj.demensions[0] = this->demensions[0] * -1.0f;
-	T_Conj.demensions[1] = this->demensions[1] * -1.0f;
-	T_Conj.demensions[2] = this->demensions[2] * -1.0f;
-	T_Conj.demensions[3] = this->demensions[3];
+	T_Result.dimensions[0] = this->dimensions[0] * -1.0f;
+	T_Result.dimensions[1] = this->dimensions[1] * -1.0f;
+	T_Result.dimensions[2] = this->dimensions[2] * -1.0f;
+	T_Result.dimensions[3] = this->dimensions[3];
 
-	return T_Conj;
+	return T_Result;
 
 }
 
@@ -175,10 +192,10 @@ void A_Quaternion::SetFromEuler(A_Vector3 const &_Euler) {
 	y = cx * sycz + sx * cysz;
 	z = cx * cysz - sx * sycz;*/
 
-	this->demensions[0] = (T_sinRoll * T_CosPitchxT_CosYaw) - (T_cosRoll * T_CosPitch2xT_CosYaw);
-	this->demensions[1] = (T_cosRoll * T_cosPitch2xT_CosYaw) + (T_sinRoll * T_CosPitchxT_CosYaw2);
-	this->demensions[2] = (T_cosRoll * T_CosPitchxT_CosYaw2) - (T_sinRoll * T_cosPitch2xT_CosYaw);
-	this->demensions[3] = (T_cosRoll * T_CosPitchxT_CosYaw) + (T_sinRoll * T_cosPitch2xT_CosYaw);
+	this->dimensions[0] = (T_sinRoll * T_CosPitchxT_CosYaw) - (T_cosRoll * T_CosPitch2xT_CosYaw);
+	this->dimensions[1] = (T_cosRoll * T_cosPitch2xT_CosYaw) + (T_sinRoll * T_CosPitchxT_CosYaw2);
+	this->dimensions[2] = (T_cosRoll * T_CosPitchxT_CosYaw2) - (T_sinRoll * T_cosPitch2xT_CosYaw);
+	this->dimensions[3] = (T_cosRoll * T_CosPitchxT_CosYaw) + (T_sinRoll * T_cosPitch2xT_CosYaw);
 
 }
 
@@ -217,10 +234,10 @@ void A_Quaternion::SetFromEuler(float const _rollX, float const _pitchY, float c
 	y = cx * sycz + sx * cysz;
 	z = cx * cysz - sx * sycz;*/
 
-	this->demensions[0] = (T_sinRoll * T_CosPitchxT_CosYaw) - (T_cosRoll * T_CosPitch2xT_CosYaw);
-	this->demensions[1] = (T_cosRoll * T_cosPitch2xT_CosYaw) + (T_sinRoll * T_CosPitchxT_CosYaw2);
-	this->demensions[2] = (T_cosRoll * T_CosPitchxT_CosYaw2) - (T_sinRoll * T_cosPitch2xT_CosYaw);
-	this->demensions[3] = (T_cosRoll * T_CosPitchxT_CosYaw) + (T_sinRoll * T_cosPitch2xT_CosYaw);
+	this->dimensions[0] = (T_sinRoll * T_CosPitchxT_CosYaw) - (T_cosRoll * T_CosPitch2xT_CosYaw);
+	this->dimensions[1] = (T_cosRoll * T_cosPitch2xT_CosYaw) + (T_sinRoll * T_CosPitchxT_CosYaw2);
+	this->dimensions[2] = (T_cosRoll * T_CosPitchxT_CosYaw2) - (T_sinRoll * T_cosPitch2xT_CosYaw);
+	this->dimensions[3] = (T_cosRoll * T_CosPitchxT_CosYaw) + (T_sinRoll * T_cosPitch2xT_CosYaw);
 
 }
 

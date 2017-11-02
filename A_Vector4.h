@@ -19,23 +19,23 @@ public:
 
 	/**
 	default constructor
-	initializes demensions to 0
+	initializes dimensions to 0
 	*/
 	A_Vector4();
 
 	/**
-	initializes each demension to _n
+	initializes each dimension to _n
 	*/
 	A_Vector4(float const n);
 
 	/**
 	copy constructor
-	initializes demensions to the values of _AV
+	initializes dimensions to the values of _AV
 	*/
 	A_Vector4(A_Vector4* const _AV);
 
 	/**
-	constructor initializes demensions to the corresponding arguments
+	constructor initializes dimensions to the corresponding arguments
 	*/
 	A_Vector4(float const _x, float const _y, float const _z, float const _w);
 
@@ -102,7 +102,7 @@ public:
 	*/
 	const float getX() {
 
-		return this->demensions[0];
+		return this->dimensions[0];
 
 	}
 
@@ -111,7 +111,7 @@ public:
 	*/
 	void setX(float const _x) {
 
-		this->demensions[0] = _x;
+		this->dimensions[0] = _x;
 
 	}
 
@@ -120,7 +120,7 @@ public:
 	*/
 	const float getY() {
 
-		return this->demensions[1];
+		return this->dimensions[1];
 
 	}
 
@@ -129,7 +129,7 @@ public:
 	*/
 	void setY(float const _y) {
 
-		this->demensions[1] = _y;
+		this->dimensions[1] = _y;
 
 	}
 
@@ -138,7 +138,7 @@ public:
 	*/
 	const float getZ() {
 
-		return this->demensions[2];
+		return this->dimensions[2];
 
 	}
 
@@ -147,7 +147,7 @@ public:
 	*/
 	void setZ(float _z) {
 
-		this->demensions[2] = _z;
+		this->dimensions[2] = _z;
 
 	}
 
@@ -156,7 +156,7 @@ public:
 	*/
 	const float getW() {
 
-		return this->demensions[3];
+		return this->dimensions[3];
 
 	}
 
@@ -165,7 +165,7 @@ public:
 	*/
 	void setW(float const _w) {
 
-		this->demensions[3] = _w;
+		this->dimensions[3] = _w;
 
 	}
 
@@ -174,10 +174,10 @@ public:
 	*/
 	void SetAll(float const _x, float const _y, float const _z, float const _w) {
 
-		this->demensions[0] = _x;
-		this->demensions[1] = _y;
-		this->demensions[2] = _z;
-		this->demensions[3] = _w;
+		this->dimensions[0] = _x;
+		this->dimensions[1] = _y;
+		this->dimensions[2] = _z;
+		this->dimensions[3] = _w;
 
 	}
 
@@ -186,10 +186,10 @@ public:
 	*/
 	void SetAll(float const _n) {
 
-		this->demensions[0] = _n;
-		this->demensions[1] = _n;
-		this->demensions[2] = _n;
-		this->demensions[3] = _n;
+		this->dimensions[0] = _n;
+		this->dimensions[1] = _n;
+		this->dimensions[2] = _n;
+		this->dimensions[3] = _n;
 
 	}
 
@@ -199,10 +199,10 @@ public:
 	*/
 	void SetAll(A_Vector4* const _AV) {
 
-		this->demensions[0] = _AV->demensions[0];
-		this->demensions[1] = _AV->demensions[1];
-		this->demensions[2] = _AV->demensions[2];
-		this->demensions[3] = _AV->demensions[3];
+		this->dimensions[0] = _AV->dimensions[0];
+		this->dimensions[1] = _AV->dimensions[1];
+		this->dimensions[2] = _AV->dimensions[2];
+		this->dimensions[3] = _AV->dimensions[3];
 
 	}
 
@@ -223,10 +223,10 @@ public:
 
 		A_Vector4 t_v;
 
-		t_v.demensions[0] = this->demensions[0] * _f;
-		t_v.demensions[1] = this->demensions[1] * _f;
-		t_v.demensions[2] = this->demensions[2] * _f;
-		t_v.demensions[3] = this->demensions[3] * _f;
+		t_v.dimensions[0] = this->dimensions[0] * _f;
+		t_v.dimensions[1] = this->dimensions[1] * _f;
+		t_v.dimensions[2] = this->dimensions[2] * _f;
+		t_v.dimensions[3] = this->dimensions[3] * _f;
 
 		return t_v;
 
@@ -238,10 +238,10 @@ public:
 	void operator *=(float _f) {
 
 
-		this->demensions[0] *= _f;
-		this->demensions[1] *= _f;
-		this->demensions[2] *= _f;
-		this->demensions[3] *= _f;
+		this->dimensions[0] *= _f;
+		this->dimensions[1] *= _f;
+		this->dimensions[2] *= _f;
+		this->dimensions[3] *= _f;
 
 	}
 
@@ -261,10 +261,10 @@ public:
 	A_Vector4 operator +(A_Vector4& const _A) {
 
 		A_Vector4 T_A;
-		T_A.demensions[0] = _A.demensions[0] + this->demensions[0];
-		T_A.demensions[1] = _A.demensions[1] + this->demensions[1];
-		T_A.demensions[2] = _A.demensions[2] + this->demensions[2];
-		T_A.demensions[3] = _A.demensions[2] + this->demensions[2];
+		T_A.dimensions[0] = _A.dimensions[0] + this->dimensions[0];
+		T_A.dimensions[1] = _A.dimensions[1] + this->dimensions[1];
+		T_A.dimensions[2] = _A.dimensions[2] + this->dimensions[2];
+		T_A.dimensions[3] = _A.dimensions[2] + this->dimensions[2];
 
 	}
 
@@ -274,10 +274,10 @@ public:
 	A_Vector4 operator +(float const _f) {
 
 		A_Vector4 t_v;
-		t_v.demensions[0] = this->demensions[0] + _f;
-		t_v.demensions[1] = this->demensions[1] + _f;
-		t_v.demensions[2] = this->demensions[2] + _f;
-		t_v.demensions[3] = this->demensions[2] + _f;
+		t_v.dimensions[0] = this->dimensions[0] + _f;
+		t_v.dimensions[1] = this->dimensions[1] + _f;
+		t_v.dimensions[2] = this->dimensions[2] + _f;
+		t_v.dimensions[3] = this->dimensions[2] + _f;
 
 		return t_v;
 	}
@@ -288,10 +288,10 @@ public:
 	A_Vector4 operator -(A_Vector4& const _A) {
 
 		A_Vector4 T_A;
-		T_A.demensions[0] = _A.demensions[0] - this->demensions[0];
-		T_A.demensions[1] = _A.demensions[1] - this->demensions[1];
-		T_A.demensions[2] = _A.demensions[2] - this->demensions[2];
-		T_A.demensions[3] = _A.demensions[2] - this->demensions[2];
+		T_A.dimensions[0] = _A.dimensions[0] - this->dimensions[0];
+		T_A.dimensions[1] = _A.dimensions[1] - this->dimensions[1];
+		T_A.dimensions[2] = _A.dimensions[2] - this->dimensions[2];
+		T_A.dimensions[3] = _A.dimensions[2] - this->dimensions[2];
 
 		return T_A;
 
@@ -303,10 +303,10 @@ public:
 	A_Vector4 operator -(float const _f) {
 
 		A_Vector4 t_v;
-		t_v.demensions[0] = this->demensions[0] - _f;
-		t_v.demensions[1] = this->demensions[1] - _f;
-		t_v.demensions[2] = this->demensions[2] - _f;
-		t_v.demensions[3] = this->demensions[2] - _f;
+		t_v.dimensions[0] = this->dimensions[0] - _f;
+		t_v.dimensions[1] = this->dimensions[1] - _f;
+		t_v.dimensions[2] = this->dimensions[2] - _f;
+		t_v.dimensions[3] = this->dimensions[2] - _f;
 
 		return t_v;
 	}
@@ -326,10 +326,10 @@ public:
 	*/
 	void operator += (A_Vector4& const _A) {
 
-		this->demensions[0] += _A.demensions[0];
-		this->demensions[1] += _A.demensions[1];
-		this->demensions[2] += _A.demensions[2];
-		this->demensions[3] += _A.demensions[2];
+		this->dimensions[0] += _A.dimensions[0];
+		this->dimensions[1] += _A.dimensions[1];
+		this->dimensions[2] += _A.dimensions[2];
+		this->dimensions[3] += _A.dimensions[2];
 
 	}
 
@@ -338,10 +338,10 @@ public:
 	*/
 	void operator += (float const _f) {
 
-		this->demensions[0] += _f;
-		this->demensions[1] += _f;
-		this->demensions[2] += _f;
-		this->demensions[3] += _f;
+		this->dimensions[0] += _f;
+		this->dimensions[1] += _f;
+		this->dimensions[2] += _f;
+		this->dimensions[3] += _f;
 
 	}
 
@@ -350,10 +350,10 @@ public:
 	*/
 	void operator -= (A_Vector4& const _A) {
 
-		this->demensions[0] -= _A.demensions[0];
-		this->demensions[1] -= _A.demensions[1];
-		this->demensions[2] -= _A.demensions[2];
-		this->demensions[3] += _A.demensions[2];
+		this->dimensions[0] -= _A.dimensions[0];
+		this->dimensions[1] -= _A.dimensions[1];
+		this->dimensions[2] -= _A.dimensions[2];
+		this->dimensions[3] += _A.dimensions[2];
 
 	}
 
@@ -362,10 +362,10 @@ public:
 	*/
 	void operator -= (float const _f) {
 
-		this->demensions[0] -= _f;
-		this->demensions[1] -= _f;
-		this->demensions[2] -= _f;
-		this->demensions[3] -= _f;
+		this->dimensions[0] -= _f;
+		this->dimensions[1] -= _f;
+		this->dimensions[2] -= _f;
+		this->dimensions[3] -= _f;
 
 	}
 
@@ -384,29 +384,29 @@ public:
 	*/
 	void operator = (A_Vector4 const &_A) {
 
-		this->demensions[0] = _A.demensions[0];
-		this->demensions[1] = _A.demensions[1];
-		this->demensions[2] = _A.demensions[2];
-		this->demensions[3] = _A.demensions[3];
+		this->dimensions[0] = _A.dimensions[0];
+		this->dimensions[1] = _A.dimensions[1];
+		this->dimensions[2] = _A.dimensions[2];
+		this->dimensions[3] = _A.dimensions[3];
 
 	}
 
 	/**
-	sets all of this vector's demensions to _f
+	sets all of this vector's dimensions to _f
 	*/
 	void operator = (float const _f) {
 
-		this->demensions[0] = _f;
-		this->demensions[1] = _f;
-		this->demensions[2] = _f;
-		this->demensions[3] = _f;
+		this->dimensions[0] = _f;
+		this->dimensions[1] = _f;
+		this->dimensions[2] = _f;
+		this->dimensions[3] = _f;
 
 	}
 
 private:
 
 	//x, y, z, w
-	float demensions[4];
+	float dimensions[4];
 
 };
 

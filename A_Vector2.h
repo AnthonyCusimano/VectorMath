@@ -79,7 +79,7 @@ public:
 	*/
 	const float getX()const {
 
-		return this->demensions[0];
+		return this->dimensions[0];
 
 	}
 
@@ -88,25 +88,25 @@ public:
 	*/
 	const float getY()const {
 
-		return this->demensions[1];
+		return this->dimensions[1];
 
 	}
 
 	/**
 	access for setting X
 	*/
-	void SetX(float const _X) {
+	void setX(float const _X) {
 
-		this->demensions[0] = _X;
+		this->dimensions[0] = _X;
 
 	}
 
 	/**
 	access for setting X
 	*/
-	void SetY(float const _Y) {
+	void setY(float const _Y) {
 
-		this->demensions[1] = _Y;
+		this->dimensions[1] = _Y;
 
 	}
 
@@ -115,8 +115,8 @@ public:
 	*/
 	void SetAll(float const _X, float const _Y) {
 
-		this->demensions[0] = _X;
-		this->demensions[1] = _Y;
+		this->dimensions[0] = _X;
+		this->dimensions[1] = _Y;
 
 	}
 
@@ -125,9 +125,9 @@ public:
 	*/
 	void SetAll(float const _n) {
 
-		this->demensions[0] = _n;
-		this->demensions[1] = _n;
-
+		this->dimensions[0] = _n;
+		this->dimensions[1] = _n;
+		
 	}
 
 	/**
@@ -136,8 +136,8 @@ public:
 	*/
 	void SetAll(A_Vector2* const _AV) {
 
-		this->demensions[0] = _AV->demensions[0];
-		this->demensions[1] = _AV->demensions[1];
+		this->dimensions[0] = _AV->dimensions[0];
+		this->dimensions[1] = _AV->dimensions[1];
 
 	}
 
@@ -158,8 +158,8 @@ public:
 
 		A_Vector2 t_v;
 
-		t_v.demensions[0] = this->demensions[0] * _f;
-		t_v.demensions[1] = this->demensions[1] * _f;
+		t_v.dimensions[0] = this->dimensions[0] * _f;
+		t_v.dimensions[1] = this->dimensions[1] * _f;
 
 		return t_v;
 	}
@@ -169,8 +169,8 @@ public:
 	*/
 	void operator *= (float const _f) {
 
-		this->demensions[0] *= _f;
-		this->demensions[1] *= _f;
+		this->dimensions[0] *= _f;
+		this->dimensions[1] *= _f;
 
 	}
 
@@ -180,8 +180,8 @@ public:
 	A_Vector2 operator + (A_Vector2& const _A) {
 
 		A_Vector2 T_A;
-		T_A.demensions[0] = _A.demensions[0] + this->demensions[0];
-		T_A.demensions[1] = _A.demensions[1] + this->demensions[1];
+		T_A.dimensions[0] = _A.dimensions[0] + this->dimensions[0];
+		T_A.dimensions[1] = _A.dimensions[1] + this->dimensions[1];
 
 		return T_A;
 
@@ -193,8 +193,8 @@ public:
 	const A_Vector2 operator + (float const _f) {
 
 		A_Vector2 t_v;
-		t_v.demensions[0] = this->demensions[0] + _f;
-		t_v.demensions[1] = this->demensions[1] + _f;
+		t_v.dimensions[0] = this->dimensions[0] + _f;
+		t_v.dimensions[1] = this->dimensions[1] + _f;
 
 		return &t_v;
 	}
@@ -204,8 +204,8 @@ public:
 	*/
 	void operator += (A_Vector2& const _A) {
 
-		this->demensions[0] += _A.demensions[0];
-		this->demensions[1] += _A.demensions[1];
+		this->dimensions[0] += _A.dimensions[0];
+		this->dimensions[1] += _A.dimensions[1];
 
 	}
 
@@ -216,8 +216,8 @@ public:
 
 		A_Vector2 T_V;
 
-		T_V.demensions[0] = this->demensions[0] - _f;
-		T_V.demensions[1] = this->demensions[1] - _f;
+		T_V.dimensions[0] = this->dimensions[0] - _f;
+		T_V.dimensions[1] = this->dimensions[1] - _f;
 
 		return T_V;
 
@@ -228,8 +228,8 @@ public:
 	*/
 	void operator -= (float const _f) {
 
-		this->demensions[0] -= _f;
-		this->demensions[1] -= _f;
+		this->dimensions[0] -= _f;
+		this->dimensions[1] -= _f;
 
 	}
 
@@ -249,7 +249,7 @@ public:
 	*/
 	bool operator == (A_Vector2& const _A) {
 
-		return (_A.demensions[0] == this->demensions[0] && _A.demensions[1] == this->demensions[1]);
+		return (_A.dimensions[0] == this->dimensions[0] && _A.dimensions[1] == this->dimensions[1]);
 
 	}
 
@@ -259,7 +259,7 @@ public:
 	*/
 	bool operator != (A_Vector2& const _A) {
 
-		return (_A.demensions[0] != this->demensions[0] || _A.demensions[1] != this->demensions[1]);
+		return (_A.dimensions[0] != this->dimensions[0] || _A.dimensions[1] != this->dimensions[1]);
 
 	}
 
@@ -308,8 +308,8 @@ public:
 	*/
 	void operator = (A_Vector2& const _A) {
 
-		this->demensions[0] = _A.demensions[0];
-		this->demensions[1] = _A.demensions[1];
+		this->dimensions[0] = _A.dimensions[0];
+		this->dimensions[1] = _A.dimensions[1];
 
 	}
 
@@ -318,14 +318,14 @@ public:
 	*/
 	void operator = (float const _f) {
 
-		this->demensions[0] = this->demensions[1] = _f;
+		this->dimensions[0] = this->dimensions[1] = _f;
 
 	}
 
 private:
 
 	//x, y
-	float demensions[2];
+	float dimensions[2];
 
 };
 

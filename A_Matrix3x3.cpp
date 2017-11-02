@@ -4,7 +4,7 @@ A_Matrix3x3::A_Matrix3x3() {
 
 	for (char i = 0; i < 9; ++i) {
 
-		this->demensions[i] = 0.0f;
+		this->dimensions[i] = 0.0f;
 
 	}
 
@@ -18,11 +18,11 @@ A_Matrix3x3::A_Matrix3x3(float const _f) {
 
 			if (i == 0 || i == 4 || i == 8) {
 
-				this->demensions[i] = 1.0f;
+				this->dimensions[i] = 1.0f;
 
 			}
 
-			else demensions[i] = 0.0f;
+			else dimensions[i] = 0.0f;
 
 		}
 
@@ -32,7 +32,7 @@ A_Matrix3x3::A_Matrix3x3(float const _f) {
 
 		for (char i = 0; i < 9; ++i) {
 
-			this->demensions[i] = _f;
+			this->dimensions[i] = _f;
 
 		}
 
@@ -44,7 +44,7 @@ A_Matrix3x3::A_Matrix3x3(A_Matrix3x3* const _AM) {
 
 	for (char i = 0; i < 9; ++i) {
 
-		this->demensions[i] = _AM->demensions[i];
+		this->dimensions[i] = _AM->dimensions[i];
 
 	}
 
@@ -52,33 +52,33 @@ A_Matrix3x3::A_Matrix3x3(A_Matrix3x3* const _AM) {
 
 A_Matrix3x3::A_Matrix3x3(A_Vector3* const _AV1, A_Vector3* const _AV2, A_Vector3* const _AV3) {
 
-	this->demensions[0] = _AV1->getX();
-	this->demensions[1] = _AV1->getY();
-	this->demensions[2] = _AV1->getZ();
+	this->dimensions[0] = _AV1->getX();
+	this->dimensions[1] = _AV1->getY();
+	this->dimensions[2] = _AV1->getZ();
 
-	this->demensions[3] = _AV2->getX();
-	this->demensions[4] = _AV2->getY();
-	this->demensions[5] = _AV2->getZ();
+	this->dimensions[3] = _AV2->getX();
+	this->dimensions[4] = _AV2->getY();
+	this->dimensions[5] = _AV2->getZ();
 
-	this->demensions[6] = _AV3->getX();
-	this->demensions[7] = _AV3->getY();
-	this->demensions[8] = _AV3->getZ();
+	this->dimensions[6] = _AV3->getX();
+	this->dimensions[7] = _AV3->getY();
+	this->dimensions[8] = _AV3->getZ();
 
 }
 
 A_Matrix3x3::A_Matrix3x3(A_Vector3* const _AV1, A_Vector3* const _AV2, A_Vector3* const _AV3, char const unUsedColumnConstructor) {
 
-	this->demensions[0] = _AV1->getX();
-	this->demensions[3] = _AV1->getY();
-	this->demensions[6] = _AV1->getZ();
+	this->dimensions[0] = _AV1->getX();
+	this->dimensions[3] = _AV1->getY();
+	this->dimensions[6] = _AV1->getZ();
 
-	this->demensions[1] = _AV2->getX();
-	this->demensions[4] = _AV2->getY();
-	this->demensions[7] = _AV2->getZ();
+	this->dimensions[1] = _AV2->getX();
+	this->dimensions[4] = _AV2->getY();
+	this->dimensions[7] = _AV2->getZ();
 
-	this->demensions[2] = _AV3->getX();
-	this->demensions[5] = _AV3->getY();
-	this->demensions[8] = _AV3->getZ();
+	this->dimensions[2] = _AV3->getX();
+	this->dimensions[5] = _AV3->getY();
+	this->dimensions[8] = _AV3->getZ();
 
 }
 
@@ -86,7 +86,7 @@ A_Matrix3x3::A_Matrix3x3(float const _f[]) {
 
 	for (char i = 0; i < 9; ++i) {
 
-		this->demensions[i] = _f[i];
+		this->dimensions[i] = _f[i];
 
 	}
 
@@ -97,9 +97,9 @@ A_Vector3 A_Matrix3x3::GetColumnAtAddress(int const _ad) {
 	int i = (_ad * 3);
 	A_Vector3 T_Result;
 
-	T_Result.setX(this->demensions[i]);
-	T_Result.setY(this->demensions[i + 3]);
-	T_Result.setZ(this->demensions[i + 6]);
+	T_Result.setX(this->dimensions[i]);
+	T_Result.setY(this->dimensions[i + 3]);
+	T_Result.setZ(this->dimensions[i + 6]);
 
 	return T_Result;
 
@@ -107,9 +107,9 @@ A_Vector3 A_Matrix3x3::GetColumnAtAddress(int const _ad) {
 
 void A_Matrix3x3::SetColumnAtAddress(int const _ad, A_Vector3* const _AV) {
 
-	this->demensions[_ad] = _AV->getX();
-	this->demensions[_ad + 3] = _AV->getY();
-	this->demensions[_ad + 6] = _AV->getZ();
+	this->dimensions[_ad] = _AV->getX();
+	this->dimensions[_ad + 3] = _AV->getY();
+	this->dimensions[_ad + 6] = _AV->getZ();
 
 }
 
@@ -117,9 +117,9 @@ A_Vector3 A_Matrix3x3::GetRowAtAddress(int _ad) {
 
 	A_Vector3 T_Result;
 
-	T_Result.setX(this->demensions[_ad]);
-	T_Result.setY(this->demensions[++_ad]);
-	T_Result.setZ(this->demensions[++_ad]);
+	T_Result.setX(this->dimensions[_ad]);
+	T_Result.setY(this->dimensions[++_ad]);
+	T_Result.setZ(this->dimensions[++_ad]);
 
 	return T_Result;
 
@@ -129,19 +129,19 @@ void A_Matrix3x3::SetRowAtAddress(int _ad, A_Vector3 *_AV) {
 
 	_ad *= 3;
 
-	this->demensions[_ad] = _AV->getX();
-	this->demensions[++_ad] = _AV->getY();
-	this->demensions[++_ad] = _AV->getZ();
+	this->dimensions[_ad] = _AV->getX();
+	this->dimensions[++_ad] = _AV->getY();
+	this->dimensions[++_ad] = _AV->getZ();
 
 }
 
 void A_Matrix3x3::setIdentity() {
 
-	this->demensions[0] = 1.0f;
-	this->demensions[1] = this->demensions[2] = this->demensions[3] = 0.0f;
-	this->demensions[4] = 1.0f;
-	this->demensions[5] = this->demensions[6] = this->demensions[7] = 0.0f;
-	this->demensions[8] = 1.0f;
+	this->dimensions[0] = 1.0f;
+	this->dimensions[1] = this->dimensions[2] = this->dimensions[3] = 0.0f;
+	this->dimensions[4] = 1.0f;
+	this->dimensions[5] = this->dimensions[6] = this->dimensions[7] = 0.0f;
+	this->dimensions[8] = 1.0f;
 
 }
 
@@ -157,15 +157,15 @@ const bool A_Matrix3x3::Invert() {
 	float T_Matrix[9];
 
 	//minors, cofactors
-	T_4857_ = this->demensions[4] * this->demensions[8] - this->demensions[5] * this->demensions[7];//0
-	T_3856_ = -(this->demensions[3] * this->demensions[8] - this->demensions[5] * this->demensions[6]);//1
-	T_3746_ = this->demensions[3] * this->demensions[7] - this->demensions[4] * this->demensions[6];//2
-	T_1827_ = -(this->demensions[1] * this->demensions[8] - this->demensions[2] * this->demensions[7]);//3
-	T_0826_ = this->demensions[0] * this->demensions[8] - this->demensions[2] * this->demensions[6];//4
-	T_0716_ = -(this->demensions[0] * this->demensions[7] - this->demensions[1] * this->demensions[6]);//5
-	T_1524_ = this->demensions[1] * this->demensions[5] - this->demensions[2] * this->demensions[4];//6
-	T_0523_ = -(this->demensions[0] * this->demensions[5] - this->demensions[2] * this->demensions[3]);//7
-	T_0413_ = this->demensions[0] * this->demensions[4] - this->demensions[1] * this->demensions[3];//8
+	T_4857_ = this->dimensions[4] * this->dimensions[8] - this->dimensions[5] * this->dimensions[7];//0
+	T_3856_ = -(this->dimensions[3] * this->dimensions[8] - this->dimensions[5] * this->dimensions[6]);//1
+	T_3746_ = this->dimensions[3] * this->dimensions[7] - this->dimensions[4] * this->dimensions[6];//2
+	T_1827_ = -(this->dimensions[1] * this->dimensions[8] - this->dimensions[2] * this->dimensions[7]);//3
+	T_0826_ = this->dimensions[0] * this->dimensions[8] - this->dimensions[2] * this->dimensions[6];//4
+	T_0716_ = -(this->dimensions[0] * this->dimensions[7] - this->dimensions[1] * this->dimensions[6]);//5
+	T_1524_ = this->dimensions[1] * this->dimensions[5] - this->dimensions[2] * this->dimensions[4];//6
+	T_0523_ = -(this->dimensions[0] * this->dimensions[5] - this->dimensions[2] * this->dimensions[3]);//7
+	T_0413_ = this->dimensions[0] * this->dimensions[4] - this->dimensions[1] * this->dimensions[3];//8
 
 	//transpose
 	T_Matrix[0] = T_4857_;//0
@@ -178,17 +178,17 @@ const bool A_Matrix3x3::Invert() {
 	T_Matrix[7] = T_0716_;//5
 	T_Matrix[8] = T_0413_;//8
 
-	T_Determinant = (this->demensions[0] * T_4857_) - (this->demensions[1] * T_3856_) + (this->demensions[2] * T_3746_);
+	T_Determinant = (this->dimensions[0] * T_4857_) - (this->dimensions[1] * T_3856_) + (this->dimensions[2] * T_3746_);
 
-	this->demensions[0] = T_Matrix[0] / T_Determinant;
-	this->demensions[1] = T_Matrix[1] / T_Determinant;
-	this->demensions[2] = T_Matrix[2] / T_Determinant;
-	this->demensions[3] = T_Matrix[3] / T_Determinant;
-	this->demensions[4] = T_Matrix[4] / T_Determinant;
-	this->demensions[5] = T_Matrix[5] / T_Determinant;
-	this->demensions[6] = T_Matrix[6] / T_Determinant;
-	this->demensions[7] = T_Matrix[7] / T_Determinant;
-	this->demensions[8] = T_Matrix[8] / T_Determinant;
+	this->dimensions[0] = T_Matrix[0] / T_Determinant;
+	this->dimensions[1] = T_Matrix[1] / T_Determinant;
+	this->dimensions[2] = T_Matrix[2] / T_Determinant;
+	this->dimensions[3] = T_Matrix[3] / T_Determinant;
+	this->dimensions[4] = T_Matrix[4] / T_Determinant;
+	this->dimensions[5] = T_Matrix[5] / T_Determinant;
+	this->dimensions[6] = T_Matrix[6] / T_Determinant;
+	this->dimensions[7] = T_Matrix[7] / T_Determinant;
+	this->dimensions[8] = T_Matrix[8] / T_Determinant;
 
 	return true;
 
@@ -198,17 +198,17 @@ const A_Matrix3x3 A_Matrix3x3::GetTransposed() {
 
 	A_Matrix3x3 T_Result;
 
-	T_Result.demensions[0] = this->demensions[0];
-	T_Result.demensions[1] = this->demensions[3];
-	T_Result.demensions[2] = this->demensions[6];
+	T_Result.dimensions[0] = this->dimensions[0];
+	T_Result.dimensions[1] = this->dimensions[3];
+	T_Result.dimensions[2] = this->dimensions[6];
 
-	T_Result.demensions[3] = this->demensions[1];
-	T_Result.demensions[4] = this->demensions[4];
-	T_Result.demensions[5] = this->demensions[7];
+	T_Result.dimensions[3] = this->dimensions[1];
+	T_Result.dimensions[4] = this->dimensions[4];
+	T_Result.dimensions[5] = this->dimensions[7];
 
-	T_Result.demensions[6] = this->demensions[2];
-	T_Result.demensions[7] = this->demensions[5];
-	T_Result.demensions[8] = this->demensions[8];
+	T_Result.dimensions[6] = this->dimensions[2];
+	T_Result.dimensions[7] = this->dimensions[5];
+	T_Result.dimensions[8] = this->dimensions[8];
 
 	return T_Result;
 
@@ -221,27 +221,27 @@ void A_Matrix3x3::SetTranposed() {
 	//this->demensions[0] stays the same
 
 	//need to preserve this->demensions[1] for later
-	T_Placehold.demensions[1] = this->demensions[1];
-	this->demensions[1] = this->demensions[3];
+	T_Placehold.dimensions[1] = this->dimensions[1];
+	this->dimensions[1] = this->dimensions[3];
 
 	//need to preserve this->demensions[2] for later
-	T_Placehold.demensions[2] = this->demensions[2];
-	this->demensions[2] = this->demensions[6];
+	T_Placehold.dimensions[2] = this->dimensions[2];
+	this->dimensions[2] = this->dimensions[6];
 
 	////held the old demensions[1] in T_Placehold
-	this->demensions[3] = T_Placehold.demensions[1];
+	this->dimensions[3] = T_Placehold.dimensions[1];
 
 	//this->demensions[4] stays the same
 
 	//need to preserve this->demensions[5] for later
-	T_Placehold.demensions[5] = this->demensions[5];
-	this->demensions[5] = this->demensions[7];
+	T_Placehold.dimensions[5] = this->dimensions[5];
+	this->dimensions[5] = this->dimensions[7];
 
 	//held the old demensions[2] in T_Placehold
-	this->demensions[6] = T_Placehold.demensions[2];
+	this->dimensions[6] = T_Placehold.dimensions[2];
 
 	//held the old demensions[5] in T_Placehold
-	this->demensions[7] = T_Placehold.demensions[5];
+	this->dimensions[7] = T_Placehold.dimensions[5];
 
 	//this->demensions[8] stays the same
 

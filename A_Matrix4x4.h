@@ -44,7 +44,7 @@ public:
 	A_Matrix4x4(A_Vector4* const _AV1, A_Vector4* const _AV2, A_Vector4* const _AV3, A_Vector4* const _AV4, char const unUsedColumnConstructor);
 
 	/**
-	assigns the demensions of this matrix to the elements of _f, in order
+	assigns the dimensions of this matrix to the elements of _f, in order
 	_f should be [16]
 	*/
 	A_Matrix4x4(float const _f[]);
@@ -89,11 +89,11 @@ public:
 	void SetRowAtAddress(int _ad, A_Vector4* _AQ);
 
 	/**
-	returns the demension found at address _f
+	returns the dimension found at address _f
 	*/
-	const float GetDemensionAtAddress(int const _f) const {
+	const float GetDimensionAtAddress(int const _f) const {
 
-		return this->demensions[_f];
+		return this->dimensions[_f];
 
 	}
 
@@ -191,7 +191,7 @@ public:
 
 		for (char i = 0; i < 16; ++i) {
 
-			T_Result.demensions[i] = this->demensions[i] + _AM.demensions[i];
+			T_Result.dimensions[i] = this->dimensions[i] + _AM.dimensions[i];
 
 		}
 
@@ -206,7 +206,7 @@ public:
 
 		for (char i = 0; i < 16; ++i) {
 
-			this->demensions[i] += _AM.demensions[i];
+			this->dimensions[i] += _AM.dimensions[i];
 
 		}
 
@@ -221,7 +221,7 @@ public:
 
 		for (char i = 0; i < 16; ++i) {
 
-			T_Result.demensions[i] = this->demensions[i] - _AM.demensions[i];
+			T_Result.dimensions[i] = this->dimensions[i] - _AM.dimensions[i];
 
 		}
 
@@ -236,7 +236,7 @@ public:
 
 		for (char i = 0; i < 16; ++i) {
 
-			this->demensions[i] -= _AM.demensions[i];
+			this->dimensions[i] -= _AM.dimensions[i];
 
 		}
 
@@ -261,7 +261,7 @@ public:
 
 		for (char i = 0; i < 16; ++i) {
 
-			T_Result.demensions[i] = this->demensions[i] * _f;
+			T_Result.dimensions[i] = this->dimensions[i] * _f;
 
 		}
 		
@@ -277,41 +277,41 @@ public:
 	A_Matrix4x4 T_Result;
 
 		//https://wikimedia.org/api/rest_v1/media/math/render/svg/89622b95453d4895904dbd0c72e6beccbe63772c
-		T_Result.demensions[0] = this->demensions[0] * _AM.demensions[0] + this->demensions[1] * _AM.demensions[4] + this->demensions[2] * _AM.demensions[8] + this->demensions[3] * _AM.demensions[12];
-		T_Result.demensions[1] = this->demensions[0] * _AM.demensions[1] + this->demensions[1] * _AM.demensions[5] + this->demensions[2] * _AM.demensions[9] + this->demensions[3] * _AM.demensions[13];
-		T_Result.demensions[2] = this->demensions[0] * _AM.demensions[2] + this->demensions[1] * _AM.demensions[6] + this->demensions[2] * _AM.demensions[10] + this->demensions[3] * _AM.demensions[14];
-		T_Result.demensions[3] = this->demensions[0] * _AM.demensions[3] + this->demensions[1] * _AM.demensions[7] + this->demensions[2] * _AM.demensions[11] + this->demensions[3] * _AM.demensions[15];
+		T_Result.dimensions[0] = this->dimensions[0] * _AM.dimensions[0] + this->dimensions[1] * _AM.dimensions[4] + this->dimensions[2] * _AM.dimensions[8] + this->dimensions[3] * _AM.dimensions[12];
+		T_Result.dimensions[1] = this->dimensions[0] * _AM.dimensions[1] + this->dimensions[1] * _AM.dimensions[5] + this->dimensions[2] * _AM.dimensions[9] + this->dimensions[3] * _AM.dimensions[13];
+		T_Result.dimensions[2] = this->dimensions[0] * _AM.dimensions[2] + this->dimensions[1] * _AM.dimensions[6] + this->dimensions[2] * _AM.dimensions[10] + this->dimensions[3] * _AM.dimensions[14];
+		T_Result.dimensions[3] = this->dimensions[0] * _AM.dimensions[3] + this->dimensions[1] * _AM.dimensions[7] + this->dimensions[2] * _AM.dimensions[11] + this->dimensions[3] * _AM.dimensions[15];
 		
-		T_Result.demensions[4] = this->demensions[4] * _AM.demensions[0] + this->demensions[5] * _AM.demensions[4] + this->demensions[6] * _AM.demensions[8] + this->demensions[7] * _AM.demensions[12];
-		T_Result.demensions[5] = this->demensions[4] * _AM.demensions[1] + this->demensions[5] * _AM.demensions[5] + this->demensions[6] * _AM.demensions[9] + this->demensions[7] * _AM.demensions[13];
-		T_Result.demensions[6] = this->demensions[4] * _AM.demensions[2] + this->demensions[5] * _AM.demensions[6] + this->demensions[6] * _AM.demensions[10] + this->demensions[7] * _AM.demensions[14];
-		T_Result.demensions[7] = this->demensions[4] * _AM.demensions[3] + this->demensions[5] * _AM.demensions[7] + this->demensions[6] * _AM.demensions[11] + this->demensions[7] * _AM.demensions[15];
+		T_Result.dimensions[4] = this->dimensions[4] * _AM.dimensions[0] + this->dimensions[5] * _AM.dimensions[4] + this->dimensions[6] * _AM.dimensions[8] + this->dimensions[7] * _AM.dimensions[12];
+		T_Result.dimensions[5] = this->dimensions[4] * _AM.dimensions[1] + this->dimensions[5] * _AM.dimensions[5] + this->dimensions[6] * _AM.dimensions[9] + this->dimensions[7] * _AM.dimensions[13];
+		T_Result.dimensions[6] = this->dimensions[4] * _AM.dimensions[2] + this->dimensions[5] * _AM.dimensions[6] + this->dimensions[6] * _AM.dimensions[10] + this->dimensions[7] * _AM.dimensions[14];
+		T_Result.dimensions[7] = this->dimensions[4] * _AM.dimensions[3] + this->dimensions[5] * _AM.dimensions[7] + this->dimensions[6] * _AM.dimensions[11] + this->dimensions[7] * _AM.dimensions[15];
 
-		T_Result.demensions[8] = this->demensions[8] * _AM.demensions[0] + this->demensions[9] * _AM.demensions[4] + this->demensions[10] * _AM.demensions[8] + this->demensions[11] * _AM.demensions[12];
-		T_Result.demensions[9] = this->demensions[8] * _AM.demensions[1] + this->demensions[9] * _AM.demensions[5] + this->demensions[10] * _AM.demensions[9] + this->demensions[11] * _AM.demensions[13];
-		T_Result.demensions[10] = this->demensions[8] * _AM.demensions[2] + this->demensions[9] * _AM.demensions[6] + this->demensions[10] * _AM.demensions[10] + this->demensions[11] * _AM.demensions[14];
-		T_Result.demensions[11] = this->demensions[8] * _AM.demensions[3] + this->demensions[9] * _AM.demensions[7] + this->demensions[10] * _AM.demensions[11] + this->demensions[11] * _AM.demensions[15];
+		T_Result.dimensions[8] = this->dimensions[8] * _AM.dimensions[0] + this->dimensions[9] * _AM.dimensions[4] + this->dimensions[10] * _AM.dimensions[8] + this->dimensions[11] * _AM.dimensions[12];
+		T_Result.dimensions[9] = this->dimensions[8] * _AM.dimensions[1] + this->dimensions[9] * _AM.dimensions[5] + this->dimensions[10] * _AM.dimensions[9] + this->dimensions[11] * _AM.dimensions[13];
+		T_Result.dimensions[10] = this->dimensions[8] * _AM.dimensions[2] + this->dimensions[9] * _AM.dimensions[6] + this->dimensions[10] * _AM.dimensions[10] + this->dimensions[11] * _AM.dimensions[14];
+		T_Result.dimensions[11] = this->dimensions[8] * _AM.dimensions[3] + this->dimensions[9] * _AM.dimensions[7] + this->dimensions[10] * _AM.dimensions[11] + this->dimensions[11] * _AM.dimensions[15];
 
-		T_Result.demensions[12] = this->demensions[12] * _AM.demensions[0] + this->demensions[13] * _AM.demensions[4] + this->demensions[14] * _AM.demensions[8] + this->demensions[15] * _AM.demensions[12];
-		T_Result.demensions[13] = this->demensions[12] * _AM.demensions[1] + this->demensions[13] * _AM.demensions[5] + this->demensions[14] * _AM.demensions[9] + this->demensions[15] * _AM.demensions[13];
-		T_Result.demensions[14] = this->demensions[12] * _AM.demensions[2] + this->demensions[13] * _AM.demensions[6] + this->demensions[14] * _AM.demensions[10] + this->demensions[15] * _AM.demensions[14];
-		T_Result.demensions[15] = this->demensions[12] * _AM.demensions[3] + this->demensions[13] * _AM.demensions[7] + this->demensions[14] * _AM.demensions[11] + this->demensions[15] * _AM.demensions[15];
+		T_Result.dimensions[12] = this->dimensions[12] * _AM.dimensions[0] + this->dimensions[13] * _AM.dimensions[4] + this->dimensions[14] * _AM.dimensions[8] + this->dimensions[15] * _AM.dimensions[12];
+		T_Result.dimensions[13] = this->dimensions[12] * _AM.dimensions[1] + this->dimensions[13] * _AM.dimensions[5] + this->dimensions[14] * _AM.dimensions[9] + this->dimensions[15] * _AM.dimensions[13];
+		T_Result.dimensions[14] = this->dimensions[12] * _AM.dimensions[2] + this->dimensions[13] * _AM.dimensions[6] + this->dimensions[14] * _AM.dimensions[10] + this->dimensions[15] * _AM.dimensions[14];
+		T_Result.dimensions[15] = this->dimensions[12] * _AM.dimensions[3] + this->dimensions[13] * _AM.dimensions[7] + this->dimensions[14] * _AM.dimensions[11] + this->dimensions[15] * _AM.dimensions[15];
 		
 	return T_Result;
 
 	}
 
 	/**
-	multiplies this matrix by a 4 demensional vector
+	multiplies this matrix by a 4 dimensional vector
 	*/
 	A_Vector4 operator *(A_Vector4& const _AV){
 	
 	A_Vector4 T_Result;
 
-	T_Result.setX((_AV.getX() * this->demensions[0]) + (_AV.getY() * this->demensions[1]) + (_AV.getZ() * this->demensions[2]) + this->demensions[3] * _AV.getW());
-	T_Result.setY((_AV.getX() * this->demensions[4]) + (_AV.getY() * this->demensions[5]) + (_AV.getZ() * this->demensions[6]) + this->demensions[7] * _AV.getW());
-	T_Result.setZ((_AV.getX() * this->demensions[8]) + (_AV.getY() * this->demensions[9]) + (_AV.getZ() * this->demensions[10]) + this->demensions[11] * _AV.getW());
-	T_Result.setW((_AV.getX() * this->demensions[12]) + (_AV.getY() * this->demensions[13]) + (_AV.getZ() * this->demensions[14]) + this->demensions[15] * _AV.getW());
+	T_Result.setX((_AV.getX() * this->dimensions[0]) + (_AV.getY() * this->dimensions[1]) + (_AV.getZ() * this->dimensions[2]) + this->dimensions[3] * _AV.getW());
+	T_Result.setY((_AV.getX() * this->dimensions[4]) + (_AV.getY() * this->dimensions[5]) + (_AV.getZ() * this->dimensions[6]) + this->dimensions[7] * _AV.getW());
+	T_Result.setZ((_AV.getX() * this->dimensions[8]) + (_AV.getY() * this->dimensions[9]) + (_AV.getZ() * this->dimensions[10]) + this->dimensions[11] * _AV.getW());
+	T_Result.setW((_AV.getX() * this->dimensions[12]) + (_AV.getY() * this->dimensions[13]) + (_AV.getZ() * this->dimensions[14]) + this->dimensions[15] * _AV.getW());
 
 	return T_Result;
 
@@ -324,7 +324,7 @@ public:
 
 		for (char i = 0; i < 16; ++i) {
 
-			this->demensions[i] *= _f;
+			this->dimensions[i] *= _f;
 
 		}
 
@@ -335,25 +335,25 @@ public:
 	*/
 	void operator *=(A_Matrix4x4& const _AM) {
 
-		this->demensions[0] = this->demensions[0] * _AM.demensions[0] + this->demensions[1] * _AM.demensions[4] + this->demensions[2] * _AM.demensions[8] + this->demensions[3] * _AM.demensions[12];
-		this->demensions[1] = this->demensions[0] * _AM.demensions[1] + this->demensions[1] * _AM.demensions[5] + this->demensions[2] * _AM.demensions[9] + this->demensions[3] * _AM.demensions[13];
-		this->demensions[2] = this->demensions[0] * _AM.demensions[2] + this->demensions[1] * _AM.demensions[6] + this->demensions[2] * _AM.demensions[10] + this->demensions[3] * _AM.demensions[14];
-		this->demensions[3] = this->demensions[0] * _AM.demensions[3] + this->demensions[1] * _AM.demensions[7] + this->demensions[2] * _AM.demensions[11] + this->demensions[3] * _AM.demensions[15];
+		this->dimensions[0] = this->dimensions[0] * _AM.dimensions[0] + this->dimensions[1] * _AM.dimensions[4] + this->dimensions[2] * _AM.dimensions[8] + this->dimensions[3] * _AM.dimensions[12];
+		this->dimensions[1] = this->dimensions[0] * _AM.dimensions[1] + this->dimensions[1] * _AM.dimensions[5] + this->dimensions[2] * _AM.dimensions[9] + this->dimensions[3] * _AM.dimensions[13];
+		this->dimensions[2] = this->dimensions[0] * _AM.dimensions[2] + this->dimensions[1] * _AM.dimensions[6] + this->dimensions[2] * _AM.dimensions[10] + this->dimensions[3] * _AM.dimensions[14];
+		this->dimensions[3] = this->dimensions[0] * _AM.dimensions[3] + this->dimensions[1] * _AM.dimensions[7] + this->dimensions[2] * _AM.dimensions[11] + this->dimensions[3] * _AM.dimensions[15];
 
-		this->demensions[4] = this->demensions[4] * _AM.demensions[0] + this->demensions[5] * _AM.demensions[4] + this->demensions[6] * _AM.demensions[8] + this->demensions[7] * _AM.demensions[12];
-		this->demensions[5] = this->demensions[4] * _AM.demensions[1] + this->demensions[5] * _AM.demensions[5] + this->demensions[6] * _AM.demensions[9] + this->demensions[7] * _AM.demensions[13];
-		this->demensions[6] = this->demensions[4] * _AM.demensions[2] + this->demensions[5] * _AM.demensions[6] + this->demensions[6] * _AM.demensions[10] + this->demensions[7] * _AM.demensions[14];
-		this->demensions[7] = this->demensions[4] * _AM.demensions[3] + this->demensions[5] * _AM.demensions[7] + this->demensions[6] * _AM.demensions[11] + this->demensions[7] * _AM.demensions[15];
+		this->dimensions[4] = this->dimensions[4] * _AM.dimensions[0] + this->dimensions[5] * _AM.dimensions[4] + this->dimensions[6] * _AM.dimensions[8] + this->dimensions[7] * _AM.dimensions[12];
+		this->dimensions[5] = this->dimensions[4] * _AM.dimensions[1] + this->dimensions[5] * _AM.dimensions[5] + this->dimensions[6] * _AM.dimensions[9] + this->dimensions[7] * _AM.dimensions[13];
+		this->dimensions[6] = this->dimensions[4] * _AM.dimensions[2] + this->dimensions[5] * _AM.dimensions[6] + this->dimensions[6] * _AM.dimensions[10] + this->dimensions[7] * _AM.dimensions[14];
+		this->dimensions[7] = this->dimensions[4] * _AM.dimensions[3] + this->dimensions[5] * _AM.dimensions[7] + this->dimensions[6] * _AM.dimensions[11] + this->dimensions[7] * _AM.dimensions[15];
 
-		this->demensions[8] = this->demensions[8] * _AM.demensions[0] + this->demensions[9] * _AM.demensions[4] + this->demensions[10] * _AM.demensions[8] + this->demensions[11] * _AM.demensions[12];
-		this->demensions[9] = this->demensions[8] * _AM.demensions[1] + this->demensions[9] * _AM.demensions[5] + this->demensions[10] * _AM.demensions[9] + this->demensions[11] * _AM.demensions[13];
-		this->demensions[10] = this->demensions[8] * _AM.demensions[2] + this->demensions[9] * _AM.demensions[6] + this->demensions[10] * _AM.demensions[10] + this->demensions[11] * _AM.demensions[14];
-		this->demensions[11] = this->demensions[8] * _AM.demensions[3] + this->demensions[9] * _AM.demensions[7] + this->demensions[10] * _AM.demensions[11] + this->demensions[11] * _AM.demensions[15];
+		this->dimensions[8] = this->dimensions[8] * _AM.dimensions[0] + this->dimensions[9] * _AM.dimensions[4] + this->dimensions[10] * _AM.dimensions[8] + this->dimensions[11] * _AM.dimensions[12];
+		this->dimensions[9] = this->dimensions[8] * _AM.dimensions[1] + this->dimensions[9] * _AM.dimensions[5] + this->dimensions[10] * _AM.dimensions[9] + this->dimensions[11] * _AM.dimensions[13];
+		this->dimensions[10] = this->dimensions[8] * _AM.dimensions[2] + this->dimensions[9] * _AM.dimensions[6] + this->dimensions[10] * _AM.dimensions[10] + this->dimensions[11] * _AM.dimensions[14];
+		this->dimensions[11] = this->dimensions[8] * _AM.dimensions[3] + this->dimensions[9] * _AM.dimensions[7] + this->dimensions[10] * _AM.dimensions[11] + this->dimensions[11] * _AM.dimensions[15];
 
-		this->demensions[12] = this->demensions[12] * _AM.demensions[0] + this->demensions[13] * _AM.demensions[4] + this->demensions[14] * _AM.demensions[8] + this->demensions[15] * _AM.demensions[12];
-		this->demensions[13] = this->demensions[12] * _AM.demensions[1] + this->demensions[13] * _AM.demensions[5] + this->demensions[14] * _AM.demensions[9] + this->demensions[15] * _AM.demensions[13];
-		this->demensions[14] = this->demensions[12] * _AM.demensions[2] + this->demensions[13] * _AM.demensions[6] + this->demensions[14] * _AM.demensions[10] + this->demensions[15] * _AM.demensions[14];
-		this->demensions[15] = this->demensions[12] * _AM.demensions[3] + this->demensions[13] * _AM.demensions[7] + this->demensions[14] * _AM.demensions[11] + this->demensions[15] * _AM.demensions[15];
+		this->dimensions[12] = this->dimensions[12] * _AM.dimensions[0] + this->dimensions[13] * _AM.dimensions[4] + this->dimensions[14] * _AM.dimensions[8] + this->dimensions[15] * _AM.dimensions[12];
+		this->dimensions[13] = this->dimensions[12] * _AM.dimensions[1] + this->dimensions[13] * _AM.dimensions[5] + this->dimensions[14] * _AM.dimensions[9] + this->dimensions[15] * _AM.dimensions[13];
+		this->dimensions[14] = this->dimensions[12] * _AM.dimensions[2] + this->dimensions[13] * _AM.dimensions[6] + this->dimensions[14] * _AM.dimensions[10] + this->dimensions[15] * _AM.dimensions[14];
+		this->dimensions[15] = this->dimensions[12] * _AM.dimensions[3] + this->dimensions[13] * _AM.dimensions[7] + this->dimensions[14] * _AM.dimensions[11] + this->dimensions[15] * _AM.dimensions[15];
 
 	}
 
@@ -374,7 +374,7 @@ public:
 
 		for (char i = 0; i < 16; ++i) {
 
-			this->demensions[i] = _f;
+			this->dimensions[i] = _f;
 
 		}
 
@@ -387,7 +387,7 @@ public:
 
 		for (char i = 0; i < 16; ++i) {
 
-			this->demensions[i] = _AM.demensions[i];
+			this->dimensions[i] = _AM.dimensions[i];
 
 		}
 
@@ -400,7 +400,7 @@ private:
 	//4 5 6 7
 	//8 9 A B
 	//C D E F
-	float demensions[16];
+	float dimensions[16];
 
 };
 

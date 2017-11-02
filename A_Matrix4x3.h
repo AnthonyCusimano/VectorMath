@@ -28,7 +28,7 @@ public:
 	A_Matrix4x3(A_Vector4* const _AV1, A_Vector4* const _AV2, A_Vector4* const _AV3);
 
 	/**
-	assigns the demensions of this matrix to the elements of _f, in order
+	assigns the dimensions of this matrix to the elements of _f, in order
 	_f should be [12]
 	*/
 	A_Matrix4x3(float const _f[]);
@@ -63,11 +63,11 @@ public:
 	void SetRowAtAddress(int _ad, A_Vector3* const _AV);
 
 	/**
-	returns the demension found at address _f
+	returns the dimension found at address _f
 	*/
-	const float GetDemensionAtAddress(char const _f) {
+	const float GetDimensionAtAddress(char const _f) {
 
-		return this->demensions[_f];
+		return this->dimensions[_f];
 
 	}
 
@@ -77,7 +77,7 @@ private:
 	//4 5 6
 	//7 8 9
 	//A B C
-	float demensions[12];
+	float dimensions[12];
 
 };
 

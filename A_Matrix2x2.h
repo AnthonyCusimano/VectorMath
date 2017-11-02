@@ -44,7 +44,7 @@ public:
 	A_Matrix2x2(A_Vector2* const _AV1, A_Vector2* const _AV2, char const unUsedRowConstructor);
 
 	/**
-	assigns the demensions of this matrix to the elements of _f, in order
+	assigns the dimensions of this matrix to the elements of _f, in order
 	_f should be [4]
 	*/
 	A_Matrix2x2(float const _f[]);
@@ -89,11 +89,11 @@ public:
 	void SetRowAtAddress(int _ad, A_Vector2* const _AQ);
 
 	/**
-	returns the demension found at address _f
+	returns the dimension found at address _f
 	*/
-	const float GetDemensionAtAddress(int const _f) const {
+	const float GetDimensionAtAddress(int const _f) const {
 
-		return this->demensions[_f];
+		return this->dimensions[_f];
 
 	}
 
@@ -128,9 +128,6 @@ public:
 	*/
 	void SetTranposed();
 
-
-	//TODO: all 2D matrix operators
-
 	/*
 	//*********************************************************
 	//*********************************************************
@@ -150,7 +147,7 @@ public:
 
 		for (char i = 0; i < 4; ++i) {
 
-			T_Result.demensions[i] = this->demensions[i] + _AM.demensions[i];
+			T_Result.dimensions[i] = this->dimensions[i] + _AM.dimensions[i];
 
 		}
 
@@ -165,7 +162,7 @@ public:
 
 		for (char i = 0; i < 4; ++i) {
 
-			this->demensions[i] += _AM.demensions[i];
+			this->dimensions[i] += _AM.dimensions[i];
 
 		}
 
@@ -180,7 +177,7 @@ public:
 
 		for (char i = 0; i < 4; ++i) {
 
-			T_Result.demensions[i] = this->demensions[i] - _AM.demensions[i];
+			T_Result.dimensions[i] = this->dimensions[i] - _AM.dimensions[i];
 
 		}
 
@@ -195,7 +192,7 @@ public:
 
 		for (char i = 0; i < 4; ++i) {
 
-			this->demensions[i] -= _AM.demensions[i];
+			this->dimensions[i] -= _AM.dimensions[i];
 
 		}
 
@@ -211,12 +208,6 @@ public:
 	//*********************************************************
 	*/
 
-	/*
-
-	TODO: ADD SUPPORT FOR OTHER x2 SIZE MATRICIES
-
-	*/
-
 	/**
 	multiplying this matrix by a scalar and returning the result
 	*/
@@ -226,7 +217,7 @@ public:
 
 		for (char i = 0; i < 4; ++i) {
 
-			T_Result.demensions[i] = this->demensions[i] * _f;
+			T_Result.dimensions[i] = this->dimensions[i] * _f;
 
 		}
 
@@ -241,7 +232,7 @@ public:
 
 		for (char i = 0; i < 4; ++i) {
 
-			this->demensions[i] *= _f;
+			this->dimensions[i] *= _f;
 
 		}
 
@@ -254,8 +245,8 @@ public:
 
 		A_Vector2 T_Result;
 
-		T_Result.setX((this->demensions[0] * _AV.getX()) + (this->demensions[1] * _AV.getY()));
-		T_Result.setY((this->demensions[3] * _AV.getX()) + (this->demensions[4] * _AV.getY()));
+		T_Result.setX((this->dimensions[0] * _AV.getX()) + (this->dimensions[1] * _AV.getY()));
+		T_Result.setY((this->dimensions[3] * _AV.getX()) + (this->dimensions[4] * _AV.getY()));
 
 		return T_Result;
 
@@ -278,7 +269,7 @@ public:
 
 		for (char i = 0; i < 4; ++i) {
 
-			this->demensions[i] = _f;
+			this->dimensions[i] = _f;
 
 		}
 
@@ -291,7 +282,7 @@ public:
 
 		for (char i = 0; i < 4; ++i) {
 
-			this->demensions[i] = _AM->demensions[i];
+			this->dimensions[i] = _AM->dimensions[i];
 
 		}
 
@@ -301,7 +292,7 @@ private:
 
 	//0 1
 	//2 3
-	float demensions[4];
+	float dimensions[4];
 
 };
 

@@ -18,30 +18,30 @@ public:
 	*/
 
 	/**
-	constructor which initializes all demensions of the quaternion to zero
+	constructor which initializes all dimensions of the quaternion to zero
 	*/
 	A_Quaternion();
 
 
 	/**
-	constructor which initializes all demensions of the quaternion
-	to the demensions of the quaternion who's pointer was passed
+	constructor which initializes all dimensions of the quaternion
+	to the dimensions of the quaternion who's pointer was passed
 	*/
 	A_Quaternion(A_Quaternion* const _AQ);
 
 	/**
-	constructor which initializes all demensions of the quaternion
-	to the demensions of the vector who's pointer was passed
+	constructor which initializes all dimensions of the quaternion
+	to the dimensions of the vector who's pointer was passed
 	*/
 	A_Quaternion(A_Vector4* const _AV);
 
 	/**
-	constructor which initializes all demensions of the quaternion to _n
+	constructor which initializes all dimensions of the quaternion to _n
 	*/
 	A_Quaternion(float const _n);
 
 	/**
-	constructor which initializes all demensions of the quaternion to
+	constructor which initializes all dimensions of the quaternion to
 	the values passed
 	*/
 	A_Quaternion(float const _x, float const _y, float const _z, float const _w);
@@ -118,31 +118,31 @@ public:
 	*/
 
 	/**
-	multiplies this quaternion by a float, to scale it's demensions uniformly and returns that value
+	multiplies this quaternion by a float, to scale it's dimensions uniformly and returns that value
 	*/
 	A_Quaternion operator * (float const _f) {
 
 		A_Quaternion T_Result;
 
-		T_Result.demensions[0] = this->demensions[0] * _f;
-		T_Result.demensions[1] = this->demensions[1] * _f;
-		T_Result.demensions[2] = this->demensions[2] * _f;
-		T_Result.demensions[3] = this->demensions[3] * _f;
+		T_Result.dimensions[0] = this->dimensions[0] * _f;
+		T_Result.dimensions[1] = this->dimensions[1] * _f;
+		T_Result.dimensions[2] = this->dimensions[2] * _f;
+		T_Result.dimensions[3] = this->dimensions[3] * _f;
 
 		return T_Result;
 
 	}
 
 	/**
-	multiplies this quaternion by a float, to scale it's demensions uniformly and assigns that value
+	multiplies this quaternion by a float, to scale it's dimensions uniformly and assigns that value
 	to this quaternion
 	*/
 	A_Quaternion operator *= (float const _f) {
 
-		this->demensions[0] *= _f;
-		this->demensions[1] *= _f;
-		this->demensions[2] *= _f;
-		this->demensions[3] *= _f;
+		this->dimensions[0] *= _f;
+		this->dimensions[1] *= _f;
+		this->dimensions[2] *= _f;
+		this->dimensions[3] *= _f;
 
 	}
 
@@ -153,10 +153,10 @@ public:
 
 		A_Quaternion T_Result;
 
-		T_Result.demensions[0] = this->demensions[0] + _AQ.demensions[0];
-		T_Result.demensions[1] = this->demensions[1] + _AQ.demensions[1];
-		T_Result.demensions[2] = this->demensions[2] + _AQ.demensions[2];
-		T_Result.demensions[3] = this->demensions[3] + _AQ.demensions[3];
+		T_Result.dimensions[0] = this->dimensions[0] + _AQ.dimensions[0];
+		T_Result.dimensions[1] = this->dimensions[1] + _AQ.dimensions[1];
+		T_Result.dimensions[2] = this->dimensions[2] + _AQ.dimensions[2];
+		T_Result.dimensions[3] = this->dimensions[3] + _AQ.dimensions[3];
 
 		return T_Result;
 
@@ -167,10 +167,10 @@ public:
 	*/
 	void operator += (A_Quaternion const _AQ) {
 
-		this->demensions[0] += _AQ.demensions[0];
-		this->demensions[1] += _AQ.demensions[1];
-		this->demensions[2] += _AQ.demensions[2];
-		this->demensions[3] += _AQ.demensions[3];
+		this->dimensions[0] += _AQ.dimensions[0];
+		this->dimensions[1] += _AQ.dimensions[1];
+		this->dimensions[2] += _AQ.dimensions[2];
+		this->dimensions[3] += _AQ.dimensions[3];
 
 	}
 
@@ -179,10 +179,10 @@ public:
 	*/
 	void operator = (A_Quaternion const _AQ) {
 
-		this->demensions[0] = _AQ.demensions[0];
-		this->demensions[1] = _AQ.demensions[1];
-		this->demensions[2] = _AQ.demensions[2];
-		this->demensions[3] = _AQ.demensions[3];
+		this->dimensions[0] = _AQ.dimensions[0];
+		this->dimensions[1] = _AQ.dimensions[1];
+		this->dimensions[2] = _AQ.dimensions[2];
+		this->dimensions[3] = _AQ.dimensions[3];
 
 	}
 
@@ -191,21 +191,21 @@ public:
 	*/
 	void operator = (A_Vector4 _AV) {
 
-		this->demensions[0] = _AV.getX();
-		this->demensions[1] = _AV.getY();
-		this->demensions[2] = _AV.getZ();
-		this->demensions[3] = _AV.getW();
+		this->dimensions[0] = _AV.getX();
+		this->dimensions[1] = _AV.getY();
+		this->dimensions[2] = _AV.getZ();
+		this->dimensions[3] = _AV.getW();
 
 	}
 
 	/**
-	returns true if all demensions of this quaternion and the demensions of _AQ are equal
+	returns true if all dumensions of this quaternion and the dumensions of _AQ are equal
 	a margin of error could be added but would be computationally expensive
 	*/
 	bool operator == (A_Quaternion const _AQ) {
 
-		if (this->demensions[0] == _AQ.demensions[0] && this->demensions[1] == _AQ.demensions[1] &&
-			this->demensions[2] == _AQ.demensions[2] && this->demensions[3] == _AQ.demensions[3])
+		if (this->dimensions[0] == _AQ.dimensions[0] && this->dimensions[1] == _AQ.dimensions[1] &&
+			this->dimensions[2] == _AQ.dimensions[2] && this->dimensions[3] == _AQ.dimensions[3])
 			return true;
 
 		else return false;
@@ -213,13 +213,13 @@ public:
 	}
 
 	/**
-	returns TRUE if ANY of the demensions from _AQ ARE NOT equal to that demension within this quaternion
+	returns TRUE if ANY of the dumensions from _AQ ARE NOT equal to that dumension within this quaternion
 	otherwise returns false
 	*/
 	bool operator != (A_Quaternion const _AQ) {
 
-		if (this->demensions[0] != _AQ.demensions[0] || this->demensions[1] != _AQ.demensions[1] ||
-			this->demensions[2] != _AQ.demensions[2] || this->demensions[3] != _AQ.demensions[3])
+		if (this->dimensions[0] != _AQ.dimensions[0] || this->dimensions[1] != _AQ.dimensions[1] ||
+			this->dimensions[2] != _AQ.dimensions[2] || this->dimensions[3] != _AQ.dimensions[3])
 			return true;
 
 		else return false;
@@ -238,10 +238,10 @@ public:
 		z = q1.x * q2.y - q1.y * q2.x + q1.z * q2.w + q1.w * q2.z;
 		w = -q1.x * q2.x - q1.y * q2.y - q1.z * q2.z + q1.w * q2.w;*/
 
-		T_Result.demensions[0] = this->demensions[0] * _AQ->demensions[3] + this->demensions[1] * _AQ->demensions[2] - this->demensions[2] * _AQ->demensions[1] + this->demensions[3] * _AQ->demensions[0];
-		T_Result.demensions[1] = -this->demensions[0] * _AQ->demensions[2] + this->demensions[1] * _AQ->demensions[3] + this->demensions[2] * _AQ->demensions[0] + this->demensions[3] * _AQ->demensions[1];
-		T_Result.demensions[2] = this->demensions[0] * _AQ->demensions[1] - this->demensions[1] * _AQ->demensions[0] + this->demensions[2] * _AQ->demensions[3] + this->demensions[3] * _AQ->demensions[2];
-		T_Result.demensions[3] = -this->demensions[0] * _AQ->demensions[0] - this->demensions[1] * _AQ->demensions[1] - this->demensions[2] * _AQ->demensions[2] + this->demensions[3] * _AQ->demensions[3];
+		T_Result.dimensions[0] = this->dimensions[0] * _AQ->dimensions[3] + this->dimensions[1] * _AQ->dimensions[2] - this->dimensions[2] * _AQ->dimensions[1] + this->dimensions[3] * _AQ->dimensions[0];
+		T_Result.dimensions[1] = -this->dimensions[0] * _AQ->dimensions[2] + this->dimensions[1] * _AQ->dimensions[3] + this->dimensions[2] * _AQ->dimensions[0] + this->dimensions[3] * _AQ->dimensions[1];
+		T_Result.dimensions[2] = this->dimensions[0] * _AQ->dimensions[1] - this->dimensions[1] * _AQ->dimensions[0] + this->dimensions[2] * _AQ->dimensions[3] + this->dimensions[3] * _AQ->dimensions[2];
+		T_Result.dimensions[3] = -this->dimensions[0] * _AQ->dimensions[0] - this->dimensions[1] * _AQ->dimensions[1] - this->dimensions[2] * _AQ->dimensions[2] + this->dimensions[3] * _AQ->dimensions[3];
 
 		return T_Result;
 
@@ -249,10 +249,10 @@ public:
 
 	void operator *= (A_Quaternion const *_AQ) {
 
-		this->demensions[0] = this->demensions[0] * _AQ->demensions[3] + this->demensions[1] * _AQ->demensions[2] - this->demensions[2] * _AQ->demensions[1] + this->demensions[3] * _AQ->demensions[0];
-		this->demensions[1] = -this->demensions[0] * _AQ->demensions[2] + this->demensions[1] * _AQ->demensions[3] + this->demensions[2] * _AQ->demensions[0] + this->demensions[3] * _AQ->demensions[1];
-		this->demensions[2] = this->demensions[0] * _AQ->demensions[1] - this->demensions[1] * _AQ->demensions[0] + this->demensions[2] * _AQ->demensions[3] + this->demensions[3] * _AQ->demensions[2];
-		this->demensions[3] = -this->demensions[0] * _AQ->demensions[0] - this->demensions[1] * _AQ->demensions[1] - this->demensions[2] * _AQ->demensions[2] + this->demensions[3] * _AQ->demensions[3];
+		this->dimensions[0] = this->dimensions[0] * _AQ->dimensions[3] + this->dimensions[1] * _AQ->dimensions[2] - this->dimensions[2] * _AQ->dimensions[1] + this->dimensions[3] * _AQ->dimensions[0];
+		this->dimensions[1] = -this->dimensions[0] * _AQ->dimensions[2] + this->dimensions[1] * _AQ->dimensions[3] + this->dimensions[2] * _AQ->dimensions[0] + this->dimensions[3] * _AQ->dimensions[1];
+		this->dimensions[2] = this->dimensions[0] * _AQ->dimensions[1] - this->dimensions[1] * _AQ->dimensions[0] + this->dimensions[2] * _AQ->dimensions[3] + this->dimensions[3] * _AQ->dimensions[2];
+		this->dimensions[3] = -this->dimensions[0] * _AQ->dimensions[0] - this->dimensions[1] * _AQ->dimensions[1] - this->dimensions[2] * _AQ->dimensions[2] + this->dimensions[3] * _AQ->dimensions[3];
 
 	}
 
@@ -272,7 +272,7 @@ public:
 	*/
 	const float getX() {
 
-		return this->demensions[0];
+		return this->dimensions[0];
 
 	}
 
@@ -281,7 +281,7 @@ public:
 	*/
 	const float getY() {
 
-		return this->demensions[1];
+		return this->dimensions[1];
 
 	}
 
@@ -290,7 +290,7 @@ public:
 	*/
 	const float getZ() {
 
-		return this->demensions[2];
+		return this->dimensions[2];
 
 	}
 
@@ -299,7 +299,7 @@ public:
 	*/
 	const float getW() {
 
-		return this->demensions[3];
+		return this->dimensions[3];
 
 	}
 
@@ -308,7 +308,7 @@ public:
 	*/
 	void setX(float const _x) {
 
-		this->demensions[0] = _x;
+		this->dimensions[0] = _x;
 
 	}
 
@@ -317,7 +317,7 @@ public:
 	*/
 	void setY(float const _y) {
 
-		this->demensions[1] = _y;
+		this->dimensions[1] = _y;
 
 	}
 
@@ -326,7 +326,7 @@ public:
 	*/
 	void setZ(float const _z) {
 
-		this->demensions[2] = _z;
+		this->dimensions[2] = _z;
 
 	}
 
@@ -335,7 +335,7 @@ public:
 	*/
 	void setW(float const _w) {
 
-		this->demensions[3] = _w;
+		this->dimensions[3] = _w;
 
 	}
 
@@ -344,10 +344,10 @@ public:
 	*/
 	void setAll(float const _x, float const _y, float const _z, float const _w) {
 
-		this->demensions[0] = _x;
-		this->demensions[1] = _y;
-		this->demensions[2] = _z;
-		this->demensions[3] = _w;
+		this->dimensions[0] = _x;
+		this->dimensions[1] = _y;
+		this->dimensions[2] = _z;
+		this->dimensions[3] = _w;
 
 	}
 
@@ -356,10 +356,10 @@ public:
 	*/
 	void SetAll(float const _n) {
 
-		this->demensions[0] = _n;
-		this->demensions[1] = _n;
-		this->demensions[2] = _n;
-		this->demensions[3] = _n;
+		this->dimensions[0] = _n;
+		this->dimensions[1] = _n;
+		this->dimensions[2] = _n;
+		this->dimensions[3] = _n;
 
 	}
 
@@ -369,10 +369,10 @@ public:
 	*/
 	void SetAll(A_Quaternion* const _AQ) {
 
-		this->demensions[0] = _AQ->demensions[0];
-		this->demensions[1] = _AQ->demensions[1];
-		this->demensions[2] = _AQ->demensions[2];
-		this->demensions[3] = _AQ->demensions[3];
+		this->dimensions[0] = _AQ->dimensions[0];
+		this->dimensions[1] = _AQ->dimensions[1];
+		this->dimensions[2] = _AQ->dimensions[2];
+		this->dimensions[3] = _AQ->dimensions[3];
 
 	}
 
@@ -386,11 +386,13 @@ public:
 	*/
 	void SetFromEuler(float const _roll, float const _pitch, float const _yaw);
 
-
 private:
 
+	//threshold used for Normalze method
+	static const float S_QuaternionNormalThreshold;
+
 	//x, y, z ,w
-	float demensions[4];
+	float dimensions[4];
 
 };
 
