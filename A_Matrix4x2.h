@@ -23,6 +23,11 @@ public:
 	A_Matrix4x2(A_Vector2* const _AV1, A_Vector2* const _AV2, A_Vector2* const _AV3, A_Vector2* const _AV4);
 
 	/**
+	uses the two matricies as the COLUMNS for this matrix
+	*/
+	A_Matrix4x2(A_Vector4* const _AV1, A_Vector4* const _AV2);
+
+	/**
 	assigns the demensions of this matrix to the elements of _f, in order
 	_f should be [8]
 	*/

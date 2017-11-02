@@ -18,9 +18,14 @@ public:
 	A_Matrix2x4(A_Matrix2x4* const _AM);
 
 	/**
-	uses the four matricies as the ROWS for this matrix
+	uses the two vectors as the ROWS for this matrix
 	*/
 	A_Matrix2x4(A_Vector4* const _AV1, A_Vector4* const _AV2);
+
+	/**
+	uses the four vectors for the COLUMNS for this matrix
+	*/
+	A_Matrix2x4(A_Vector2* const _AV1, A_Vector2* const _AV2, A_Vector2* const _AV3, A_Vector2* const _AV4);
 
 	/**
 	assigns the demensions of this matrix to the elements of _f, in order

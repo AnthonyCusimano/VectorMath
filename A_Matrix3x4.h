@@ -18,9 +18,14 @@ public:
 	A_Matrix3x4(A_Matrix3x4* const _AM);
 
 	/**
-	uses the four matricies as the ROWS for this matrix
+	uses the three vectors as the ROWS for this matrix
 	*/
 	A_Matrix3x4(A_Vector4* const _AV1, A_Vector4* const _AV2, A_Vector4* const _AV3);
+
+	/**
+	use the four vectors as the COLUMNS for this matrix
+	*/
+	A_Matrix3x4(A_Vector3* const _AV1, A_Vector3* const _AV2, A_Vector3* const _AV3, A_Vector3* const _AV4);
 
 	/**
 	assigns the demensions of this matrix to the elements of _f, in order
@@ -34,8 +39,26 @@ public:
 	~A_Matrix3x4();
 
 	/**
+	returns the selected column
+	the columns are 0, 1, 2, and 3
+	*/
+	const A_Vector3 GetColumnAtAddress(int const _ad);
+
+	/**
+	sets the selected column to the values in _AV
+	the columns are 0, 1, 2, and 3
+	*/
+	void SetColumnAtAddress(int const _ad, A_Vector3* const _AV);
+
+	/**
+	returns the selected row
+	the rows are 0, 1, 2, and 3
+	*/
+	const A_Vector4 GetRowAtAddress(int _ad);
+
+	/**
 	sets the selected row to the values in _AQ
-	the row are 0, 1, and 2
+	the rows are 0, 1, 2, and 3
 	*/
 	void SetRowAtAddress(int _ad, A_Vector4* const _AV);
 

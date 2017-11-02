@@ -24,10 +24,14 @@ public:
 	A_Matrix3x3(A_Matrix3x3* const _AM);
 
 	/**
-	uses the four quaternions as the ROWS for this matrix
-	TODO: add A_Vector4 and fix arguments
+	uses the three matricies as the ROWS for this matrix
 	*/
 	A_Matrix3x3(A_Vector3* const _AV1, A_Vector3* const _AV2, A_Vector3* const _AV3);
+
+	/**
+	uses the three matricies as the COLUMNS for this matrix
+	*/
+	A_Matrix3x3(A_Vector3* const _AV1, A_Vector3* const _AV2, A_Vector3* const _AV3, char const unUsedColumnConstructor);
 
 	/**
 	assigns the demensions of this matrix to the elements of _f, in order

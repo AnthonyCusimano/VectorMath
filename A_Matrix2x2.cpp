@@ -44,6 +44,16 @@ A_Matrix2x2::A_Matrix2x2(A_Vector2* const _AV1, A_Vector2* const _AV2) {
 
 }
 
+A_Matrix2x2::A_Matrix2x2(A_Vector2* const _AV1, A_Vector2* const _AV2, char const unUsedColumnConstructor) {
+
+	this->demensions[0] = _AV1->getX();
+	this->demensions[2] = _AV1->getY();
+
+	this->demensions[1] = _AV2->getX();
+	this->demensions[3] = _AV2->getY();
+
+}
+
 A_Matrix2x2::A_Matrix2x2(float const _f[]) {
 
 	this->demensions[0] = _f[0];

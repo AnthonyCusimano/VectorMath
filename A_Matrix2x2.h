@@ -39,6 +39,11 @@ public:
 	A_Matrix2x2(A_Vector2* const _AV1, A_Vector2* const _AV2);
 
 	/**
+	uses the two vectors as the COLUMNS for this matrix
+	*/
+	A_Matrix2x2(A_Vector2* const _AV1, A_Vector2* const _AV2, char const unUsedRowConstructor);
+
+	/**
 	assigns the demensions of this matrix to the elements of _f, in order
 	_f should be [4]
 	*/

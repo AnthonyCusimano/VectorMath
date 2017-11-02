@@ -34,6 +34,22 @@ A_Matrix2x4::A_Matrix2x4(A_Vector4* const _AV1, A_Vector4* const _AV2) {
 
 }
 
+A_Matrix2x4::A_Matrix2x4(A_Vector2* const _AV1, A_Vector2* const _AV2, A_Vector2* const _AV3, A_Vector2* const _AV4) {
+
+	this->demensions[0] = _AV1->getX();
+	this->demensions[4] = _AV1->getY();
+
+	this->demensions[1] = _AV2->getX();
+	this->demensions[5] = _AV2->getY();
+
+	this->demensions[2] = _AV3->getX();
+	this->demensions[6] = _AV3->getY();
+
+	this->demensions[3] = _AV4->getX();
+	this->demensions[7] = _AV4->getY();
+
+}
+
 A_Matrix2x4::A_Matrix2x4(float const _f[]) {
 
 	for (int i = 0; i < 8; ++i) {

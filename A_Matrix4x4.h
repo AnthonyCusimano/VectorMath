@@ -34,9 +34,14 @@ public:
 	A_Matrix4x4(A_Matrix4x4* const _AM);
 
 	/**
-	uses the four quaternions as the ROWS for this matrix
+	uses the four vectors as the ROWS for this matrix
 	*/
-	A_Matrix4x4(A_Vector4* const _AQ1, A_Vector4* const _AQ2, A_Vector4* const _AQ3, A_Vector4* const _AQ4);
+	A_Matrix4x4(A_Vector4* const _AV1, A_Vector4* const _AV2, A_Vector4* const _AV3, A_Vector4* const _AV4);
+
+	/**
+	uses the four vectors as the COLUMNS for this matrix
+	*/
+	A_Matrix4x4(A_Vector4* const _AV1, A_Vector4* const _AV2, A_Vector4* const _AV3, A_Vector4* const _AV4, char const unUsedColumnConstructor);
 
 	/**
 	assigns the demensions of this matrix to the elements of _f, in order
@@ -245,12 +250,6 @@ public:
 	//*********************************************************
 	//*********************************************************
 	//*********************************************************
-	*/
-
-	/*
-	
-	TODO: ADD SUPPORT FOR OTHER x4 SIZE MATRICIES
-	
 	*/
 
 	/**

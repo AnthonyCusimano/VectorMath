@@ -31,6 +31,18 @@ A_Matrix3x2::A_Matrix3x2(A_Vector2* const _AV1, A_Vector2* const _AV2, A_Vector2
 
 }
 
+A_Matrix3x2::A_Matrix3x2(A_Vector3* const _AV1, A_Vector3* const _AV2) {
+
+	this->demensions[0] = _AV1->getX();
+	this->demensions[2] = _AV1->getY();
+	this->demensions[4] = _AV1->getZ();
+
+	this->demensions[1] = _AV2->getX();
+	this->demensions[3] = _AV2->getY();
+	this->demensions[5] = _AV2->getZ();
+
+}
+
 A_Matrix3x2::A_Matrix3x2(float const _f[]) {
 
 	for (int i = 0; i < 6; ++i) {

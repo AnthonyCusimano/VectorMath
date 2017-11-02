@@ -18,9 +18,14 @@ public:
 	A_Matrix3x2(A_Matrix3x2* const _AM);
 
 	/**
-	uses the three matricies as the ROWS for this matrix
+	uses the three vectors as the ROWS for this matrix
 	*/
 	A_Matrix3x2(A_Vector2* const _AV1, A_Vector2* const _AV2, A_Vector2* const _AV3);
+
+	/**
+	uses the two vectors as the COLUMNS for this matrix
+	*/
+	A_Matrix3x2(A_Vector3* const _AV1, A_Vector3* const _AV2);
 
 	/**
 	assigns the demensions of this matrix to the elements of _f, in order

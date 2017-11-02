@@ -66,6 +66,22 @@ A_Matrix3x3::A_Matrix3x3(A_Vector3* const _AV1, A_Vector3* const _AV2, A_Vector3
 
 }
 
+A_Matrix3x3::A_Matrix3x3(A_Vector3* const _AV1, A_Vector3* const _AV2, A_Vector3* const _AV3, char const unUsedColumnConstructor) {
+
+	this->demensions[0] = _AV1->getX();
+	this->demensions[3] = _AV1->getY();
+	this->demensions[6] = _AV1->getZ();
+
+	this->demensions[1] = _AV2->getX();
+	this->demensions[4] = _AV2->getY();
+	this->demensions[7] = _AV2->getZ();
+
+	this->demensions[2] = _AV3->getX();
+	this->demensions[5] = _AV3->getY();
+	this->demensions[8] = _AV3->getZ();
+
+}
+
 A_Matrix3x3::A_Matrix3x3(float const _f[]) {
 
 	for (char i = 0; i < 9; ++i) {
