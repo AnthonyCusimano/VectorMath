@@ -53,25 +53,25 @@ public:
 	/**
 	returns the selected column
 	the columns are 0, 1, and 2*/
-	A_Vector3 GetColumnAtAddress(char const _ad);
+	A_Vector3 GetColumnAtAddress(int const _ad);
 
 	/**
-	sets the selected column to the values in _AQ
+	sets the selected column to the values in _AV
 	the columns are 0, 1, and 2
 	*/
-	void SetColumnAtAddress(char const _ad, A_Vector3* const _AQ);
+	void SetColumnAtAddress(int const _ad, A_Vector3* const _AV);
 
 	/**
 	returns the selected row
 	the row are 0, 1, and 2
 	*/
-	A_Vector3 GetRowAtAddress(int const _ad);
+	A_Vector3 GetRowAtAddress(int _ad);
 
 	/**
-	sets the selected row to the values in _AQ
+	sets the selected row to the values in _AV
 	the row are 0, 1, and 2
 	*/
-	void SetRowAtAddress(int const _ad, A_Vector3* _AQ);
+	void SetRowAtAddress(int _ad, A_Vector3* _AV);
 
 	/**
 	returns the demension found at address _f

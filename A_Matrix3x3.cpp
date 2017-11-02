@@ -76,46 +76,46 @@ A_Matrix3x3::A_Matrix3x3(float const _f[]) {
 
 }
 
-A_Vector3 A_Matrix3x3::GetColumnAtAddress(char const _ad) {
+A_Vector3 A_Matrix3x3::GetColumnAtAddress(int const _ad) {
 
-	char i = (_ad * 3);
+	int i = (_ad * 3);
 	A_Vector3 T_Result;
 
 	T_Result.setX(this->demensions[i]);
-	T_Result.setY(this->demensions[i + 1]);
-	T_Result.setZ(this->demensions[i + 2]);
+	T_Result.setY(this->demensions[i + 3]);
+	T_Result.setZ(this->demensions[i + 6]);
 
 	return T_Result;
 
 }
 
-void A_Matrix3x3::SetColumnAtAddress(char const _ad, A_Vector3* const _AQ) {
+void A_Matrix3x3::SetColumnAtAddress(int const _ad, A_Vector3* const _AV) {
 
-	char i = (_ad * 3);
-
-	this->demensions[i] = _AQ->getX();
-	this->demensions[i + 1] = _AQ->getY();
-	this->demensions[i + 2] = _AQ->getZ();
+	this->demensions[_ad] = _AV->getX();
+	this->demensions[_ad + 3] = _AV->getY();
+	this->demensions[_ad + 6] = _AV->getZ();
 
 }
 
-A_Vector3 A_Matrix3x3::GetRowAtAddress(int const _ad) {
+A_Vector3 A_Matrix3x3::GetRowAtAddress(int _ad) {
 
 	A_Vector3 T_Result;
 
 	T_Result.setX(this->demensions[_ad]);
-	T_Result.setY(this->demensions[_ad + 3]);
-	T_Result.setZ(this->demensions[_ad + 6]);
+	T_Result.setY(this->demensions[++_ad]);
+	T_Result.setZ(this->demensions[++_ad]);
 
 	return T_Result;
 
 }
 
-void A_Matrix3x3::SetRowAtAddress(int const _ad, A_Vector3 *_AQ) {
+void A_Matrix3x3::SetRowAtAddress(int _ad, A_Vector3 *_AV) {
 
-	this->demensions[_ad] = _AQ->getX();
-	this->demensions[_ad + 3] = _AQ->getY();
-	this->demensions[_ad + 6] = _AQ->getZ();
+	_ad *= 3;
+
+	this->demensions[_ad] = _AV->getX();
+	this->demensions[++_ad] = _AV->getY();
+	this->demensions[++_ad] = _AV->getZ();
 
 }
 
@@ -129,7 +129,6 @@ void A_Matrix3x3::setIdentity() {
 
 }
 
-//need to return using this method?
 const bool A_Matrix3x3::Invert() {
 
 	//https://www.mathsisfun.com/algebra/matrix-inverse-minors-cofactors-adjugate.html
@@ -153,7 +152,6 @@ const bool A_Matrix3x3::Invert() {
 	T_0413_ = this->demensions[0] * this->demensions[4] - this->demensions[1] * this->demensions[3];//8
 
 	//transpose
-	//this is where you're wrong
 	T_Matrix[0] = T_4857_;//0
 	T_Matrix[1] = T_1827_;//3
 	T_Matrix[2] = T_1524_;//6

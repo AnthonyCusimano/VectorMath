@@ -34,7 +34,25 @@ public:
 	~A_Matrix2x4();
 
 	/**
-	sets the selected row to the values in _AQ
+	returns the selected column
+	the columns are 0, and 1
+	*/
+	const A_Vector2 GetColumnAtAddress(int const _ad);
+
+	/**
+	sets the selected column to the values in _AV
+	the columns are 0, and 1
+	*/
+	void SetColumnAtAddress(int _ad, A_Vector2* const _AV);
+
+	/**
+	returns the selected row
+	the row are 0, and 1
+	*/
+	const A_Vector4 GetRowAtAddress(int _ad);
+
+	/**
+	sets the selected row to the values in _AV
 	the row are 0, 1
 	*/
 	void SetRowAtAddress(int _ad, A_Vector4* _AQ);

@@ -55,14 +55,48 @@ A_Matrix4x3::A_Matrix4x3(float const _f[]) {
 
 }
 
+const A_Vector4 A_Matrix4x3::GetColumnAtAddress(int const _ad) {
+
+	A_Vector4 T_Result;
+
+	T_Result.setX(this->demensions[_ad]);
+	T_Result.setY(this->demensions[_ad + 3]);
+	T_Result.setZ(this->demensions[_ad + 6]);
+	T_Result.setW(this->demensions[_ad + 9]);
+	
+	return T_Result;
+
+}
+
+void A_Matrix4x3::SetColumnAtAddress(int const _ad, A_Vector4* const _AV) {
+
+	this->demensions[_ad] = _AV->getX();
+	this->demensions[_ad + 3] = _AV->getY();
+	this->demensions[_ad + 6] = _AV->getZ();
+	this->demensions[_ad + 9] = _AV->getW();
+
+}
+
+const A_Vector3 A_Matrix4x3::GetRowAtAddress(int _ad) {
+
+	A_Vector3 T_Result;
+
+	T_Result.setX(this->demensions[_ad]);
+	T_Result.setY(this->demensions[++_ad]);
+	T_Result.setZ(this->demensions[++_ad]);
+
+	return T_Result;
+
+}
+
 void A_Matrix4x3::SetRowAtAddress(int _ad, A_Vector3* const _AV) {
 
 	//0*3 || 1*3 || 2*3 || 3*3
 	_ad *= 3;
 
 	this->demensions[_ad] = _AV->getX();
-	this->demensions[_ad + 1] = _AV->getY();
-	this->demensions[_ad + 2] = _AV->getZ();
+	this->demensions[++_ad] = _AV->getY();
+	this->demensions[++_ad] = _AV->getZ();
 
 }
 

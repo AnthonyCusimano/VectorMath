@@ -1,7 +1,7 @@
 #ifndef A_MATRIX_4X2
 #define A_MATRIX_4X2
 
-#include "A_Vector2.h"
+#include "A_Vector4.h"
 
 class A_Matrix4x2 {
 
@@ -34,8 +34,26 @@ public:
 	~A_Matrix4x2();
 
 	/**
+	returns the selected column
+	the columns are 0, and 1
+	*/
+	const A_Vector4 GetColumnAtAddress(int const _ad);
+
+	/**
+	sets the selected column to the values in _AV
+	the columns are 0, and 1
+	*/
+	void SetColumnAtAddress(int const _ad, A_Vector4* const _AV);
+
+	/**
+	returns the selected row
+	the rows are 0, 1, 2, and 3
+	*/
+	const A_Vector2 GetRowAtAddress(int _ad);
+
+	/**
 	sets the selected row to the values in _AV
-	the row are 0, 1, 2, and 3
+	the rows are 0, 1, 2, and 3
 	*/
 	void SetRowAtAddress(int _ad, A_Vector2* const _AV);
 

@@ -86,7 +86,7 @@ public:
 	/**
 	returns the demension found at address _f
 	*/
-	const float getDemensionAtAddress(int const _f) const {
+	const float GetDemensionAtAddress(int const _f) const {
 
 		return this->demensions[_f];
 

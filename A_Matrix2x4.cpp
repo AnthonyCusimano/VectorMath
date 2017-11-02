@@ -44,15 +44,46 @@ A_Matrix2x4::A_Matrix2x4(float const _f[]) {
 
 }
 
+const A_Vector2 A_Matrix2x4::GetColumnAtAddress(int const _ad) {
+
+	A_Vector2 T_Result;
+
+	T_Result.setX(this->GetDemensionAtAddress(_ad));
+	T_Result.setY(this->GetDemensionAtAddress(_ad + 4));
+
+	return T_Result;
+
+}
+
+void A_Matrix2x4::SetColumnAtAddress(int _ad, A_Vector2* const _AV) {
+
+	this->demensions[_ad] = _AV->getX();
+	this->demensions[_ad + 4] = _AV->getY();
+
+}
+
+const A_Vector4 A_Matrix2x4::GetRowAtAddress(int _ad) {
+
+	A_Vector4 T_Result;
+
+	T_Result.setX(this->GetDemensionAtAddress(_ad));
+	T_Result.setY(this->GetDemensionAtAddress(++_ad));
+	T_Result.setZ(this->GetDemensionAtAddress(++_ad));
+	T_Result.setW(this->GetDemensionAtAddress(++_ad));
+
+	return T_Result;
+
+}
+
 void A_Matrix2x4::SetRowAtAddress(int _ad, A_Vector4* const _AV) {
 
 	//0*4 || 1*4
 	_ad *= 4;
 
 	this->demensions[_ad] = _AV->getX();
-	this->demensions[_ad + 1] = _AV->getY();
-	this->demensions[_ad + 2] = _AV->getZ();
-	this->demensions[_ad + 3] = _AV->getW();
+	this->demensions[++_ad] = _AV->getY();
+	this->demensions[++_ad] = _AV->getZ();
+	this->demensions[++_ad] = _AV->getW();
 
 }
 

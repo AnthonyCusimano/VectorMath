@@ -1,7 +1,7 @@
 #ifndef A_MATRIX_3X2
 #define A_MATRIX_3X2
 
-#include "A_Vector2.h"
+#include "A_Vector3.h"
 
 class A_Matrix3x2 {
 
@@ -34,13 +34,24 @@ public:
 	~A_Matrix3x2();
 
 	/**
+	returns the selected column
+	the columns are 0, and 1
+	*/
+	const A_Vector3 GetColumnAtAddress(int const _ad);
+
+	/**
+	sets the selected column to the values in _AV
+	*/
+	void SetColumnAtAddress(int const _ad, A_Vector3* const _AV);
+
+	/**
 	returns the selected row
 	the row are 0, 1, and 2
 	*/
 	const A_Vector2 GetRowAtAddress(int _ad);
 
 	/**
-	sets the selected row to the values in _AQ
+	sets the selected row to the values in _AV
 	the row are 0, 1, and 2
 	*/
 	void SetRowAtAddress(int _ad, A_Vector2* const _AV);
