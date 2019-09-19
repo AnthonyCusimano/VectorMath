@@ -139,7 +139,7 @@ public:
 	/**
 	returns an identity matrix translated by the values of _AV
 	*/
-	A_Matrix4x4 GetTranslate(A_Vector3 const *_AV);
+	A_Matrix4x4 GetTranslate(A_Vector3 const* _AV);
 
 	/**
 	returns an identity matrix scaled by the values of _x, _y, and _z
@@ -168,7 +168,7 @@ public:
 
 	/**
 	sets this quaternion to the viewspace of a camera in 3D space
-	_pos (of the viewpoint) _viewDir (direction camera faces) _up and _right is 
+	_pos (of the viewpoint) _viewDir (direction camera faces) _up and _right is
 	*/
 	void SetViewMatrix(A_Vector3* const _pos, A_Vector3* const _viewDir, A_Vector3* const _up, A_Vector3* const _right);
 
@@ -241,7 +241,7 @@ public:
 		}
 
 	}
-	
+
 	/*
 	//*********************************************************
 	//*********************************************************
@@ -264,7 +264,7 @@ public:
 			T_Result.dimensions[i] = this->dimensions[i] * _f;
 
 		}
-		
+
 		return T_Result;
 
 	}
@@ -274,14 +274,14 @@ public:
 	*/
 	A_Matrix4x4 operator *(A_Matrix4x4& const _AM) {
 
-	A_Matrix4x4 T_Result;
+		A_Matrix4x4 T_Result;
 
 		//https://wikimedia.org/api/rest_v1/media/math/render/svg/89622b95453d4895904dbd0c72e6beccbe63772c
 		T_Result.dimensions[0] = this->dimensions[0] * _AM.dimensions[0] + this->dimensions[1] * _AM.dimensions[4] + this->dimensions[2] * _AM.dimensions[8] + this->dimensions[3] * _AM.dimensions[12];
 		T_Result.dimensions[1] = this->dimensions[0] * _AM.dimensions[1] + this->dimensions[1] * _AM.dimensions[5] + this->dimensions[2] * _AM.dimensions[9] + this->dimensions[3] * _AM.dimensions[13];
 		T_Result.dimensions[2] = this->dimensions[0] * _AM.dimensions[2] + this->dimensions[1] * _AM.dimensions[6] + this->dimensions[2] * _AM.dimensions[10] + this->dimensions[3] * _AM.dimensions[14];
 		T_Result.dimensions[3] = this->dimensions[0] * _AM.dimensions[3] + this->dimensions[1] * _AM.dimensions[7] + this->dimensions[2] * _AM.dimensions[11] + this->dimensions[3] * _AM.dimensions[15];
-		
+
 		T_Result.dimensions[4] = this->dimensions[4] * _AM.dimensions[0] + this->dimensions[5] * _AM.dimensions[4] + this->dimensions[6] * _AM.dimensions[8] + this->dimensions[7] * _AM.dimensions[12];
 		T_Result.dimensions[5] = this->dimensions[4] * _AM.dimensions[1] + this->dimensions[5] * _AM.dimensions[5] + this->dimensions[6] * _AM.dimensions[9] + this->dimensions[7] * _AM.dimensions[13];
 		T_Result.dimensions[6] = this->dimensions[4] * _AM.dimensions[2] + this->dimensions[5] * _AM.dimensions[6] + this->dimensions[6] * _AM.dimensions[10] + this->dimensions[7] * _AM.dimensions[14];
@@ -296,24 +296,24 @@ public:
 		T_Result.dimensions[13] = this->dimensions[12] * _AM.dimensions[1] + this->dimensions[13] * _AM.dimensions[5] + this->dimensions[14] * _AM.dimensions[9] + this->dimensions[15] * _AM.dimensions[13];
 		T_Result.dimensions[14] = this->dimensions[12] * _AM.dimensions[2] + this->dimensions[13] * _AM.dimensions[6] + this->dimensions[14] * _AM.dimensions[10] + this->dimensions[15] * _AM.dimensions[14];
 		T_Result.dimensions[15] = this->dimensions[12] * _AM.dimensions[3] + this->dimensions[13] * _AM.dimensions[7] + this->dimensions[14] * _AM.dimensions[11] + this->dimensions[15] * _AM.dimensions[15];
-		
-	return T_Result;
+
+		return T_Result;
 
 	}
 
 	/**
 	multiplies this matrix by a 4 dimensional vector
 	*/
-	A_Vector4 operator *(A_Vector4& const _AV){
-	
-	A_Vector4 T_Result;
+	A_Vector4 operator *(A_Vector4& const _AV) {
 
-	T_Result.setX((_AV.getX() * this->dimensions[0]) + (_AV.getY() * this->dimensions[1]) + (_AV.getZ() * this->dimensions[2]) + this->dimensions[3] * _AV.getW());
-	T_Result.setY((_AV.getX() * this->dimensions[4]) + (_AV.getY() * this->dimensions[5]) + (_AV.getZ() * this->dimensions[6]) + this->dimensions[7] * _AV.getW());
-	T_Result.setZ((_AV.getX() * this->dimensions[8]) + (_AV.getY() * this->dimensions[9]) + (_AV.getZ() * this->dimensions[10]) + this->dimensions[11] * _AV.getW());
-	T_Result.setW((_AV.getX() * this->dimensions[12]) + (_AV.getY() * this->dimensions[13]) + (_AV.getZ() * this->dimensions[14]) + this->dimensions[15] * _AV.getW());
+		A_Vector4 T_Result;
 
-	return T_Result;
+		T_Result.setX((_AV.getX() * this->dimensions[0]) + (_AV.getY() * this->dimensions[1]) + (_AV.getZ() * this->dimensions[2]) + this->dimensions[3] * _AV.getW());
+		T_Result.setY((_AV.getX() * this->dimensions[4]) + (_AV.getY() * this->dimensions[5]) + (_AV.getZ() * this->dimensions[6]) + this->dimensions[7] * _AV.getW());
+		T_Result.setZ((_AV.getX() * this->dimensions[8]) + (_AV.getY() * this->dimensions[9]) + (_AV.getZ() * this->dimensions[10]) + this->dimensions[11] * _AV.getW());
+		T_Result.setW((_AV.getX() * this->dimensions[12]) + (_AV.getY() * this->dimensions[13]) + (_AV.getZ() * this->dimensions[14]) + this->dimensions[15] * _AV.getW());
+
+		return T_Result;
 
 	}
 
@@ -392,7 +392,18 @@ public:
 		}
 
 	}
-	
+
+	/**
+	assigns this matrix the values contained in a float array 16 long
+	TODO could be done with a pointer
+	*/
+	void operator =(float const _f[16]) {
+
+		for (int i = 0; i < 16; ++i)
+			this->dimensions[i] = _f[i];
+
+	}
+
 
 private:
 
